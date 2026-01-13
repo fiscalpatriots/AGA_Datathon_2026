@@ -1,14 +1,14 @@
-# Data (Download and Setup)
+# Data (Main Branch)
 
-We do not store large raw datasets in the repository.
+This main branch includes only the analysis-ready merged outputs used in our final analysis.
 
-## Approved sources
-- USAspending
-- Federal Audit Clearinghouse (FAC)
-- Optional public enrichment (as allowed)
+## Primary analysis dataset
+- data/analysis_core/merged_detail/FAC_USAspending_Merged_Detail.csv
 
-## Expected inputs
-List the expected input file names and where to place them locally so the workflow can run.
+## Supporting datasets
+- data/analysis_core/summary_by_tier/FAC_USAspending_Summary_By_Tier.csv
+- data/analysis_core/top_10_red_by_federal_funding/FAC_USAspending_Top_10_Red_By_Federal_Funding.csv
 
-## Notes
-- If UEI is missing in a source, matches may be incomplete.
+Data dictionaries are included alongside each dataset.
+
+Note: Year-specific variants (FY2023/FY2024), SAM variants, and Tableau Hyper files are intentionally not included in main to keep it clean and judge-friendly.
