@@ -1,12 +1,16 @@
-# Dashboard
+# Dashboard (Tableau)
 
-Paste the dashboard link here (Tableau Public or hosted link).
+This folder contains Tableau packaged workbooks used for the AGA Datathon dashboard deliverable.
 
-## How to use (3 bullets)
-- Filter by recipient, agency, state, or risk tier.
-- Use tooltips to inspect recipient details and audit signals.
-- Use tier views to identify the highest priority recipients.
+## Files
+- `AGA datathon visualizations - USAspending Updated.twbx`
+- `FAC-Merged set AGA datathon.twbx`
 
-## Screenshot
-Add one clean screenshot used in the root README:
-- assets/dashboard.png
+## How to open
+1. Download the `.twbx` file.
+2. Open in Tableau Desktop (recommended) or Tableau Public (if compatible).
+3. If prompted to locate data sources, point Tableau to the core datasets in:
+   - `data/analysis_core/`
+
+## Notes
+If the workbook expects larger source extracts or hyper files, those belong on an archive branch, not main.

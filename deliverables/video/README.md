@@ -1,10 +1,11 @@
-# Video Demo
+# Video Deliverable
 
-Paste the video link here.
+This folder holds documentation for the video deliverable.
 
-## Timestamps
-- 0:00 Problem and objective
-- 0:20 Data sources
-- 0:40 Pipeline and scoring
-- 1:10 Dashboard walkthrough
-- 1:40 Key findings and impact
+## Plan
+- Final video file is typically too large for standard GitHub pushes.
+- If stored in GitHub, use Git LFS on an archive branch.
+- If stored externally (Drive/OneDrive), link it here.
+
+## Status
+- Video not added to main yet.
