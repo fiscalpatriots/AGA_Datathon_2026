@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiscal Patriots | Government Spending & Audit Literacy</title>
+    <meta name="description" content="Explore federal financial assistance data and understand oversight signals. A neutral, educational resource.">
+    <style>
+        /* DESIGN SYSTEM - USAFacts Inspired
+           Clean, high-contrast, question-driven, magenta accent.
+        */
+        :root {
+            /* Palette */
+            --color-white: #FFFFFF;
+            --color-black: #000000;
+            --color-text-primary: #121212;
+            --color-text-secondary: #595959;
+            --color-bg-light: #F7F7F7;
+            --color-accent: #E1197A; /* The "USAFacts" style magenta */
+            --color-border: #E0E0E0;
+            --color-link: #121212;
+            --color-footer-bg: #121212;
+            --color-footer-text: #FFFFFF;
+
+            /* Spacing Scale */
+            --space-xs: 4px;
+            --space-s: 8px;
+            --space-m: 16px;
+            --space-l: 24px;
+            --space-xl: 32px;
+            --space-2xl: 48px;
+            --space-3xl: 64px;
+            --space-4xl: 96px;
+
+            /* Typography */
+            --font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-display: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /* Stronger weight */
+            
+            --text-base: 1.125rem; /* 18px */
+            --text-sm: 0.95rem;
+            --text-h1: 3rem;
+            --text-h2: 2.25rem;
+            --text-h3: 1.5rem;
+            --line-height-body: 1.6;
+        }
+
+        /* RESET & BASE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: var(--font-stack);
+            background-color: var(--color-white);
+            color: var(--color-text-primary);
+            line-height: var(--line-height-body);
+            font-size: var(--text-base);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-display);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-m);
+        }
+
+        h1 { font-size: var(--text-h1); letter-spacing: -0.02em; }
+        h2 { font-size: var(--text-h2); letter-spacing: -0.01em; }
+        h3 { font-size: var(--text-h3); }
+        h5 { font-size: 1.1rem; font-weight: 700; margin-bottom: var(--space-s); }
+
+        p { margin-bottom: var(--space-m); color: var(--color-text-secondary); }
+
+        a {
+            color: var(--color-link);
+            text-decoration: none;
+            border-bottom: 1px solid var(--color-border);
+            transition: all 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--color-accent);
+            border-bottom-color: var(--color-accent);
+        }
+
+        ul { list-style: none; }
+
+        /* External Link Indicator */
+        a[target="_blank"]::after {
+            content: " ↗";
+            font-size: 0.7em;
+            vertical-align: top;
+            display: inline-block;
+            margin-left: 2px;
+        }
+
+        /* UTILITIES */
+        .container {
+            max-width: 90rem; /* ~1440px max, broad layout */
+            margin: 0 auto;
+            padding: 0 var(--space-l);
+        }
+        
+        .section { padding: var(--space-3xl) 0; border-bottom: 1px solid var(--color-border); }
+        .bg-light { background-color: var(--color-bg-light); }
+        .text-center { text-align: center; }
+        .mt-l { margin-top: var(--space-l); }
+        .mb-l { margin-bottom: var(--space-l); }
+        .bold { font-weight: 700; color: var(--color-text-primary); }
+
+        /* HEADER */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--color-white);
+            border-top: 8px solid var(--color-accent);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .brand {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--color-text-primary);
+            border-bottom: none;
+            text-transform: uppercase;
+        }
+        .brand:hover { color: var(--color-accent); border: none; }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-xl);
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-bottom: none;
+            color: var(--color-text-primary);
+        }
+        
+        .nav-links a:hover { color: var(--color-accent); }
+
+        .search-stub {
+            display: flex;
+            align-items: center;
+            background: var(--color-bg-light);
+            padding: 8px 16px;
+            border-radius: 99px;
+            width: 200px;
+        }
+        
+        .search-stub input {
+            border: none;
+            background: transparent;
+            font-size: 0.9rem;
+            width: 100%;
+            outline: none;
+            color: var(--color-text-primary);
+        }
+
+        /* MOBILE NAV TOGGLE */
+        .mobile-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+        
+        @media (max-width: 900px) {
+            .nav-links, .search-stub { display: none; }
+            .mobile-toggle { display: block; }
+            .nav-links.mobile-active {
+                display: flex;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: white;
+                padding: var(--space-l);
+                border-bottom: 1px solid var(--color-border);
+                gap: var(--space-m);
+            }
+        }
+
+        /* HERO - Question Driven */
+        .hero-question {
+            max-width: 50rem;
+            margin: var(--space-2xl) auto var(--space-l);
+            text-align: center;
+        }
+        
+        .hero-answer {
+            max-width: 42rem;
+            margin: 0 auto var(--space-xl);
+            text-align: center;
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--color-text-primary);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 4px;
+            font-weight: 700;
+            border: none;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+        .cta-button:hover { background-color: #be1567; color: white; border: none; }
+
+        /* QUICK LINKS (Pills) */
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-s);
+            margin-bottom: var(--space-xl);
+        }
+        .quick-link-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            border-radius: 99px;
+            background: white;
+            border: 1px solid var(--color-border);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--color-text-secondary);
+            transition: all 0.2s;
+        }
+        .quick-link-pill:hover {
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+
+        /* BIG NUMBER CARDS */
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-l);
+            margin: var(--space-2xl) 0;
+        }
+
+        .stat-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: var(--space-l);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .stat-card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+        .stat-number {
+            display: block;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--color-text-primary);
+            line-height: 1;
+            margin-bottom: var(--space-s);
+            font-feature-settings: "tnum";
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            margin-bottom: var(--space-s);
+            display: block;
+        }
+
+        .stat-source {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            border-top: 1px solid var(--color-border);
+            padding-top: var(--space-s);
+            margin-top: var(--space-m);
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .stat-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 2.25rem; }
+            .stat-number { font-size: 2.5rem; }
+        }
+
+        /* CHART WRAPPERS */
+        .chart-section {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: var(--space-l);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .chart-header {
+            margin-bottom: var(--space-l);
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: var(--space-m);
+        }
+        
+        .chart-title { font-size: 1.5rem; margin-bottom: var(--space-xs); }
+        .chart-subtitle { font-size: 0.95rem; color: var(--color-text-secondary); }
+
+        .chart-placeholder-box {
+            background: var(--color-bg-light);
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-secondary);
+            border: 1px dashed #ccc;
+            margin-bottom: var(--space-m);
+        }
+
+        /* DATASETS & CONNECTIONS */
+        .dataset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-l);
+            margin-bottom: var(--space-xl);
+        }
+        .dataset-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            padding: var(--space-l);
+            border-top: 4px solid var(--color-accent);
+        }
+        .dataset-card h4 { font-size: 1.25rem; margin-bottom: var(--space-s); color: var(--color-text-primary); }
+        .dataset-list { list-style: disc; padding-left: 20px; font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: var(--space-m); }
+        .dataset-limit { font-size: 0.9rem; color: #888; border-top: 1px solid #eee; padding-top: 8px; font-style: italic; }
+
+        .connection-block {
+            background: #EAF4F4; /* Subtle teal tint */
+            border: 1px solid #C4E4E4;
+            padding: var(--space-l);
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        /* GLOSSARY & LEARN */
+        .glossary-controls {
+            margin-bottom: var(--space-l);
+        }
+        .glossary-search {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 4px;
+            margin-bottom: var(--space-m);
+        }
+        .glossary-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .glossary-chip {
+            padding: 6px 14px;
+            background: #f0f0f0;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+        .glossary-chip.active {
+            background: var(--color-accent);
+            color: white;
+        }
+        
+        .term-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-l);
+        }
+        .term-card {
+            background: white;
+            border: 1px solid var(--color-border);
+            padding: var(--space-l);
+            transition: all 0.2s;
+        }
+        .term-card:hover {
+            border-color: var(--color-accent);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .term-title { font-weight: 700; font-size: 1.1rem; display: block; margin-bottom: var(--space-xs); }
+        .term-cat { font-size: 0.8rem; text-transform: uppercase; color: var(--color-text-secondary); letter-spacing: 0.5px; margin-bottom: var(--space-s); display: block; }
+        .term-def { font-size: 0.95rem; line-height: 1.5; margin-bottom: var(--space-s); }
+        .term-why { font-size: 0.9rem; color: var(--color-text-secondary); font-style: italic; border-top: 1px solid #eee; padding-top: 8px; }
+
+
+        /* SOURCES & TRACEABILITY */
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-l);
+        }
+        .source-card {
+            background: var(--color-bg-light);
+            padding: var(--space-m);
+            border: 1px solid var(--color-border);
+        }
+        .source-card h5 { font-size: 1rem; font-weight: 700; margin-bottom: var(--space-s); text-transform: uppercase; color: #555; }
+        .source-list li { margin-bottom: 6px; font-size: 0.95rem; }
+
+        /* NEXT STEPS */
+        .next-steps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            background: #F8F9FA;
+            padding: var(--space-xl);
+            border: 1px solid var(--color-border);
+        }
+        @media (max-width: 768px) { .next-steps-grid { grid-template-columns: 1fr; } }
+        .next-step-col h3 { font-size: 1.5rem; margin-bottom: var(--space-m); }
+        .next-step-list li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .next-step-list li::before { content: "•"; position: absolute; left: 0; color: var(--color-accent); }
+
+        /* ARTIFACT BUTTONS */
+        .artifact-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-m);
+        }
+        
+        .artifact-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 1px solid var(--color-border);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-text-primary);
+            border-radius: 4px;
+            transition: all 0.2s;
+            border-bottom: 1px solid var(--color-border); /* override default link style */
+        }
+        .artifact-btn:hover {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+            background: #FFF5F9;
+        }
+
+        /* DATA SOURCES ACCORDION (from v5, kept for consistency) */
+        details.sources-toggle {
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            cursor: pointer;
+        }
+        details.sources-toggle summary { outline: none; font-weight: 600; margin-bottom: var(--space-s); }
+        details.sources-toggle[open] summary { margin-bottom: var(--space-s); }
+        .source-links a { font-size: 0.9rem; margin-right: var(--space-m); }
+
+        /* CASE STUDIES */
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-l);
+        }
+        .case-card {
+            border: 1px solid var(--color-border);
+            padding: var(--space-l);
+            background: white;
+        }
+        .case-list { margin-bottom: var(--space-m); padding-left: 20px; list-style: disc; color: var(--color-text-secondary); font-size: 0.95rem; }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+            padding: var(--space-3xl) 0;
+            margin-top: var(--space-4xl);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .footer-col h5 {
+            color: var(--color-white);
+            font-size: 1.1rem;
+            margin-bottom: var(--space-m);
+            font-weight: 700;
+        }
+        
+        .footer-col a {
+            color: #AAAAAA;
+            display: block;
+            margin-bottom: var(--space-s);
+            border: none;
+            font-size: 0.95rem;
+        }
+        .footer-col a:hover { color: var(--color-accent); }
+
+        .subscribe-box {
+            display: flex;
+            gap: var(--space-s);
+            margin-top: var(--space-m);
+        }
+        .subscribe-box input {
+            padding: 10px 16px;
+            border-radius: 99px;
+            border: none;
+            flex-grow: 1;
+        }
+        .subscribe-box button {
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 99px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .disclaimer {
+            border-top: 1px solid #333;
+            padding-top: var(--space-l);
+            color: #666;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="brand">Fiscal Patriots</a>
+            
+            <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Toggle Navigation">☰</button>
+            
+            <nav class="nav-links" id="navLinks">
+                <a href="#explore">Explore Data</a>
+                <a href="#datasets">Datasets</a>
+                <a href="#learn">Learn</a>
+                <a href="#methodology">Methodology</a>
+                <a href="#case-studies">Case Studies</a>
+                <a href="#artifacts">GitHub</a>
+            </nav>
+
+            <div class="search-stub">
+                <span style="margin-right:8px; opacity: 0.5;">🔍</span>
+                <input type="text" id="headerSearchInput" placeholder="Search glossary terms..." onkeypress="handleHeaderSearch(event)">
+            </div>
+        </div>
+    </header>
+
+    <!-- SECTION 1: HOME / OVERVIEW -->
+    <section id="home" class="section" style="padding-top: var(--space-xl);">
+        <div class="container">
+            <div class="hero-question">
+                <h1>Where does federal financial assistance go?</h1>
+            </div>
+
+            <!-- QUICK LINKS ROW (Ported from v4 idea, v5 styling) -->
+            <div class="quick-links">
+                <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026" target="_blank" class="quick-link-pill">GitHub Repo</a>
+                <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/pipeline/README.md" target="_blank" class="quick-link-pill">Pipeline</a>
+                <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/data/analysis_core/merged_detail/FAC_USAspending_Merged_Detail.csv" target="_blank" class="quick-link-pill">Merged CSV</a>
+                <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/deliverables/slides/Fiscal%20Patriots%20Presentation.pdf" target="_blank" class="quick-link-pill">Slides PDF</a>
+                <a href="https://www.usaspending.gov/" target="_blank" class="quick-link-pill">USAspending</a>
+                <a href="https://www.fac.gov/" target="_blank" class="quick-link-pill">FAC</a>
+            </div>
+
+            <div class="hero-answer">
+                <p style="color: var(--color-text-primary);">
+                    Federal agencies obligate trillions in grants and loans annually. Independent audits provide crucial oversight signals about how these funds are managed.
+                </p>
+                <div style="margin-top: var(--space-l);">
+                    <a href="#explore" class="cta-button">Explore the data</a>
+                </div>
+                <p style="font-size: 0.9rem; margin-top: var(--space-m); font-style: italic;">
+                    "Follow the Money. Trust the Recipient."
+                </p>
+            </div>
+
+            <!-- BIG NUMBER ANSWER CARDS -->
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <span class="stat-number">1.1 Trillion</span>
+                    <span class="stat-label">Dollars Obligated (FY24 Est.)</span>
+                    <p style="font-size: 0.95rem;">Financial assistance obligations tracked in our dataset for recent fiscal years.</p>
+                    <span class="stat-source">Source: <a href="https://www.usaspending.gov/" target="_blank">USAspending.gov</a></span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">40,000+</span>
+                    <span class="stat-label">Audit Reports</span>
+                    <p style="font-size: 0.95rem;">Single audit reports filed by non-federal entities receiving significant funding.</p>
+                    <span class="stat-source">Source: <a href="https://www.fac.gov/" target="_blank">Federal Audit Clearinghouse</a></span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Connected Systems</span>
+                    <p style="font-size: 0.95rem;">We link Spending, Audits, and Exclusions to show the full oversight picture.</p>
+                    <span class="stat-source">Source: <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/pipeline/README.md" target="_blank">Project Pipeline</a></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: EXPLORE DATA -->
+    <section id="explore" class="section bg-light">
+        <div class="container">
+            <h2 class="text-center">Explore the data</h2>
+            <p class="text-center" style="max-width: 600px; margin: 0 auto var(--space-2xl);">
+                Navigate through federal assistance flows by state, agency, and recipient. Layer on oversight signals to see where risks may lie.
+            </p>
+
+            <!-- CHART WRAPPER 1 -->
+            <div class="chart-section">
+                <div class="chart-header">
+                    <div class="chart-title">Financial Assistance by State</div>
+                    <div class="chart-subtitle">Total obligations aggregated by recipient state (Financial Assistance only, no contracts).</div>
+                </div>
+                
+                <!-- Placeholder for Tableau -->
+                <div class="chart-placeholder-box">
+                    <div style="font-size: 2rem; margin-bottom: 16px; opacity: 0.3;">📊</div>
+                    <h3>Interactive Dashboard Loading...</h3>
+                    <p>Tableau visualization embed placeholder.</p>
+                    <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/tree/main/deliverables/dashboard" target="_blank" class="cta-button">Open in Tableau</a>
+                </div>
+
+                <details class="sources-toggle">
+                    <summary>Sources & Notes</summary>
+                    <div class="source-links">
+                        <p style="font-size: 0.9rem; margin-top: 8px;">
+                            <strong>Data:</strong> USAspending.gov (Assistance Prime Awards).<br>
+                            <strong>Note:</strong> Population size affects totals. High spending does not imply inefficiency.
+                        </p>
+                    </div>
+                </details>
+            </div>
+            
+            <div style="text-align: center;">
+                 <a href="#case-studies" class="bold" style="font-size: 1.1rem;">See case studies for guided examples ↓</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION: DATASETS & CONNECTIONS (Ported from v4, Styled to v5) -->
+    <section id="datasets" class="section">
+        <div class="container">
+            <h2>Datasets & Connections</h2>
+            <p style="max-width: 700px; margin-bottom: var(--space-xl);">
+                We combine three official datasets to build this view. Understanding what each system tracks—and misses—is critical for analysis.
+            </p>
+
+            <div class="dataset-grid">
+                <!-- FAC Card -->
+                <div class="dataset-card" style="border-top-color: #5B3A8E;">
+                    <h4 style="color: #5B3A8E;">Federal Audit Clearinghouse (FAC)</h4>
+                    <p style="font-size: 0.95rem;">The central repository for single audit reports filed by recipients of federal funds.</p>
+                    <ul class="dataset-list">
+                        <li><strong>Helps Answer:</strong> Does this entity have recent findings?</li>
+                        <li><strong>Helps Answer:</strong> Are there "Material Weaknesses"?</li>
+                        <li><strong>Helps Answer:</strong> What is the auditor's opinion?</li>
+                        <li><strong>Does not answer:</strong> Real-time daily spending.</li>
+                    </ul>
+                    <p class="dataset-limit">Pitfall: Reporting lags by 9 months or more.</p>
+                    <a href="https://www.fac.gov/" target="_blank" class="cta-button" style="background:white; color:#5B3A8E; border:1px solid #5B3A8E; padding: 6px 12px; font-size: 0.9rem;">Go to FAC</a>
+                </div>
+
+                <!-- USAspending Card -->
+                <div class="dataset-card" style="border-top-color: #1F4E79;">
+                    <h4 style="color: #1F4E79;">USAspending.gov</h4>
+                    <p style="font-size: 0.95rem;">The official open data source of federal spending information.</p>
+                    <ul class="dataset-list">
+                        <li><strong>Helps Answer:</strong> Who received the money?</li>
+                        <li><strong>Helps Answer:</strong> How much was obligated?</li>
+                        <li><strong>Helps Answer:</strong> Which agency funded it?</li>
+                        <li><strong>Does not answer:</strong> If the money was used effectively.</li>
+                    </ul>
+                    <p class="dataset-limit">Pitfall: 'Obligation' is not the same as cash outlay.</p>
+                    <a href="https://www.usaspending.gov/" target="_blank" class="cta-button" style="background:white; color:#1F4E79; border:1px solid #1F4E79; padding: 6px 12px; font-size: 0.9rem;">Go to USAspending</a>
+                    <a href="https://api.usaspending.gov/docs/" target="_blank" style="font-size: 0.9rem; margin-left: 10px;">API Docs</a>
+                </div>
+
+                <!-- SAM Card -->
+                <div class="dataset-card" style="border-top-color: #6B7280;">
+                    <h4 style="color: #6B7280;">SAM.gov (Exclusions)</h4>
+                    <p style="font-size: 0.95rem;">The primary database for entity registration and debarments (exclusions).</p>
+                    <ul class="dataset-list">
+                        <li><strong>Helps Answer:</strong> Is this entity debarred?</li>
+                        <li><strong>Helps Answer:</strong> What is their UEI?</li>
+                        <li><strong>Helps Answer:</strong> Is their registration active?</li>
+                        <li><strong>Does not answer:</strong> Transaction history.</li>
+                    </ul>
+                    <p class="dataset-limit">Pitfall: Exclusions data often lacks UEI fields.</p>
+                    <a href="https://open.gsa.gov/api/exclusions-api/" target="_blank" class="cta-button" style="background:white; color:#6B7280; border:1px solid #6B7280; padding: 6px 12px; font-size: 0.9rem;">Exclusions API</a>
+                </div>
+            </div>
+
+            <div class="connection-block">
+                <h4 style="margin-bottom: 8px;">How we connect them</h4>
+                <p style="margin-bottom: 0;">
+                    We use the <strong>Unique Entity ID (UEI)</strong> to join FAC audits with USAspending records. <br>
+                    <em>Limitation:</em> Since SAM exclusions often lack a structured UEI, matching debarred entities to spending requires fuzzy logic and is not 100% exact.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: LEARN (LITERACY) - Restored functionality -->
+    <section id="learn" class="section bg-light">
+        <div class="container">
+            <h2>Financial Literacy & Context</h2>
+            <p style="max-width: 700px; margin-bottom: var(--space-xl);">
+                Government data is complex. Use this glossary to understand key terms like "Material Weakness" or "Obligation."
+            </p>
+
+            <div class="glossary-controls">
+                <input type="text" id="glossarySearch" class="glossary-search" placeholder="Filter terms (e.g., 'audit', 'risk')..." onkeyup="filterGlossary()">
+                <div class="glossary-chips" id="glossaryCategories">
+                    <!-- Categories injected by JS -->
+                </div>
+            </div>
+
+            <div id="glossaryList" class="term-grid">
+                <!-- Terms injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: METHODOLOGY & DATA SOURCES -->
+    <section id="methodology" class="section">
+        <div class="container">
+            <h2>Methodology</h2>
+            <p style="max-width: 800px;">
+                We aggregate data from three official government systems to create a unified view of funding and oversight. We do not generate our own scores; we standardize existing oversight indicators.
+            </p>
+
+            <div class="chart-section" style="margin-top: var(--space-l);">
+                <div class="chart-header">
+                    <div class="chart-title">Data Pipeline</div>
+                </div>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; padding: 20px 0;">
+                    <div style="background:#eee; padding: 16px; border-radius: 8px;"><strong>1. Clean</strong><br>Standardize columns from raw extracts.</div>
+                    <div style="align-self:center;">→</div>
+                    <div style="background:#eee; padding: 16px; border-radius: 8px;"><strong>2. Standardize Indicators</strong><br>Flag material weaknesses & repeat findings.</div>
+                    <div style="align-self:center;">→</div>
+                    <div style="background:#eee; padding: 16px; border-radius: 8px;"><strong>3. Merge</strong><br>Join datasets on UEI (fuzzy match for SAM).</div>
+                </div>
+            </div>
+            
+             <div style="margin-top: var(--space-l);">
+                <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/pipeline/README.md" target="_blank" class="cta-button" style="background: #333;">View Pipeline Documentation on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: CASE STUDIES -->
+    <section id="case-studies" class="section bg-light">
+        <div class="container">
+            <h2>Case Studies</h2>
+            <p style="margin-bottom: var(--space-l);">Guided examples of how to interpret the data signals.</p>
+            
+            <div class="case-grid">
+                <!-- Case 1 -->
+                <div class="case-card">
+                    <h3>Rapid Funding Growth</h3>
+                    <p>An entity received a 200% increase in funding in FY23, followed by a "Material Weakness" in cash management controls.</p>
+                    <ul class="case-list">
+                        <li>Look for: Sharp rise in obligation chart.</li>
+                        <li>Look for: "Material Weakness" flag in audit tab.</li>
+                        <li>Context: Did they fix it in the next year?</li>
+                    </ul>
+                    <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/tree/main/deliverables/dashboard" target="_blank" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">Open filtered view</a>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="case-card">
+                    <h3>Exclusion Matching</h3>
+                    <p>An entity appears in the SAM exclusions list (via name match) but continued receiving small awards.</p>
+                    <ul class="case-list">
+                        <li>Look for: SAM Exclusion flag = "Potential Match".</li>
+                        <li>Look for: Award dates vs. Exclusion dates.</li>
+                        <li>Context: UEI mismatch is a common data gap.</li>
+                    </ul>
+                    <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/tree/main/deliverables/dashboard" target="_blank" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">Open filtered view</a>
+                </div>
+                
+                <!-- Case 3 -->
+                <div class="case-card">
+                    <h3>Repeat Findings</h3>
+                    <p>A recipient shows the same "Significant Deficiency" in reporting for three consecutive years.</p>
+                    <ul class="case-list">
+                        <li>Look for: "Repeat Finding" indicator.</li>
+                        <li>Look for: Auditor notes on "Corrective Action Plan".</li>
+                        <li>Context: Indicates systemic process issues.</li>
+                    </ul>
+                    <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/tree/main/deliverables/dashboard" target="_blank" class="cta-button" style="font-size: 0.9rem; padding: 8px 16px;">Open filtered view</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEXT STEPS (Ported from v4) -->
+    <section id="next-steps" class="section">
+        <div class="container">
+            <h2>Next Steps</h2>
+            <p>How to use this information responsibly to ask better questions.</p>
+            
+            <div class="next-steps-grid">
+                <div class="next-step-col">
+                    <h3>3 questions for your community</h3>
+                    <ul class="next-step-list">
+                        <li>Which agencies provide the most funding to my local area?</li>
+                        <li>Do local nonprofits have recent "Clean" audit opinions?</li>
+                        <li>Are there repeat findings that haven't been fixed for years?</li>
+                    </ul>
+                </div>
+                <div class="next-step-col">
+                    <h3>How to engage responsibly</h3>
+                    <ul class="next-step-list">
+                        <li><strong>Do:</strong> Use data to ask informed questions.</li>
+                        <li><strong>Do:</strong> Contextualize findings with funding size.</li>
+                        <li><strong>Don't:</strong> Assume every finding means money was stolen.</li>
+                        <li><strong>Don't:</strong> Ignore the management response.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOURCES & TRACEABILITY (Ported from v4) -->
+    <section id="sources" class="section bg-light">
+        <div class="container">
+            <h2>Sources & Traceability</h2>
+            <p>Everything here is traceable to official sources or reproducible repo artifacts.</p>
+
+            <div class="sources-grid">
+                <div class="source-card">
+                    <h5>Official Data Sources</h5>
+                    <ul class="source-list">
+                        <li><a href="https://www.fac.gov/" target="_blank">Federal Audit Clearinghouse</a></li>
+                        <li><a href="https://www.usaspending.gov/" target="_blank">USAspending.gov</a></li>
+                        <li><a href="https://sam.gov/" target="_blank">SAM.gov (Exclusions)</a></li>
+                    </ul>
+                </div>
+
+                <div class="source-card">
+                    <h5>API & Documentation</h5>
+                    <ul class="source-list">
+                        <li><a href="https://api.usaspending.gov/docs/" target="_blank">USAspending API Docs</a></li>
+                        <li><a href="https://open.gsa.gov/api/exclusions-api/" target="_blank">GSA Exclusions API</a></li>
+                        <li><a href="https://sam.gov/content/home" target="_blank">UEI Explainer</a></li>
+                    </ul>
+                </div>
+
+                <div class="source-card">
+                    <h5>Regulations & Oversight</h5>
+                    <ul class="source-list">
+                        <li><a href="https://www.ecfr.gov/current/title-2/subtitle-A/chapter-II/part-200/subpart-F" target="_blank">Uniform Guidance (eCFR Subpart F)</a></li>
+                        <li><a href="https://www.gao.gov/products/gao-05-479" target="_blank">GAO-05-479 Report</a> (<a href="https://www.gao.gov/assets/gao-05-479.pdf" target="_blank">PDF</a>)</li>
+                    </ul>
+                </div>
+                
+                 <div class="source-card">
+                    <h5>Project Artifacts</h5>
+                    <ul class="source-list">
+                        <li><a href="https://github.com/fiscalpatriots/AGA_Datathon_2026" target="_blank">GitHub Repo Root</a></li>
+                        <li><a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/pipeline/README.md" target="_blank">Pipeline README</a></li>
+                         <li><a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/data/analysis_core/merged_detail/FAC_USAspending_Merged_Detail_Data_Dictionary.docx" target="_blank">Merged Data Dictionary</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: ARTIFACTS (Keep as detailed list) -->
+    <section id="artifacts" class="section">
+        <div class="container">
+            <h2>Detailed Project Artifacts</h2>
+            <p>Direct access to our reproducible data products on GitHub.</p>
+            
+            <div class="artifact-list">
+                <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/data/analysis_core/merged_detail/FAC_USAspending_Merged_Detail.csv" target="_blank" class="artifact-btn">Merged Detail CSV</a>
+                <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/data/analysis_core/summary_by_tier/FAC_USAspending_Summary_By_Tier.csv" target="_blank" class="artifact-btn">Summary by Tier CSV</a>
+                <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/data/analysis_core/summary_by_tier/FAC_USAspending_Summary_By_Tier_Data_Dictionary.docx" target="_blank" class="artifact-btn">Summary Dictionary</a>
+                <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/data/analysis_core/top_10_red_by_federal_funding/FAC_USAspending_Top_10_Red_By_Federal_Funding.csv" target="_blank" class="artifact-btn">High Priority List CSV</a>
+                <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/data/analysis_core/top_10_red_by_federal_funding/FAC_USAspending_Top_10_Red_By_Federal_Funding_Data_Dictionary.docx" target="_blank" class="artifact-btn">High Priority Dictionary</a>
+                <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/tree/main/deliverables/dashboard" target="_blank" class="artifact-btn">Tableau Workbooks</a>
+                <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/deliverables/slides/Fiscal%20Patriots%20Presentation.pdf" target="_blank" class="artifact-btn">Presentation Slides (PDF)</a>
+                <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/blob/main/deliverables/model/features.md" target="_blank" class="artifact-btn">ML Prototype Features</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="brand" style="color: white; margin-bottom: 16px; border:none; display:block;">Fiscal Patriots</div>
+                    <p style="color: #999;">Promoting financial literacy and transparency in government assistance.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Explore</h5>
+                    <a href="#explore">Data Dashboard</a>
+                    <a href="#case-studies">Case Studies</a>
+                    <a href="https://www.usaspending.gov/" target="_blank">USAspending</a>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Learn</h5>
+                    <a href="#learn">Glossary</a>
+                    <a href="#methodology">Methodology</a>
+                    <a href="#learn">Audit Basics</a>
+                </div>
+
+                <div class="footer-col">
+                    <h5>Stay Updated</h5>
+                    <p style="font-size: 0.9rem; margin-bottom: 8px; color: #bbb;">Get updates on new data releases.</p>
+                    <div class="subscribe-box">
+                        <input type="email" placeholder="Email address" aria-label="Email Address">
+                        <button type="button">Go</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="disclaimer">
+                <p>
+                    This is an educational project created for the AGA Datathon. Audit findings presented are oversight signals and do not constitute legal determinations of fraud or wrongdoing.<br>
+                    <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026" style="color: #E1197A; border-bottom-color: #E1197A;" target="_blank">View Project on GitHub</a>
+                </p>
+                <p style="margin-top: 10px;">&copy; 2026 Fiscal Patriots Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS for Mobile Menu & Glossary Logic -->
+    <script>
+        // Mobile Menu
+        function toggleMenu() {
+            var nav = document.getElementById('navLinks');
+            nav.classList.toggle('mobile-active');
+        }
+
+        // --- GLOSSARY LOGIC (Ported & Restyled) ---
+        const glossaryTerms = [
+            { term: "Audit", cat: "Basics", def: "An independent examination of an entity’s financial statements, operations, or programs to assess accuracy, compliance, and performance.", why: "Ensures public funds are used as intended." },
+            { term: "Auditor", cat: "Basics", def: "An independent professional or oversight body authorized to conduct audits, such as the Government Accountability Office (GAO) or an Office of Inspector General (OIG).", why: "Provides an objective view." },
+            { term: "Finding", cat: "Findings", def: "A specific problem or condition identified during an audit, such as noncompliance, weak controls, or inefficient operations.", why: "Signals where oversight is needed." },
+            { term: "Material Weakness", cat: "Findings", def: "A severe type of audit finding indicating a reasonable possibility that a material misstatement will not be prevented or detected.", why: "The most serious red flag in an audit." },
+            { term: "Corrective Action Plan", cat: "Outcomes", def: "A documented plan describing how and when an agency will address audit findings.", why: "Shows if management is fixing the problem." },
+            { term: "Obligation", cat: "Finance", def: "A binding commitment by the government to spend money (e.g., contract awards or grants).", why: "Tracks legal commitments, not just cash flow." },
+            { term: "Outlay", cat: "Finance", def: "Actual payments made to satisfy obligations.", why: "Real cash leaving the treasury." },
+            { term: "UEI", cat: "Basics", def: "Unique Entity Identifier. The official alphanumeric code used to identify entities doing business with the federal government.", why: "The key to linking datasets." },
+            { term: "Questioned Cost", cat: "Findings", def: "A cost that is questioned by the auditor because of an audit finding.", why: "Money potentially misspent." },
+            { term: "Single Audit", cat: "Basics", def: "An audit required for non-federal entities that expend $750,000 or more in federal awards in a fiscal year.", why: "The main oversight tool for grants." },
+            { term: "Clean Opinion", cat: "Opinions", def: "An unmodified opinion stating that financial statements are presented fairly.", why: "The best possible audit outcome." },
+            { term: "Adverse Opinion", cat: "Opinions", def: "The auditor concludes that financial statements are materially misstated.", why: "A major warning sign." }
+        ];
+
+        let activeCategory = 'All';
+
+        function initGlossary() {
+            const list = document.getElementById('glossaryList');
+            const catContainer = document.getElementById('glossaryCategories');
+            
+            // Categories
+            const categories = ['All', ...new Set(glossaryTerms.map(t => t.cat))];
+            
+            catContainer.innerHTML = categories.map(c => 
+                `<span class="glossary-chip ${c === 'All' ? 'active' : ''}" onclick="filterCategory('${c}')">${c}</span>`
+            ).join('');
+
+            renderTerms();
+        }
+
+        function renderTerms() {
+            const list = document.getElementById('glossaryList');
+            const searchVal = document.getElementById('glossarySearch').value.toLowerCase();
+            
+            const filtered = glossaryTerms.filter(t => {
+                const matchesSearch = t.term.toLowerCase().includes(searchVal) || t.def.toLowerCase().includes(searchVal);
+                const matchesCat = activeCategory === 'All' || t.cat === activeCategory;
+                return matchesSearch && matchesCat;
+            });
+
+            list.innerHTML = filtered.map(t => `
+                <div class="term-card">
+                    <span class="term-title">${t.term}</span>
+                    <span class="term-cat">${t.cat}</span>
+                    <p class="term-def">${t.def}</p>
+                    <div class="term-why">Why it matters: ${t.why}</div>
+                </div>
+            `).join('');
+        }
+
+        function filterCategory(cat) {
+            activeCategory = cat;
+            // Update active state
+            const chips = document.querySelectorAll('.glossary-chip');
+            chips.forEach(c => {
+                if(c.innerText === cat) c.classList.add('active');
+                else c.classList.remove('active');
+            });
+            renderTerms();
+        }
+
+        function filterGlossary() {
+            renderTerms();
+        }
+
+        // Header Search Connection
+        function handleHeaderSearch(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const term = document.getElementById('headerSearchInput').value;
+                // Scroll to Learn
+                const learnSec = document.getElementById('learn');
+                learnSec.scrollIntoView({behavior: 'smooth'});
+                // Set glossary filter
+                const glossInput = document.getElementById('glossarySearch');
+                glossInput.value = term;
+                filterGlossary();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initGlossary();
+        });
+    </script>
+
+</body>
+</html>
