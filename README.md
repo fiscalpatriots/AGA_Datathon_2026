@@ -3,8 +3,7 @@
 
 An interactive platform promoting financial literacy by making federal spending and audit data accessible to everyday citizens.
 
-**Explore the Dashboard →** [your-url-here]
-
+**Explore the Dashboard →** https://gmufiscalpatriots.bytechisel.com
 ---
 
 ## The Problem
