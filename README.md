@@ -1,4 +1,4 @@
-# AGA_Datathon_2026. Data Cleaning Branch
+# Data Cleaning Branch
 
 **AGA Datathon 2026 | Fiscal Patriots**
 
