@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Next Steps | Fiscal Patriots</title>
+
+  <!-- Added for the handwriting text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#0b0b0c;
+      --muted:#a6a6a9;
+      --bg:#ffffff;
+
+      /* Unified font stack */
+      --site-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+
+      /* Unified pill button style */
+      --pill-bg:#0b0b0c;
+      --pill-fg:#ffffff;
+      --pill-hover:0.92;
+
+      /* Landing/glossary accent */
+      --accent:#3b3fe0;
+      
+      /* New purple for the arrow */
+      --decoration-purple: #9d65c9; 
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--site-font);
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    a{color:inherit;text-decoration:none}
+    a:hover{opacity:.85}
+    button{font-family:inherit}
+
+    /* ---------- Header (Consistent with Landing/Glossary) ---------- */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:22px 56px;
+    }
+    .brand{
+      font-size:28px;
+      font-weight:600;
+      letter-spacing:-0.02em;
+      white-space:nowrap;
+    }
+    .topnav{
+      display:flex;
+      gap:44px;
+      font-size:18px;
+      font-weight:500;
+      align-items:center;
+      justify-content:center;
+      flex:1;
+    }
+
+    /* Standard Pill Button */
+    .pillBtn{
+      background:var(--pill-bg);
+      color:var(--pill-fg);
+      border:0;
+      border-radius:999px;
+      padding:12px 18px;
+      font-size:16px;
+      font-weight:650;
+      cursor:pointer;
+      line-height:1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      transition:opacity 0.2s, transform 0.1s, border-color 0.2s;
+      white-space:nowrap;
+    }
+    .pillBtn:hover{opacity:var(--pill-hover)}
+    .pillBtn:active{transform:translateY(1px)}
+
+    /* Ghost variant for secondary actions */
+    .pillBtn.ghost{
+      background:transparent;
+      color:var(--ink);
+      border:1px solid rgba(0,0,0,0.18);
+    }
+    .pillBtn.ghost:hover{border-color: rgba(0,0,0,0.35); opacity:1;}
+
+    .pillBtn.active{
+      background:var(--pill-bg);
+      color:var(--pill-fg);
+      border-color:var(--pill-bg);
+      opacity:1;
+    }
+
+    /* ---------- Hero Section ---------- */
+    .hero{
+      padding:60px 56px 40px;
+      text-align:left;
+      max-width:2000px; /* ~50% wider than before */
+      margin:0 auto;
+    }
+    .kicker{
+      font-size:18px;
+      font-weight:500;
+      margin:0 0 16px 0;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+    }
+    .heroTitle{
+      margin:0;
+      font-size:clamp(42px, 5vw, 64px);
+      line-height:1.05;
+      letter-spacing:-0.03em;
+      font-weight:650;
+      max-width: 1100px;
+    }
+
+    /* ---------- Checklist Grid ---------- */
+    .checklist-section{
+      padding:20px 56px 80px;
+      max-width:2000px; /* ~50% wider than before */
+      margin:0 auto;
+    }
+
+    .checklist-grid{
+      display:grid;
+      grid-template-columns: 1fr 1.5fr 1fr; /* middle card 50% wider */
+      gap:32px;
+      margin-top:40px;
+      align-items:start; /* keep cards 1 & 3 from stretching to match tall middle card */
+    }
+
+    /* Card Styling */
+    .step-card{
+      background:#ffffff;
+      border:1px solid rgba(0,0,0,0.08);
+      border-radius:24px;
+      padding:32px;
+      display:flex;
+      flex-direction:column;
+      box-shadow:0 12px 32px rgba(0,0,0,0.04);
+      transition:transform 0.2s ease;
+      position:relative;
+      overflow:hidden;
+      min-height:0;
+    }
+    .step-card:hover{
+      transform:translateY(-4px);
+      box-shadow:0 18px 40px rgba(0,0,0,0.08);
+    }
+
+    /* Make cards 1 & 3 twice as tall as before */
+    .step-card.compact{
+      padding:22px 26px;
+      min-height:560px;
+    }
+    .step-card.compact .step-desc{margin:0 0 16px 0;}
+
+    /* Proportional spacing helpers (used only in Card 1) */
+    .cardSpacer{flex:960 1 auto;}
+    .cardSpacer.bottom{flex:0.002 1 auto;}
+
+    /* ✅ Keep compact cards proportional */
+    .step-card.compact .step-content{
+      justify-content:center;
+    }
+    .step-card.compact .step-desc{
+      flex-grow:0;
+    }
+    .step-card.compact .step-actions{
+      margin-top:72px;
+    }
+
+    /* Make middle (viz) card feel bigger */
+    .step-card.viz{
+      min-height:760px;
+    }
+
+    /* Large numbering behind the card content */
+    .step-number{
+      position:absolute;
+      top:-20px;
+      right:-10px;
+      font-size:180px;
+      font-weight:800;
+      color:rgba(0,0,0,0.03);
+      line-height:1;
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .step-content{
+      z-index:1;
+      display:flex;
+      flex-direction:column;
+      height:100%;
+    }
+
+    .step-title{
+      font-size:24px;
+      font-weight:700;
+      margin:0 0 12px 0;
+      letter-spacing:-0.01em;
+      line-height:1.2;
+    }
+
+    .step-desc{
+      font-size:16px;
+      color:rgba(0,0,0,0.7);
+      margin:0 0 24px 0;
+      flex-grow:1;
+    }
+
+    .step-actions{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .question-btn{
+      text-align:left;
+      padding:14px 18px;
+      font-size:15px;
+      line-height:1.3;
+      white-space:normal;
+      height:auto;
+    }
+
+    /* Tableau container styled like landing page vizFrame */
+    .vizFrame{
+      width:100%;
+      margin-top:18px;
+      background:#fff;
+      border-radius:16px;
+      border:3px solid rgba(59,63,224,.85);
+      padding:12px;
+      box-sizing:border-box;
+      overflow:hidden;
+    }
+
+    .vizFrame iframe{
+      width:100%;
+      height:560px;
+      border:0;
+      border-radius:12px;
+      background:#fff;
+    }
+
+    /* Tableau Public embed support */
+    .vizFrame .tableauPlaceholder{width:100% !important;height:560px !important;}
+    .vizFrame .tableauPlaceholder object{width:100% !important;height:560px !important;}
+    .vizFrame .tableauPlaceholder iframe{width:100% !important;height:560px !important;border:0;}
+
+    .vizHint{
+      margin-top:10px;
+      font-size:13px;
+      color:rgba(0,0,0,.55);
+    }
+
+    /* ---------- Use Cases Section (Copied from earlier version) ---------- */
+    .use-cases-section{
+      padding: 60px 56px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative; /* Enabled for arrow positioning */
+    }
+
+    /* Decorative Arrow:
+       Positioned absolutely relative to this section but visually locked to viewport left.
+       Pulls UP (-320px) to sit in the gap under the shorter Card 1.
+       Uses <marker> for perfect arrow joins.
+    */
+    .uc-arrow-widget {
+      position: absolute;
+      top: -320px; 
+      left: 4vw; 
+      width: 150px;
+      height: 350px;
+      pointer-events: none;
+      z-index: 10;
+      color: #ff3b3b; /* Vivid red */
+    }
+
+    .use-cases-header{
+      margin-bottom: 50px;
+      max-width: 900px;
+    }
+
+    .use-cases-title{
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px 0;
+      line-height: 1.1;
+    }
+
+    .use-cases-intro{
+      font-size: 18px;
+      color: rgba(0,0,0,0.75);
+      line-height: 1.6;
+      max-width: 800px;
+    }
+
+    .use-cases-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px; /* Space between columns */
+    }
+
+    .use-case-wrapper{
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .use-case-card{
+      /* Vertical rectangular shape */
+      aspect-ratio: 3 / 4; /* Ensures consistent vertical shape */
+      background-color: var(--accent);
+      background-size: cover;
+      background-position: center;
+      border-radius: 24px;
+      padding: 32px;
+      display: flex;
+      align-items: flex-start; /* Align everything to top */
+      justify-content: flex-start; /* Align everything to start */
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 36px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    /* S3 Hosted Background Images - Absolute paths using the provided domain */
+    .use-case-card--1 { background-image: url('https://gmufiscalpatriots.bytechisel.com/use-cases-bg1.png'); }
+    .use-case-card--2 { background-image: url('https://gmufiscalpatriots.bytechisel.com/use-cases-bg2.png'); }
+    .use-case-card--3 { background-image: url('https://gmufiscalpatriots.bytechisel.com/use-cases-bg3.png'); }
+
+    /* Remove specific alignment for Card 1 and 3 since base class handles it now */
+    /* .use-case-card--1, .use-case-card--3 { ... } removed */
+    /* .use-case-card--1 .use-case-text, .use-case-card--3 .use-case-text { ... } removed */
+
+    .use-case-card:hover{
+      transform: translateY(-6px);
+    }
+
+    /* Optional overlay to ensure text readability over the image */
+    .use-case-card::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.2); /* Slight tint */
+      z-index: 1;
+    }
+
+    .use-case-text{
+      position: relative;
+      z-index: 2;
+      color: #ffffff;
+      font-size: 18px;
+      line-height: 1.5;
+      font-weight: 700; /* Bold text as requested */
+      text-align: left; /* Left align for all */
+      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      margin-top: 0; /* Ensure no top margin pushes it down unevenly */
+    }
+
+    .use-case-name{
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+    /* ---------- End Use Cases Section ---------- */
+
+    /* ---------- NEW Case Studies Call-to-Action Section ---------- */
+    .cs-cta-section {
+      padding: 80px 20px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+      overflow: visible; /* Allow arrows to poke out */
+    }
+
+    .cs-kicker {
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0 0 24px 0;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Container to position the arrows relative to the title */
+    .cs-title-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+
+    /* The Black Pill Button (Styled like title) */
+    .cs-pill-btn {
+      display: inline-block;
+      margin: 0;
+      /* Font styling */
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      text-decoration: none;
+      
+      /* The Pill Shape */
+      background-color: var(--ink);
+      color: #fff;
+      padding: 16px 48px;
+      border-radius: 999px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15); /* Subtle shadow for depth */
+      position: relative;
+      z-index: 2;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .cs-pill-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      opacity: 1; /* Override global hover opacity */
+    }
+
+    .cs-desc {
+      font-size: 20px;
+      color: rgba(0,0,0,0.7);
+      margin: 24px auto 0;
+      max-width: 700px;
+      line-height: 1.5;
+    }
+
+    /* --- Decorations (Arrows) --- */
+    .cs-decoration {
+      position: absolute;
+      pointer-events: none; /* Let clicks pass through */
+      z-index: 1;
+    }
+
+    /* Left Loop Arrow */
+    .cs-decoration-left {
+      top: 50%;
+      right: 100%;
+      transform: translate(20px, -20%); /* Tuck it slightly behind/left */
+      width: 100px;
+      height: 100px;
+      color: var(--ink);
+    }
+
+    /* Right Purple Arrow + Text */
+    .cs-decoration-right {
+      top: -30px;
+      left: 100%;
+      width: 150px;
+      transform: translateX(10px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cs-handwriting-text {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 28px;
+      color: var(--ink);
+      transform: rotate(-10deg) translateX(10px);
+      white-space: nowrap;
+      margin-bottom: -5px;
+    }
+
+    .cs-arrow-svg {
+      width: 80px;
+      height: 80px;
+      color: var(--decoration-purple);
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Hide decorations on tablets/mobile to avoid overflow/clutter */
+    @media (max-width: 850px){
+      .cs-decoration { display: none; }
+      
+      /* Reset/Hide large arrow on mobile to prevent layout breakage/overlap */
+      .uc-arrow-widget {
+        display: none;
+      }
+    }
+
+    /* Footer (match glossary) */
+    footer{
+      background:#121212;
+      color:#fff;
+      padding:64px 0;
+    }
+    .footerWrap{
+      max-width:90rem;
+      margin:0 auto;
+      padding:0 56px;
+    }
+    .disclaimer{
+      border-top:1px solid #333;
+      padding-top:24px;
+      margin-top:0;
+      text-align:center;
+      color:#666;
+      font-size:.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .topbar{padding:18px 18px}
+      .hero, .checklist-section, .use-cases-section{ padding-left:18px; padding-right:18px; }
+      .checklist-grid{ grid-template-columns: 1fr; gap:24px; }
+      .step-number{ font-size:120px; }
+      .step-card.viz{ min-height:0; }
+      .step-card.compact{ min-height:560px; }
+      .footerWrap{ padding:0 18px; }
+
+      /* Use Cases responsive */
+      .use-cases-grid{ grid-template-columns: 1fr; gap: 48px; }
+      .use-cases-section{ padding-left: 18px; padding-right: 18px; }
+      .use-case-card{ aspect-ratio: auto; min-height: 360px; }
+    }
+
+    @media (max-width: 768px){
+      .topnav{ display:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="topbar">
+    <a href="landing_page.html" class="brand">fiscal patriots</a>
+
+    <nav class="topnav" aria-label="primary">
+      <a href="landing_page.html">Explore Data</a>
+      <a href="landing_page.html#datasets">Datasets</a>
+      <a href="next_steps.html">What's next?</a>
+      <a href="case_studies.html">Case Studies</a>
+      <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026">GitHub</a>
+      <a href="https://gmufiscalpatriots.bytechisel.com/about_the_team.html" class="active">About The Team</a>
+    </nav>  
+
+    <a href="landing_page.html" class="pillBtn">Back to Home</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="kicker">Easy Checklist</p>
+    <h1 class="heroTitle">3 Things You Can Do Next</h1>
+  </section>
+
+  <!-- Main Content Checklist -->
+  <section class="checklist-section">
+    <div class="checklist-grid">
+
+      <!-- Step 1: Datasets (UPDATED spacing like your screenshot) -->
+      <article class="step-card compact">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h2 class="step-title">Explore one dataset deeper</h2>
+
+          <!-- pushes the description + buttons downward proportionally -->
+          <div class="cardSpacer top" aria-hidden="true"></div>
+
+          <p class="step-desc">
+            Dive directly into the raw source data. These are the official government portals used to build our insights.
+          </p>
+
+          <div class="step-actions">
+            <a href="https://www.usaspending.gov" target="_blank" rel="noopener noreferrer" class="pillBtn">
+              Go to USAspending.gov &nearr;
+            </a>
+            <a href="https://fac.gov" target="_blank" rel="noopener noreferrer" class="pillBtn ghost">
+              Go to FAC.gov &nearr;
+            </a>
+          </div>
+
+          <!-- keeps a little breathing room below the buttons (matches the "proportional" feel) -->
+          <div class="cardSpacer bottom" aria-hidden="true"></div>
+        </div>
+      </article>
+
+      <!-- Step 2: Guided Questions -->
+      <article class="step-card viz">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h2 class="step-title">Try a guided question</h2>
+          <p class="step-desc">
+            Click a question below to switch the interactive Tableau view.
+          </p>
+
+          <div class="step-actions" role="tablist" aria-label="Guided questions">
+            <button class="pillBtn ghost question-btn active" type="button" onclick="loadViz('agencies')" role="tab" aria-selected="true">
+              “Which agencies spend the most ?”
+            </button>
+            <button class="pillBtn ghost question-btn" type="button" onclick="loadViz('time')" role="tab" aria-selected="false">
+              “Which year had the most federal funding (FY2019–FY2024)?”
+            </button>
+          </div>
+
+          <!-- Tableau Viz Mount -->
+          <div id="vizContainer" class="vizFrame" aria-live="polite"></div>
+          <div class="vizHint">Tip: Click marks inside the viz (bars/states) to filter and explore.</div>
+        </div>
+      </article>
+
+      <!-- Step 3: Glossary -->
+      <article class="step-card compact">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h2 class="step-title">Master the terminology</h2>
+          <p class="step-desc">
+            Don't get lost in the jargon. Use the glossary to understand key audit and spending terms.
+          </p>
+          <div class="step-actions">
+            <a href="glossary.html" class="pillBtn">Open Glossary</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Use Cases Section (Copied from earlier version) -->
+  <section class="use-cases-section">
+    <!-- 
+      DECORATIVE RED ARROW
+      Positioned absolutely relative to this section but visually locked to viewport left.
+      Pulls UP (-320px) to sit in the gap under the shorter Card 1.
+      Uses <marker> for perfect arrow joins.
+    -->
+    <div class="uc-arrow-widget" aria-hidden="true">
+      <svg viewBox="0 0 150 350" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" style="width:100%; height:100%;">
+        <defs>
+          <!-- 
+            Updated to a Spear Head:
+            viewBox 0 0 14 14
+            Path creates a longer, more pointed "spear" shape:
+            M 0 0 (back corner)
+            L 14 7 (tip, longer point)
+            L 0 14 (back corner)
+            L 3 7 (center notch, subtle inward curve)
+            z
+            RefX=3 ensures the shaft connects deep inside the head at the notch.
+          -->
+          <marker id="arrowHead" viewBox="0 0 14 14" refX="3" refY="7" 
+            markerWidth="3" markerHeight="3" orient="auto" markerUnits="strokeWidth">
+            <path d="M 0 0 L 14 7 L 0 14 L 3 7 z" fill="currentColor" />
+          </marker>
+        </defs>
+        
+        <!-- Curve: Starts high (40,0), drops down long, curves right at bottom to (120,330) -->
+        <path d="M 40,0 Q 30,280 120,330" fill="none" marker-end="url(#arrowHead)" />
+      </svg>
+    </div>
+
+    <div class="use-cases-header">
+      <h2 class="use-cases-title">What can I do with government spending and audit data?</h2>
+      <p class="use-cases-intro">
+        Government spending and audit data (from sources like USAspending.gov and FAC.gov) can be useful for many types of users - from curious citizens to students, educators, community leaders, journalists, researchers, and nonprofit or local government staff. Here are a few practical ways people use this information:
+      </p>
+    </div>
+
+    <div class="use-cases-grid">
+
+      <!-- Use Case 1 -->
+      <div class="use-case-wrapper">
+        <div class="use-case-card use-case-card--1">
+          <p class="use-case-text">
+            Students, educators, and curious members of the public can use these dashboards to learn the basics of how federal dollars flow, what oversight looks like, and how audits fit into government accountability - without needing an accounting background.
+          </p>
+        </div>
+        <h3 class="use-case-name">Education and Civic Understanding</h3>
+      </div>
+
+      <!-- Use Case 2 -->
+      <div class="use-case-wrapper">
+        <div class="use-case-card use-case-card--2">
+          <p class="use-case-text">
+            Community members, journalists, and policy researchers can use the visuals as a starting point to identify broad patterns (who receives funding, where money goes, and which areas show recurring audit findings) before diving into full audit reports or technical documentation.
+          </p>
+        </div>
+        <h3 class="use-case-name">Preliminary Research and Issue Scoping</h3>
+      </div>
+
+      <!-- Use Case 3 -->
+      <div class="use-case-wrapper">
+        <div class="use-case-card use-case-card--3">
+          <p class="use-case-text">
+            Taxpayers and local stakeholders can pair spending data (award amounts, recipients, locations) with audit data (findings, repeat findings, compliance issues) to better understand not just where money went, but how well it was managed.
+          </p>
+        </div>
+        <h3 class="use-case-name">Spending + Oversight Context (Connecting the Dots)</h3>
+      </div>
+
+    </div>
+  </section>
+  <!-- End Use Cases Section -->
+
+  <!-- Case Studies Button Section (New Doodle/Pill Style) -->
+  <section class="cs-cta-section">
+    <p class="cs-kicker">The Power of Analytics</p>
+    
+    <div class="cs-title-wrapper">
+      
+      <!-- Left Decoration: Loop Arrow -->
+      <div class="cs-decoration cs-decoration-left">
+        <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width:100%; height:100%; transform: rotate(-10deg);">
+          <path d="M80,20 C 60,10 40,30 50,50 C 60,70 80,60 70,40 C 60,20 20,60 10,90" />
+          <path d="M10,90 l 10,-5 M 10,90 l 2,-10" /> 
+        </svg>
+      </div>
+
+      <!-- Main Action Button -->
+      <a href="https://gmufiscalpatriots.bytechisel.com/case_studies.html" class="cs-pill-btn" aria-label="Go to Case studies page">
+        Case Studies
+      </a>
+      
+      <!-- Right Decoration: Text + Purple Arrow -->
+      <div class="cs-decoration cs-decoration-right">
+        <span class="cs-handwriting-text">check this out!</span>
+        <svg class="cs-arrow-svg" viewBox="0 0 100 100">
+           <!-- Redrawn to match curvature and tangent perfectly -->
+           <path d="M80,10 Q 90,40 50,70 Q 20,90 10,80" />
+           <path d="M10,80 l 8,-3 M 10,80 l 3,8" /> 
+        </svg>
+      </div>
+
+    </div>
+
+    <p class="cs-desc">
+      Discover how transparency and data analysis have uncovered insights, improved oversight, and driven accountability in federal spending.
+    </p>
+  </section>
+
+  <!-- Hidden templates so embed codes stay verbatim and scripts don't auto-run -->
+  <template id="tmpl-agencies">
+    <div class='tableauPlaceholder' id='viz1768728257216' style='position: relative'><noscript><a href='#'><img alt='Top 10 Federal Agencies by Funding ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar-Top10FederalAgenciesbyFunding&#47;Bar-Top10FederalAgenciesbyFunding&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Bar-Top10FederalAgenciesbyFunding&#47;Bar-Top10FederalAgenciesbyFunding' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar-Top10FederalAgenciesbyFunding&#47;Bar-Top10FederalAgenciesbyFunding&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>
+    <script type='text/javascript'>
+      var divElement = document.getElementById('viz1768728257216');
+      var vizElement = divElement.getElementsByTagName('object')[0];
+      vizElement.style.width='100%';
+      vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+      var scriptElement = document.createElement('script');
+      scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+      vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
+  </template>
+
+  <template id="tmpl-time">
+    <div class='tableauPlaceholder' id='viz1768728435105' style='position: relative'>
+      <noscript>
+        <a href='#'>
+          <img alt='Federal Funding (FY2019-2024) ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Li&#47;Line-FundingbyYear&#47;Line-FundingbyYear&#47;1_rss.png' style='border: none' />
+        </a>
+      </noscript>
+      <object class='tableauViz' style='display:none;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+        <param name='embed_code_version' value='3' />
+        <param name='site_root' value='' />
+        <param name='name' value='Line-FundingbyYear&#47;Line-FundingbyYear' />
+        <param name='tabs' value='no' />
+        <param name='toolbar' value='yes' />
+        <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Li&#47;Line-FundingbyYear&#47;Line-FundingbyYear&#47;1.png' />
+        <param name='animate_transition' value='yes' />
+        <param name='display_static_image' value='yes' />
+        <param name='display_spinner' value='yes' />
+        <param name='display_overlay' value='yes' />
+        <param name='display_count' value='yes' />
+        <param name='language' value='en-US' />
+      </object>
+    </div>
+    <script type='text/javascript'>
+      var divElement = document.getElementById('viz1768728435105');
+      var vizElement = divElement.getElementsByTagName('object')[0];
+      vizElement.style.width = '100%';
+      vizElement.style.height = (divElement.offsetWidth * 0.75) + 'px';
+      var scriptElement = document.createElement('script');
+      scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+      vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    </script>
+  </template>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footerWrap">
+      <div class="disclaimer">&copy; 2026 Fiscal Patriots Team</div>
+    </div>
+  </footer>
+
+  <script>
+    // Same Tableau mounting approach used in landing_page.html
+    function mountTemplateWithScripts(container, templateId) {
+      if (!container) return;
+      const tmpl = document.getElementById(templateId);
+      if (!tmpl) return;
+
+      container.innerHTML = "";
+      container.appendChild(tmpl.content.cloneNode(true));
+
+      // Re-run embedded scripts (Tableau's init snippet)
+      const scripts = Array.from(container.querySelectorAll('script'));
+      scripts.forEach(oldScript => {
+        const newScript = document.createElement('script');
+        if (oldScript.src) newScript.src = oldScript.src;
+        newScript.text = oldScript.textContent;
+        oldScript.parentNode.replaceChild(newScript, oldScript);
+      });
+    }
+
+    const vizContainer = document.getElementById('vizContainer');
+    const buttons = document.querySelectorAll('.question-btn');
+
+    const VIZ_DATA = {
+      agencies: { templateId: 'tmpl-agencies' },
+      time: { templateId: 'tmpl-time' }
+    };
+
+    function loadViz(key) {
+      // Update button styles
+      buttons.forEach(btn => {
+        const isActive = btn.getAttribute('onclick').includes(key);
+        btn.classList.toggle('active', isActive);
+        btn.classList.toggle('ghost', !isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      // Mount selected viz
+      const config = VIZ_DATA[key];
+      if (!config) return;
+      mountTemplateWithScripts(vizContainer, config.templateId);
+    }
+
+    // Init
+    document.addEventListener('DOMContentLoaded', () => loadViz('agencies'));
+  </script>
+</body>
+</html>

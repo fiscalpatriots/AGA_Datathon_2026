@@ -1,0 +1,1335 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fiscal Patriots</title>
+  
+  <!-- Handwriting font for the "Tips" (Matches next_steps.html) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#0b0b0c;
+      --muted:#a6a6a9;
+      --bg:#ffffff;
+
+      /* Unified font stack */
+      --site-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+
+      /* Brand colors */
+      --pill-bg:#0b0b0c;
+      --pill-fg:#ffffff;
+      --pill-hover:0.92;
+      
+      --accent:#3b3fe0;
+      --decoration-purple: #9d65c9; /* From next_steps.html */
+
+      --navPill:#16181f;
+      --navPillText:#ffffff;
+      --vizBorder:#e5e5e5; /* Softer border for viz frame */
+    }
+
+    /* Fixed sticky behavior by allowing body to grow */
+    html{height:100%}
+    body{
+      margin:0;
+      min-height:100%;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--site-font);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a{color:inherit;text-decoration:none}
+    a:hover{opacity:.85}
+    button{font-family:inherit}
+
+    /* ---------- Header / Hero ---------- */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 56px; 
+      position: sticky;  /* Sticky menu */
+      top: 0;
+      z-index: 950;      /* Ensure it stays above everything */
+      background: rgba(255,255,255,0.85); /* Glass effect */
+      backdrop-filter: blur(16px);       
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+    }
+    .brand{
+      font-size:28px;
+      font-weight:600;
+      letter-spacing:-0.02em;
+    }
+    .topnav{
+      display:flex;
+      gap:44px;
+      font-size:18px;
+      font-weight:500;
+    }
+    
+    /* Standard Pill Button (matches next_steps.html) */
+    .topbtn{
+      background:var(--pill-bg);
+      color:var(--pill-fg);
+      border:0;
+      border-radius:999px;
+      padding:12px 24px;
+      font-size:16px;
+      font-weight:650;
+      cursor:pointer;
+      line-height:1;
+      transition: all 0.2s;
+    }
+    .topbtn:hover{opacity:var(--pill-hover); transform: translateY(-1px);}
+    .topbtn:active{transform:translateY(1px)}
+
+    .hero{
+      padding:78px 56px 40px;
+    }
+    .kicker{
+      font-size:18px;
+      font-weight:500;
+      margin:0 0 28px 0;
+      color: var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+    }
+    .heroTitle{
+      margin:0;
+      font-size:clamp(48px, 6.2vw, 92px);
+      line-height:1.04;
+      letter-spacing:-0.04em;
+      font-weight:650;
+      max-width:1200px;
+    }
+    .heroTitle .muted{
+      color:var(--muted);
+      font-weight:520;
+    }
+
+    /* Glossary Promo Card (Noticeable Callout) */
+    .glossary-promo {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+      padding: 16px 32px;
+      border-radius: 999px;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none;
+    }
+    .glossary-promo:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+      border-color: var(--accent);
+    }
+    .promo-icon { font-size: 28px; animation: wave 2s infinite ease-in-out; transform-origin: 70% 70%; }
+    .promo-hand {
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 28px;
+      color: var(--ink);
+      line-height: 1;
+      margin-right: 8px;
+    }
+    .promo-link {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    @keyframes wave {
+       0% { transform: rotate( 0.0deg) }
+      10% { transform: rotate(14.0deg) }
+      20% { transform: rotate(-8.0deg) }
+      30% { transform: rotate(14.0deg) }
+      40% { transform: rotate(-4.0deg) }
+      50% { transform: rotate(10.0deg) }
+      60% { transform: rotate( 0.0deg) }
+     100% { transform: rotate( 0.0deg) }
+    }
+
+    /* ---------- Sections ---------- */
+    .section{
+      padding:24px 0 0;
+    }
+    .container{
+      padding:0 56px;
+    }
+
+    /* ---------- Explore carousel ---------- */
+    .carouselWrap{
+      position:relative;
+      margin:26px 0 10px;
+    }
+
+    .carouselViewport{
+      overflow-x:auto;
+      overflow-y:hidden;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      padding:40px 18vw; 
+      display:flex;
+      gap:40px;
+      scrollbar-width:none;
+    }
+    .carouselViewport::-webkit-scrollbar{display:none}
+
+    .exploreSlide{
+      scroll-snap-align:center;
+      flex:0 0 min(1080px, 74vw);
+      min-height:780px; 
+      border-radius:24px;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+      position:relative;
+      padding: 40px 48px;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease;
+    }
+    
+    .exploreSlide:hover {
+      box-shadow: 0 18px 48px rgba(0,0,0,0.1);
+    }
+
+    .slideHeader {
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .slideStep {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      background: rgba(59, 63, 224, 0.08);
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .slideTitle {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 12px 0;
+      color: var(--ink);
+    }
+
+    .slideText{
+      margin:0 auto 28px auto;
+      max-width: 800px;
+      font-size:18px;
+      line-height:1.6;
+      color: rgba(0,0,0,0.75); 
+      text-align: center;
+    }
+    .slideText strong{
+      font-weight:600;
+      color: var(--ink);
+    }
+
+    .chipRow{
+      width:min(980px, 100%);
+      margin:0 auto 32px auto;
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    .chip{
+      appearance:none;
+      background:transparent;
+      color:var(--ink);
+      border:1px solid rgba(0,0,0,0.15);
+      border-radius:999px;
+      padding:10px 20px;
+      font-size:15px;
+      font-weight:600;
+      cursor:pointer;
+      flex:0 1 auto; 
+      text-align:center;
+      white-space:nowrap;
+      line-height:1;
+      transition: all 0.2s;
+    }
+    .chip:hover{
+      border-color: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.02);
+    }
+    .chip:active{ transform:translateY(1px); }
+    
+    .chip.active{
+      background: var(--pill-bg);
+      color: var(--pill-fg);
+      border-color: var(--pill-bg);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .tipContainer {
+      position: relative;
+      max-width: 980px;
+      margin: 0 auto 12px;
+      min-height: 40px;
+      display: flex;
+      align-items: flex-end; 
+    }
+
+    .tipLine{
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 26px;
+      color: var(--ink);
+      transform: rotate(-1deg);
+      margin-left: 60px; 
+    }
+
+    .tipArrow {
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      width: 50px;
+      height: 50px;
+      color: var(--decoration-purple);
+      transform: rotate(10deg);
+    }
+    .tipArrow path {
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      fill: none;
+    }
+
+    .vizFrame{
+      width:min(980px, 100%);
+      margin:0 auto;
+      background:#fff;
+      border-radius:16px;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03); 
+      padding:12px;
+      box-sizing:border-box;
+      overflow:hidden;
+      flex-grow: 1; 
+      display: flex;
+      flex-direction: column;
+    }
+
+    .vizFrame iframe{
+      width:100%;
+      height:100%;
+      flex-grow: 1;
+      border:0;
+      border-radius:8px;
+      background:#fff;
+      min-height: 500px;
+    }
+
+    .vizFrame .tableauPlaceholder{width:100% !important; height: 100% !important; min-height: 500px;}
+    .vizFrame .tableauPlaceholder object{width:100% !important; height: 100% !important;}
+
+    .vizFrame .vizPlaceholder{
+      height:500px;
+      width: 100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#999;
+      font-weight:600;
+      border-radius:8px;
+      background: #fafafa;
+      font-family: var(--site-font);
+    }
+
+    .slideNote{
+      font-size:13px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 16px;
+      font-style: italic;
+    }
+
+    .carouselNav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      margin:0 0 20px;
+    }
+    .navPill{
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      color: var(--ink);
+      border-radius:999px;
+      padding:8px 12px;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      user-select:none;
+    }
+    .navBtn{
+      width:32px;
+      height:32px;
+      border-radius:999px;
+      border:1px solid rgba(0,0,0,0.1);
+      background:transparent;
+      color: var(--ink);
+      font-size:22px;
+      line-height:1;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      transition: all 0.2s;
+    }
+    .navBtn:hover { background: #f5f5f5; border-color: rgba(0,0,0,0.2); }
+    .navBtn:active{transform:translateY(1px)}
+    
+    .navCounter{
+      font-size:15px;
+      font-weight:600;
+      font-variant-numeric: tabular-nums;
+      min-width:40px;
+      text-align:center;
+    }
+
+    /* ---------- Datasets section ---------- */
+    #datasets{ padding: 60px 0 80px; }
+
+    .datasetsTitle{ font-size:44px; margin: 0 0 10px; letter-spacing:-0.02em; }
+    .datasetsSub{ color: rgba(0,0,0,.70); max-width: 920px; margin: 0 0 26px; line-height: 1.55; }
+
+    .dsCards{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .dsCard{
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 520px;
+      background-color: #111;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: stretch;
+      box-shadow: 0 22px 60px rgba(0,0,0,.12);
+      transition: transform 0.2s;
+    }
+    .dsCard:hover { transform: translateY(-4px); }
+
+    .dsCard::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,.28) 34%,
+        rgba(0,0,0,.72) 100%
+      );
+    }
+
+    .dsCard--fac{ 
+      background-image: url('datasets-fac-bg.png'); 
+      background-color: #2c3e50;
+    }
+    .dsCard--usaspending{ 
+      background-image: url('datasets-usaspending-bg.png'); 
+      background-color: #34495e;
+    }
+    .dsCard--sam{ 
+      background-image: url('datasets-sam-bg.png'); 
+      background-color: #2c2c2c;
+    }
+
+    .dsCardContent{
+      position: relative;
+      width: 100%;
+      padding: 28px 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 12px;
+    }
+
+    .dsCardContent h3{
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      color: rgba(255,255,255,.98);
+    }
+
+    .dsCardContent p{
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.55;
+      color: rgba(255,255,255,.92);
+      max-width: 54ch;
+    }
+
+    .dsCardFooter{
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .dsArrow{
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--pill-bg);
+      color: var(--pill-fg);
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .12s ease, opacity .12s ease;
+    }
+
+    .dsArrow:hover{ opacity: var(--pill-hover); }
+    .dsArrow:active{ transform: translateY(1px); }
+
+    .dsCardLink{
+      color: rgba(255,255,255,.92);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .dsCardLink:hover{ text-decoration: underline; }
+
+    /* ---------- Guide Widget (Roaming Mode) ---------- */
+    .guide-widget {
+      position: fixed; 
+      bottom: 30px;
+      right: 30px;
+      width: 340px;
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      transition: 
+        opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        top 0.7s cubic-bezier(0.25, 1, 0.5, 1),
+        left 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+      pointer-events: none; 
+      font-family: var(--site-font);
+    }
+
+    .guide-widget.tour-mode {
+      position: absolute;
+      bottom: auto;
+      right: auto;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.15);
+      z-index: 1002;
+    }
+
+    .guide-widget.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .guide-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+    }
+    .guide-close:hover { background: #f0f0f0; color: var(--ink); }
+
+    .guide-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .guide-text {
+      font-size: 15px;
+      line-height: 1.5;
+      color: rgba(0,0,0,0.7);
+      margin-bottom: 20px;
+    }
+
+    .guide-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .guide-btn {
+      font-size: 14px;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity 0.2s, border-color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .guide-btn-primary {
+      background: var(--ink);
+      color: #fff;
+      border: 0;
+    }
+    .guide-btn-primary:hover { opacity: 0.9; }
+    
+    .guide-btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid rgba(0,0,0,0.15);
+    }
+    .guide-btn-ghost:hover { border-color: rgba(0,0,0,0.4); }
+
+    .guide-arrow {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      color: var(--decoration-purple);
+      pointer-events: none;
+      opacity: 0; 
+      transition: opacity 0.3s;
+      z-index: -1;
+    }
+    .guide-arrow svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .guide-widget.arrow-left .guide-arrow {
+      opacity: 1;
+      left: -35px;
+      top: 50%;
+      transform: translateY(-50%) rotate(180deg);
+    }
+    .guide-widget.arrow-right .guide-arrow {
+      opacity: 1;
+      right: -35px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .guide-widget.arrow-top .guide-arrow {
+      opacity: 1;
+      top: -35px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-90deg);
+    }
+    .guide-widget.arrow-bottom .guide-arrow {
+      opacity: 1;
+      bottom: -35px;
+      left: 50%;
+      transform: translateX(-50%) rotate(90deg);
+    }
+
+    @media (max-width: 980px){
+      .dsCards{ grid-template-columns: 1fr; }
+      .dsCard{ min-height: 480px; }
+      .topbar{padding:18px 18px}
+      .hero{padding:46px 18px 8px}
+      .container{padding:0 18px}
+      .carouselViewport{padding:30px 5vw}
+      .exploreSlide { flex: 0 0 90vw; padding: 32px 24px; min-height: 850px;}
+      .chip{ font-size: 14px; padding: 8px 16px; flex: 1 1 auto; }
+      .tipLine { margin-left: 40px; font-size: 22px; }
+      .guide-widget { display: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">fiscal patriots</div>
+
+    <nav class="topnav" aria-label="primary">
+      <a href="landing_page.html">Explore Data</a>
+      <a href="landing_page.html#datasets">Datasets</a>
+      <a href="next_steps.html">What's next?</a>
+      <a href="case_studies.html">Case Studies</a>
+      <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026">GitHub</a>
+      <a href="https://gmufiscalpatriots.bytechisel.com/about_the_team.html" class="active">About The Team</a>
+    </nav>
+
+    <button class="topbtn" id="openGlossary" data-tour-target="glossary">Open Glossary</button>
+  </header>
+
+  <section class="hero">
+    <p class="kicker">AGA . Datathon 2026 - AuditsMadeSimple</p>
+    <h1 class="heroTitle">
+      <span class="muted">Where does</span> federal financial assistance <span class="muted">go</span>?
+    </h1>
+  </section>
+
+  <!-- Explore Data -->
+  <section id="explore" class="section">
+    <div class="carouselWrap">
+      
+      <!-- Top Navigator -->
+      <div class="carouselNav" aria-label="Carousel navigation" id="tour-carousel-nav" data-tour-target="explore">
+        <div class="navPill">
+          <button class="navBtn prevBtn" aria-label="Previous slide">‹</button>
+          <div class="navCounter"><span class="slideNum">1</span> / 4</div>
+          <button class="navBtn nextBtn" aria-label="Next slide">›</button>
+        </div>
+      </div>
+
+      <div class="carouselViewport" id="carouselViewport" aria-label="Explore Data carousel">
+
+        <!-- Clone of D (for left peek on A) -->
+        <article class="exploreSlide" data-slide="4" data-clone="true" aria-hidden="true">
+          <div class="slideHeader">
+            <span class="slideStep">Part 4</span>
+            <h2 class="slideTitle">Risk + Funding Context</h2>
+          </div>
+          <div class="slideText">
+            <p><strong>What you are seeing:</strong> Audit findings combined with spending.</p>
+          </div>
+          <div class="vizFrame"><div class="vizPlaceholder">Clone</div></div>
+        </article>
+
+        <!-- A (Funding by State) -->
+        <article class="exploreSlide" data-slide="1">
+          <div class="slideHeader">
+            <span class="slideStep">Part 1</span>
+            <h2 class="slideTitle">Funding by State</h2>
+          </div>
+
+          <div class="slideText">
+            <p><strong>What you are seeing:</strong> Total obligation amounts aggregated by recipient state. This helps spot geographic concentration.</p>
+          </div>
+
+          <div class="chipRow" role="tablist" aria-label="Slide A visual switcher">
+            <button class="chip active" data-viz="top10States" role="tab" aria-selected="true">Top 10 States (50.9%)</button>
+            <button class="chip" data-viz="grantSpendingMap" role="tab" aria-selected="false">Grant spending map</button>
+            <button class="chip" data-viz="top10Agencies" role="tab" aria-selected="false">Top 10 Agencies</button>
+          </div>
+
+          <div class="tipContainer">
+            <svg class="tipArrow" viewBox="0 0 100 100">
+               <path d="M10,80 Q 40,20 90,40" stroke="currentColor" fill="none" />
+               <path d="M90,40 l -10,5 M 90,40 l -2,10" stroke="currentColor" fill="none" /> 
+            </svg>
+            <div class="tipLine" id="aTip">Wow! Look how concentrated spending is in the top 10 states.</div>
+          </div>
+
+          <div class="vizFrame">
+            <div id="aVizContainer" style="width:100%; height:100%;"></div>
+          </div>
+          <div class="slideNote">Note: High spending does not imply inefficiency.</div>
+        </article>
+
+        <!-- B (Funding by Type) -->
+        <article class="exploreSlide" data-slide="2">
+          <div class="slideHeader">
+            <span class="slideStep">Part 2</span>
+            <h2 class="slideTitle">Funding by Type (2019–2024)</h2>
+          </div>
+
+          <div class="slideText">
+            <p><strong>What you are seeing:</strong> Funding trends over time. Shows how federal funding changes year-over-year and which states capture the largest share.</p>
+          </div>
+
+          <div class="chipRow" role="tablist" aria-label="Slide B visual switcher">
+            <button class="chip active" data-viz="fundingByYear" role="tab" aria-selected="true">Funding by year (Line)</button>
+            <button class="chip" data-viz="cumulativeFunding" role="tab" aria-selected="false">Cumulative funding</button>
+            <button class="chip" data-viz="top5States" role="tab" aria-selected="false">Top 5 States</button>
+          </div>
+
+          <div class="tipContainer">
+            <svg class="tipArrow" viewBox="0 0 100 100">
+               <path d="M10,80 Q 40,20 90,40" stroke="currentColor" fill="none" />
+               <path d="M90,40 l -10,5 M 90,40 l -2,10" stroke="currentColor" fill="none" /> 
+            </svg>
+            <div class="tipLine" id="bTip">Check the line chart first to see the trend!</div>
+          </div>
+
+          <div class="vizFrame">
+            <div id="bVizContainer" style="width:100%; height:100%;"></div>
+          </div>
+          <div class="slideNote">Note: Amounts are aggregated from USAspending.</div>
+        </article>
+
+        <!-- C (Audit Findings Signals) -->
+        <article class="exploreSlide" data-slide="3">
+          <div class="slideHeader">
+            <span class="slideStep">Part 3</span>
+            <h2 class="slideTitle">Audit Findings Signals</h2>
+          </div>
+
+          <div class="slideText">
+            <p><strong>What you are seeing:</strong> State-level views of Single Audit findings. These patterns help identify where higher-risk findings appear.</p>
+          </div>
+
+          <div class="chipRow" role="tablist" aria-label="Slide C visual switcher">
+            <button class="chip active" data-viz="mwMap" role="tab" aria-selected="true">Material Weakness Map</button>
+            <button class="chip" data-viz="mwBar" role="tab" aria-selected="false">Material Weakness Bar</button>
+            <button class="chip" data-viz="findingsMap" role="tab" aria-selected="false">Findings Map</button>
+            <button class="chip" data-viz="findingsBar" role="tab" aria-selected="false">Findings Bar</button>
+            <button class="chip" data-viz="sigDefMap" role="tab" aria-selected="false">Sig Def Map</button>
+            <button class="chip" data-viz="sigDefBar" role="tab" aria-selected="false">Sig Def Bar</button>
+            <button class="chip" data-viz="mwRateMap" role="tab" aria-selected="false">MW Rate Map</button>
+          </div>
+
+          <div class="tipContainer">
+            <svg class="tipArrow" viewBox="0 0 100 100">
+               <path d="M10,80 Q 40,20 90,40" stroke="currentColor" fill="none" />
+               <path d="M90,40 l -10,5 M 90,40 l -2,10" stroke="currentColor" fill="none" /> 
+            </svg>
+            <div class="tipLine" id="cTip">Compare counts with rates to see the real story.</div>
+          </div>
+
+          <div class="vizFrame">
+            <div id="cVizContainer" style="width:100%; height:100%;"></div>
+          </div>
+          <div class="slideNote">Note: FAC reporting can lag and may not reflect real-time changes.</div>
+        </article>
+
+        <!-- D (Risk + Funding Context) -->
+        <article class="exploreSlide" data-slide="4">
+          <div class="slideHeader">
+            <span class="slideStep">Part 4</span>
+            <h2 class="slideTitle">Risk + Funding Context</h2>
+          </div>
+
+          <div class="slideText">
+            <p><strong>What you are seeing:</strong> Audit findings combined with spending. Puts risk signals in proportion to federal dollars.</p>
+          </div>
+
+          <div class="chipRow" role="tablist" aria-label="Slide D visual switcher">
+            <button class="chip active" data-viz="perMillion" role="tab" aria-selected="true">Findings per $1M</button>
+            <button class="chip" data-viz="topRecipients" role="tab" aria-selected="false">Top recipients</button>
+            <button class="chip" data-viz="entityType" role="tab" aria-selected="false">By entity type</button>
+          </div>
+
+          <div class="tipContainer">
+            <svg class="tipArrow" viewBox="0 0 100 100">
+               <path d="M10,80 Q 40,20 90,40" stroke="currentColor" fill="none" />
+               <path d="M90,40 l -10,5 M 90,40 l -2,10" stroke="currentColor" fill="none" /> 
+            </svg>
+            <div class="tipLine" id="dTip">Drill into recipients to see who has the most findings.</div>
+          </div>
+
+          <div class="vizFrame">
+            <div id="dVizContainer" style="width:100%; height:100%;"></div>
+          </div>
+          <div class="slideNote">Note: Findings density is a signal, not proof of misuse.</div>
+        </article>
+
+        <!-- Clone of A (for right peek on D) -->
+        <article class="exploreSlide" data-slide="1" data-clone="true" aria-hidden="true">
+          <div class="slideHeader">
+            <span class="slideStep">Part 1</span>
+            <h2 class="slideTitle">Funding by State</h2>
+          </div>
+          <div class="slideText">
+            <p><strong>What you are seeing:</strong> Total obligation amounts aggregated by recipient state.</p>
+          </div>
+          <div class="vizFrame"><div class="vizPlaceholder">Clone</div></div>
+        </article>
+
+      </div>
+
+      <!-- Bottom Navigator -->
+      <div class="carouselNav" aria-label="Carousel navigation">
+        <div class="navPill">
+          <button class="navBtn prevBtn" aria-label="Previous slide">‹</button>
+          <div class="navCounter"><span class="slideNum">1</span> / 4</div>
+          <button class="navBtn nextBtn" aria-label="Next slide">›</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Noticeable Glossary Callout -->
+  <div style="display: flex; justify-content: center; padding: 40px 0 80px;">
+    <a href="glossary.html" class="glossary-promo">
+      <div class="promo-icon">👋</div>
+      <div class="promo-text">
+        <span class="promo-hand">Stuck on government lingo?</span>
+        <span class="promo-link">Read the Glossary &rarr;</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Datasets -->
+  <section id="datasets" data-tour-target="datasets">
+    <div class="container">
+      <h2 class="datasetsTitle">Datasets</h2>
+      <p class="datasetsSub">
+        We combined three official datasets to build this view. Understanding what each system tracks, and misses, is critical for analysis.
+      </p>
+
+      <div class="dsCards">
+
+        <div class="dsCard dsCard--usaspending">
+          <div class="dsCardContent">
+            <h3>USAspending.gov</h3>
+            <p>This is the official open data source for federal spending information, answering who received the money, how much was obligated, and which agency funded it. It does not show whether the money was used effectively.</p>
+            <div class="dsCardFooter">
+              <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/tree/archive/onedrive-snapshot/archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending" class="dsArrow" aria-label="Go to USAspending dataset">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/tree/archive/onedrive-snapshot/archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending" class="dsCardLink">View Dataset</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="dsCard dsCard--fac">
+          <div class="dsCardContent">
+            <h3>FAC.gov</h3>
+            <p>This is the central repository for Single Audit reports filed by recipients of federal funds, useful for checking recent findings, material weaknesses, and the auditor’s opinion. It does not provide real-time daily spending.</p>
+            <div class="dsCardFooter">
+              <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/tree/archive/onedrive-snapshot/archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC" class="dsArrow" aria-label="Go to FAC dataset">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/tree/archive/onedrive-snapshot/archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC" class="dsCardLink">View Dataset</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="dsCard dsCard--sam">
+          <div class="dsCardContent">
+            <h3>SAM.gov</h3>
+            <p>This is the primary database for entity registration and debarments (exclusions), helping you check if an entity is debarred, its UEI (Unique Entity Identifier, a government-wide identifier for entities), and whether registration is active. It does not provide transaction history.</p>
+            <div class="dsCardFooter">
+              <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/tree/archive/onedrive-snapshot/archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM" class="dsArrow" aria-label="Go to SAM dataset">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026/tree/archive/onedrive-snapshot/archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM" class="dsCardLink">View Dataset</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Welcome/Guide Widget -->
+  <div id="guideWidget" class="guide-widget">
+    <div class="guide-arrow">
+      <svg viewBox="0 0 24 24">
+        <path d="M12 4v16M12 20l-6-6M12 20l6-6" />
+      </svg>
+    </div>
+    <button class="guide-close" id="closeGuide" aria-label="Close guide">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6L6 18M6 6l12 12" />
+      </svg>
+    </button>
+    <h3 class="guide-title" id="guideTitle">👋 New here?</h3>
+    <p class="guide-text" id="guideText">
+      We make government spending transparent. Use our interactive tools to track federal funds, spot audit risks, and see where tax dollars really go.
+    </p>
+    <div class="guide-actions" id="guideActions">
+      <button id="startTourBtn" class="guide-btn guide-btn-primary">Take the Tour</button>
+      <button id="dismissGuideBtn" class="guide-btn guide-btn-ghost">Got it</button>
+    </div>
+  </div>
+
+  <script>
+    /* ---------- Tableau Embed Logic ---------- */
+    function renderTableauEmbed(container, embedHtml) {
+      if (!container) return;
+      container.innerHTML = embedHtml;
+      const placeholder = container.querySelector('.tableauPlaceholder');
+      if (!placeholder) return;
+      const vizElement = placeholder.getElementsByTagName('object')[0];
+      if (!vizElement) return;
+      vizElement.style.width = '100%';
+      vizElement.style.height = '100%'; 
+      const scriptElement = document.createElement('script');
+      scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+      vizElement.parentNode.insertBefore(scriptElement, vizElement);
+    }
+
+    /* ---------- Slide A ---------- */
+    const aVizContainer = document.getElementById('aVizContainer');
+    const aTip = document.getElementById('aTip');
+    const aChips = Array.from(document.querySelectorAll('article.exploreSlide[data-slide="1"]:not([data-clone]) .chipRow .chip'));
+    const A_VIZ = {
+      grantSpendingMap: {
+        embed: `<div class='tableauPlaceholder' id='viz1768772825534' style='position: relative'><noscript><a href='#'><img alt='Federal Grant Spending by State ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Map-FederalGrantSpendingbyState&#47;FederalGrantSpendingbyState&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Map-FederalGrantSpendingbyState&#47;FederalGrantSpendingbyState' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Map-FederalGrantSpendingbyState&#47;FederalGrantSpendingbyState&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div><script type='text/javascript'>var divElement = document.getElementById('viz1768772825534');var vizElement = divElement.getElementsByTagName('object')[0];vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';var scriptElement = document.createElement('script');scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';vizElement.parentNode.insertBefore(scriptElement, vizElement);<\/script>`,
+        tip: "Hover over states to see federal grant spending totals!"
+      },
+      top10States: {
+        embed: `<div class='tableauPlaceholder' id='viz1768728092762' style='position: relative'><noscript><a href='#'><img alt='Bar - Top 10 States Receive 50.9% of All Federal Grants ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar-Top10StatesReceive50_9ofAllFederalGrants&#47;Bar-Top10StatesReceive50_9ofAllFederalGrants&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Bar-Top10StatesReceive50_9ofAllFederalGrants&#47;Bar-Top10StatesReceive50_9ofAllFederalGrants' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar-Top10StatesReceive50_9ofAllFederalGrants&#47;Bar-Top10StatesReceive50_9ofAllFederalGrants&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "Wow! Look how concentrated spending is in the top 10 states."
+      },
+      top10Agencies: {
+        embed: `<div class='tableauPlaceholder' id='viz1768728257216' style='position: relative'><noscript><a href='#'><img alt='Top 10 Federal Agencies by Funding ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar-Top10FederalAgenciesbyFunding&#47;Bar-Top10FederalAgenciesbyFunding&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Bar-Top10FederalAgenciesbyFunding&#47;Bar-Top10FederalAgenciesbyFunding' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar-Top10FederalAgenciesbyFunding&#47;Bar-Top10FederalAgenciesbyFunding&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "See which federal agencies are distributing the most funds."
+      }
+    };
+    function setActiveA(key){
+      if (!A_VIZ[key]) return;
+      aChips.forEach(btn => {
+        const isActive = btn.dataset.viz === key;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      renderTableauEmbed(aVizContainer, A_VIZ[key].embed);
+      if (aTip) aTip.textContent = A_VIZ[key].tip;
+    }
+    setActiveA('top10States');
+    aChips.forEach(btn => btn.addEventListener('click', () => setActiveA(btn.dataset.viz)));
+
+    /* ---------- Slide B ---------- */
+    const bVizContainer = document.getElementById('bVizContainer');
+    const bTip = document.getElementById('bTip');
+    const bChips = Array.from(document.querySelectorAll('article.exploreSlide[data-slide="2"] .chipRow .chip'));
+    const B_VIZ = {
+      fundingByYear: {
+        embed: `<div class='tableauPlaceholder' id='viz1768728435105' style='position: relative'><noscript><a href='#'><img alt='Federal Funding (FY2019-2024) ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Li&#47;Line-FundingbyYear&#47;Line-FundingbyYear&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Line-FundingbyYear&#47;Line-FundingbyYear' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Li&#47;Line-FundingbyYear&#47;Line-FundingbyYear&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "Check the line chart first to see the trend!"
+      },
+      cumulativeFunding: {
+        embed: `<div class='tableauPlaceholder' id='viz1768728462769' style='position: relative'><noscript><a href='#'><img alt='Cumulative Federal Funding (FY2019-2024) ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Cu&#47;CumulativeFederalFunding&#47;CumulativeFederalFunding&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='CumulativeFederalFunding&#47;CumulativeFederalFunding' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Cu&#47;CumulativeFederalFunding&#47;CumulativeFederalFunding&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "This shows the total build-up over time."
+      },
+      top5States: {
+        embed: `<div class='tableauPlaceholder' id='viz1768730524585' style='position: relative'><noscript><a href='#'><img alt='Federal Funding by Top 5 States (FY2019-2024) ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Fe&#47;FederalFundingbyTop5StatesFY2019-2024&#47;FederalFundingbyTop5StatesFY2019-2024&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='FederalFundingbyTop5StatesFY2019-2024&#47;FederalFundingbyTop5StatesFY2019-2024' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Fe&#47;FederalFundingbyTop5StatesFY2019-2024&#47;FederalFundingbyTop5StatesFY2019-2024&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /><param name='filter' value='publish=yes' /></object></div>`,
+        tip: "See which states capture the largest share!"
+      }
+    };
+    function setActiveB(key){
+      if (!B_VIZ[key]) return;
+      bChips.forEach(btn => {
+        const isActive = btn.dataset.viz === key;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      renderTableauEmbed(bVizContainer, B_VIZ[key].embed);
+      if (bTip) bTip.textContent = B_VIZ[key].tip;
+    }
+    setActiveB('fundingByYear');
+    bChips.forEach(btn => btn.addEventListener('click', () => setActiveB(btn.dataset.viz)));
+
+    /* ---------- Slide C ---------- */
+    const cVizContainer = document.getElementById('cVizContainer');
+    const cTip = document.getElementById('cTip');
+    const cChips = Array.from(document.querySelectorAll('article.exploreSlide[data-slide="3"] .chipRow .chip'));
+    const C_VIZ = {
+      mwMap: {
+        embed: `<div class='tableauPlaceholder' id='viz1768727713034' style='position: relative'><noscript><a href='#'><img alt='Material Weakness Findings by State ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Map-MaterialWeaknessbyState&#47;Map-MaterialWeaknessbyState&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Map-MaterialWeaknessbyState&#47;Map-MaterialWeaknessbyState' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Map-MaterialWeaknessbyState&#47;Map-MaterialWeaknessbyState&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "See where material weakness findings are concentrated."
+      },
+      mwBar: {
+        embed: `<div class='tableauPlaceholder' id='viz1768727741526' style='position: relative'><noscript><a href='#'><img alt='Bar - Material Weakness by State ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar-MaterialWeaknessbyState&#47;Bar-MaterialWeaknessbyState&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Bar-MaterialWeaknessbyState&#47;Bar-MaterialWeaknessbyState' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar-MaterialWeaknessbyState&#47;Bar-MaterialWeaknessbyState&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "Rank states by material weakness count quickly!"
+      },
+      findingsMap: {
+        embed: `<div class='tableauPlaceholder' id='viz1768727769945' style='position: relative'><noscript><a href='#'><img alt='Total Audit Findings by State ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Map-FindingsbyState&#47;Map-FindingsbyState&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Map-FindingsbyState&#47;Map-FindingsbyState' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Map-FindingsbyState&#47;Map-FindingsbyState&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "View total audit findings distribution across the US."
+      },
+      findingsBar: {
+        embed: `<div class='tableauPlaceholder' id='viz1768727798151' style='position: relative'><noscript><a href='#'><img alt='Bar- Findings by State ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar-FindingsbyState&#47;Bar-FindingsbyState&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Bar-FindingsbyState&#47;Bar-FindingsbyState' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar-FindingsbyState&#47;Bar-FindingsbyState&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "Use the bar chart to rank states by total findings."
+      },
+      sigDefMap: {
+        embed: `<div class='tableauPlaceholder' id='viz1768727835955' style='position: relative'><noscript><a href='#'><img alt='Map - Signifigant Deficiency by State ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Map-SignificantDeficiencybyState&#47;Map-SignificantDeficiencybyState&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Map-SignificantDeficiencybyState&#47;Map-SignificantDeficiencybyState' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Map-SignificantDeficiencybyState&#47;Map-SignificantDeficiencybyState&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "Significant deficiencies are warning signs to watch out for."
+      },
+      sigDefBar: {
+        embed: `<div class='tableauPlaceholder' id='viz1768727904011' style='position: relative'><noscript><a href='#'><img alt='Bar- Significant Deficiency by State ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar-SignificantDeficiencybyState&#47;Bar-SignificantDeficiencybyState&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Bar-SignificantDeficiencybyState&#47;Bar-SignificantDeficiencybyState' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ba&#47;Bar-SignificantDeficiencybyState&#47;Bar-SignificantDeficiencybyState&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "Rank states by count of significant deficiencies."
+      },
+      mwRateMap: {
+        embed: `<div class='tableauPlaceholder' id='viz1768727923147' style='position: relative'><noscript><a href='#'><img alt='Map - Material Weakness Rate by State ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Map-MaterialWeaknessRatebyState&#47;Map-MaterialWeaknessRatebyState&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Map-MaterialWeaknessRatebyState&#47;Map-MaterialWeaknessRatebyState' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Map-MaterialWeaknessRatebyState&#47;Map-MaterialWeaknessRatebyState&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "Compare counts with rates to see the real story."
+      }
+    };
+    function setActiveC(key){
+      if (!C_VIZ[key]) return;
+      cChips.forEach(btn => {
+        const isActive = btn.dataset.viz === key;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      renderTableauEmbed(cVizContainer, C_VIZ[key].embed);
+      if (cTip) cTip.textContent = C_VIZ[key].tip;
+    }
+    setActiveC('mwMap');
+    cChips.forEach(btn => btn.addEventListener('click', () => setActiveC(btn.dataset.viz)));
+
+    /* ---------- Slide D ---------- */
+    const dVizContainer = document.getElementById('dVizContainer');
+    const dTip = document.getElementById('dTip');
+    const dChips = Array.from(document.querySelectorAll('article.exploreSlide[data-slide="4"]:not([data-clone]) .chipRow .chip'));
+    const D_VIZ = {
+      perMillion: {
+        embed: `<div class='tableauPlaceholder' id='viz1768727957730' style='position: relative'><noscript><a href='#'><img alt='Findings Per $1M in Federal Spending by State ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Map-FindingsPerMillionbyState&#47;Map-FindingsPerMillionbyState&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='Map-FindingsPerMillionbyState&#47;Map-FindingsPerMillionbyState' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Ma&#47;Map-FindingsPerMillionbyState&#47;Map-FindingsPerMillionbyState&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "This normalizes findings by dollars to help you compare states."
+      },
+      topRecipients: {
+        embed: `<div class='tableauPlaceholder' id='viz1768727998950' style='position: relative'><noscript><a href='#'><img alt='Top Recipients by Audit Findings ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;To&#47;TopRecipientsbyAuditFindings&#47;TopRecipientsbyAuditFindings&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='TopRecipientsbyAuditFindings&#47;TopRecipientsbyAuditFindings' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;To&#47;TopRecipientsbyAuditFindings&#47;TopRecipientsbyAuditFindings&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "Drill into recipients to see who has the most findings."
+      },
+      entityType: {
+        embed: `<div class='tableauPlaceholder' id='viz1768728026629' style='position: relative'><noscript><a href='#'><img alt='Findings by Entity Type FAC + USAspending FY2023-2024 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Fi&#47;FindingsbyEntityTypeFY2023-2024&#47;FindingsbyEntityType&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='FindingsbyEntityTypeFY2023-2024&#47;FindingsbyEntityType' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;Fi&#47;FindingsbyEntityTypeFY2023-2024&#47;FindingsbyEntityType&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>`,
+        tip: "See where issues cluster by entity type."
+      }
+    };
+    function setActiveD(key){
+      if (!D_VIZ[key]) return;
+      dChips.forEach(btn => {
+        const isActive = btn.dataset.viz === key;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      renderTableauEmbed(dVizContainer, D_VIZ[key].embed);
+      if (dTip) dTip.textContent = D_VIZ[key].tip;
+    }
+    setActiveD('perMillion');
+    dChips.forEach(btn => btn.addEventListener('click', () => setActiveD(btn.dataset.viz)));
+
+    /* ---------- Carousel Logic ---------- */
+    const viewport = document.getElementById('carouselViewport');
+    const prevBtns = document.querySelectorAll('.prevBtn');
+    const nextBtns = document.querySelectorAll('.nextBtn');
+    const slideNumSpans = document.querySelectorAll('.slideNum');
+    const slides = Array.from(viewport.querySelectorAll('.exploreSlide'));
+    let activeIndex = 1;
+
+    function centerSlide(index, behavior){
+      const el = slides[index];
+      const left = el.offsetLeft - (viewport.clientWidth - el.clientWidth) / 2;
+      viewport.scrollTo({ left, behavior });
+      activeIndex = index;
+      slideNumSpans.forEach(span => { span.textContent = el.dataset.slide; });
+    }
+    function nearestIndex(){
+      const center = viewport.scrollLeft + viewport.clientWidth / 2;
+      let best = 0, bestDist = Infinity;
+      slides.forEach((el, i) => {
+        const elCenter = el.offsetLeft + el.clientWidth / 2;
+        const d = Math.abs(center - elCenter);
+        if (d < bestDist){ bestDist = d; best = i; }
+      });
+      return best;
+    }
+    window.addEventListener('load', () => centerSlide(1, 'auto'));
+    prevBtns.forEach(btn => btn.addEventListener('click', () => centerSlide(activeIndex - 1, 'smooth')));
+    nextBtns.forEach(btn => btn.addEventListener('click', () => centerSlide(activeIndex + 1, 'smooth')));
+    viewport.addEventListener('scroll', () => {
+      clearTimeout(window.scrollTimer);
+      window.scrollTimer = setTimeout(() => {
+        const idx = nearestIndex();
+        centerSlide(idx, 'auto');
+        if (idx === 0) centerSlide(4, 'auto');
+        else if (idx === slides.length - 1) centerSlide(1, 'auto');
+      }, 120);
+    });
+
+    /* ---------- Glossary & Roaming Guide Widget Logic ---------- */
+    const guideWidget = document.getElementById('guideWidget');
+    const closeGuide = document.getElementById('closeGuide');
+    const dismissGuideBtn = document.getElementById('dismissGuideBtn');
+    const startTourBtn = document.getElementById('startTourBtn');
+    
+    const guideTitle = document.getElementById('guideTitle');
+    const guideText = document.getElementById('guideText');
+    const guideActions = document.getElementById('guideActions');
+
+    // Show after small delay (Welcome State)
+    setTimeout(() => {
+      if (!localStorage.getItem('fiscal_guide_dismissed')) {
+        guideWidget.classList.add('visible');
+      }
+    }, 1500);
+
+    function hideGuide() {
+      guideWidget.classList.remove('visible');
+      if(currentStep === -1) {
+        localStorage.setItem('fiscal_guide_dismissed', 'true');
+      }
+    }
+
+    const TOUR_STEPS = [
+      {
+        targetId: 'openGlossary',
+        title: 'Confused by Jargon?',
+        text: 'Click here anytime to open the Glossary and decode terms like "Material Weakness" or "Obligation".',
+        position: 'top' 
+      },
+      {
+        targetId: 'tour-carousel-nav',
+        title: 'Explore the Data',
+        text: 'Swipe through these interactive cards to see funding breakdowns, audit findings, and risk signals.',
+        position: 'bottom' 
+      },
+      {
+        targetId: 'datasets',
+        title: 'Source Transparency',
+        text: 'We aggregate data from three official government sources: USAspending, FAC, and SAM.gov.',
+        position: 'top' 
+      }
+    ];
+
+    let currentStep = -1;
+
+    function positionWidget(targetId, preferredPos) {
+      const target = document.getElementById(targetId) || document.querySelector(`[data-tour-target="${targetId}"]`);
+      if(!target) return;
+
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+      setTimeout(() => {
+        const rect = target.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        
+        const wWidth = 360; 
+        const wHeight = guideWidget.offsetHeight || 200;
+        const docWidth = document.documentElement.clientWidth;
+
+        function getCoords(pos) {
+          let top, left;
+          const gutter = 30; 
+          if (pos === 'right') {
+            top = rect.top + scrollTop + (rect.height / 2) - (wHeight / 2);
+            left = rect.left + scrollLeft - wWidth - gutter; 
+          } else if (pos === 'left') {
+             top = rect.top + scrollTop + (rect.height / 2) - (wHeight / 2);
+             left = rect.left + scrollLeft + rect.width + gutter;
+          } else if (pos === 'top') {
+            top = rect.top + scrollTop + rect.height + gutter;
+            left = rect.left + scrollLeft + (rect.width / 2) - (wWidth / 2);
+          } else if (pos === 'bottom') {
+            top = rect.top + scrollTop - wHeight - gutter;
+            left = rect.left + scrollLeft + (rect.width / 2) - (wWidth / 2);
+          }
+          return { top, left };
+        }
+
+        let finalPos = preferredPos;
+        let coords = getCoords(finalPos);
+
+        if (coords.left < 10) {
+          if (finalPos === 'right') { finalPos = 'left'; coords = getCoords(finalPos); } 
+          else { coords.left = 10; }
+        } else if (coords.left + wWidth > docWidth) {
+           if (finalPos === 'left') { finalPos = 'right'; coords = getCoords(finalPos); } 
+           else { coords.left = docWidth - wWidth - 10; }
+        }
+        
+        if (!guideWidget.classList.contains('tour-mode')) {
+           const startRect = guideWidget.getBoundingClientRect();
+           guideWidget.style.transition = 'none'; 
+           guideWidget.style.top = (startRect.top + scrollTop) + 'px';
+           guideWidget.style.left = (startRect.left + scrollLeft) + 'px';
+           guideWidget.classList.add('tour-mode');
+           void guideWidget.offsetWidth; 
+           guideWidget.style.transition = '';
+        }
+
+        guideWidget.className = `guide-widget tour-mode visible arrow-${finalPos}`;
+        guideWidget.style.top = `${coords.top}px`;
+        guideWidget.style.left = `${coords.left}px`;
+      }, 700);
+    }
+
+    function nextStep() {
+      currentStep++;
+      if (currentStep >= TOUR_STEPS.length) { endTour(); return; }
+      const step = TOUR_STEPS[currentStep];
+      guideTitle.textContent = step.title;
+      guideText.textContent = step.text;
+      const isLast = currentStep === TOUR_STEPS.length - 1;
+      guideActions.innerHTML = `
+        <button class="guide-btn guide-btn-primary" onclick="nextStep()">${isLast ? 'Finish' : 'Next'}</button>
+        <button class="guide-btn guide-btn-ghost" onclick="endTour()">Close</button>
+      `;
+      positionWidget(step.targetId, step.position);
+    }
+
+    function startTour() { currentStep = -1; nextStep(); }
+
+    function endTour() {
+      guideWidget.classList.remove('visible');
+      setTimeout(() => {
+        guideWidget.className = 'guide-widget'; 
+        guideWidget.style.top = ''; guideWidget.style.left = '';
+        guideWidget.style.transition = '';
+        currentStep = -1;
+        guideTitle.textContent = "👋 New here?";
+        guideText.textContent = "We make government spending transparent. Use our interactive tools to track federal funds, spot audit risks, and see where tax dollars really go.";
+        guideActions.innerHTML = `
+          <button id="startTourBtn" class="guide-btn guide-btn-primary">Take the Tour</button>
+          <button id="dismissGuideBtn" class="guide-btn guide-btn-ghost">Got it</button>
+        `;
+        document.getElementById('startTourBtn').addEventListener('click', startTour);
+        document.getElementById('dismissGuideBtn').addEventListener('click', hideGuide);
+      }, 500);
+      localStorage.setItem('fiscal_guide_dismissed', 'true');
+    }
+
+    closeGuide.addEventListener('click', hideGuide);
+    dismissGuideBtn.addEventListener('click', hideGuide);
+    startTourBtn.addEventListener('click', startTour);
+    const openGlossary = document.getElementById('openGlossary');
+    openGlossary.addEventListener('click', () => window.location.href = 'glossary.html');
+
+    window.addEventListener('resize', () => {
+      if (currentStep > -1 && guideWidget.classList.contains('visible')) {
+        const step = TOUR_STEPS[currentStep];
+        guideWidget.style.transition = 'none';
+        positionWidget(step.targetId, step.position);
+        setTimeout(() => { guideWidget.style.transition = ''; }, 100);
+      }
+    });
+  </script>
+</body>
+</html>

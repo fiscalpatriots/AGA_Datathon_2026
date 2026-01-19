@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Case Studies | Fiscal Patriots</title>
+  <style>
+    :root{
+      --ink:#0b0b0c;
+      --muted:#a6a6a9;
+      --bg:#ffffff;
+      --site-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --pill-bg:#0b0b0c;
+      --pill-fg:#ffffff;
+      --pill-hover:0.92;
+      --accent:#3b3fe0;
+    }
+
+    html{height:100%}
+    body{
+      margin:0;
+      min-height:100%;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--site-font);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a{color:inherit;text-decoration:none}
+    a:hover{opacity:.85}
+    button{font-family:inherit}
+
+    /* ---------- Header (Reconciled with Landing) ---------- */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 56px; 
+      position: sticky;  
+      top: 0;
+      z-index: 950;      
+      background: rgba(255,255,255,0.85); 
+      backdrop-filter: blur(16px);       
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+    }
+    .brand{
+      font-size:28px;
+      font-weight:600;
+      letter-spacing:-0.02em;
+    }
+    .topnav{
+      display:flex;
+      gap:44px;
+      font-size:18px;
+      font-weight:500;
+    }
+    
+    .topbtn{
+      background:var(--pill-bg);
+      color:var(--pill-fg);
+      border:0;
+      border-radius:999px;
+      padding:12px 24px;
+      font-size:16px;
+      font-weight:650;
+      cursor:pointer;
+      line-height:1;
+      display:inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .topbtn:hover{opacity:var(--pill-hover); transform: translateY(-1px);}
+    .topbtn:active{transform:translateY(1px)}
+
+    /* ---------- Hero ---------- */
+    .hero{
+      padding: 80px 56px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .kicker{
+      font-size:18px;
+      font-weight:500;
+      margin:0 0 16px 0;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .heroTitle{
+      margin:0;
+      font-size:clamp(42px, 5vw, 64px);
+      line-height:1.05;
+      letter-spacing:-0.03em;
+      font-weight:650;
+    }
+    .heroDesc{
+      font-size: 20px;
+      color: rgba(0,0,0,0.7);
+      margin: 24px auto 0;
+      max-width: 700px;
+      line-height: 1.5;
+    }
+
+    /* ---------- Case Studies Grid ---------- */
+    .cs-section{
+      padding: 0 56px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .cs-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 40px;
+    }
+    
+    .cs-card{
+      background: #fff;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .cs-card:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+    }
+    
+    .cs-img{
+      height: 240px;
+      background-color: #f0f0f0;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .cs-icon {
+      width: 140px;
+      height: 140px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+      transition: transform 0.2s ease;
+    }
+    
+    .cs-card:hover .cs-icon {
+      transform: scale(1.05);
+    }
+    
+    .cs-content{
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    .cs-tag{
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+    
+    .cs-title{
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+    
+    .cs-excerpt{
+      font-size: 16px;
+      color: rgba(0,0,0,0.7);
+      line-height: 1.6;
+      margin: 0 0 24px 0;
+    }
+    
+    .cs-link{
+      margin-top: auto;
+      font-weight: 600;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    a.cs-link:hover{ text-decoration: underline; }
+
+    /* Footer */
+    footer{
+      border-top: 1px solid rgba(0,0,0,0.1);
+      padding: 40px 56px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: auto;
+      background: #fafafa;
+    }
+
+    @media (max-width: 980px){
+      .topbar{ padding: 18px 18px; }
+      .topnav{ display: none; }
+      .hero, .cs-section{ padding-left: 18px; padding-right: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a href="index.html" class="brand">fiscal patriots</a>
+    <nav class="topnav" aria-label="primary">
+        <a href="landing_page.html">Explore Data</a>
+        <a href="landing_page.html#datasets">Datasets</a>
+        <a href="next_steps.html">What's next?</a>
+        <a href="case_studies.html">Case Studies</a>
+        <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026">GitHub</a>
+        <a href="https://gmufiscalpatriots.bytechisel.com/about_the_team.html" class="active">About The Team</a>
+      </nav>
+    <a href="index.html" class="topbtn">Back to Home</a>
+  </header>
+
+  <section class="hero">
+    <p class="kicker">The Power of Analytics</p>
+    <h1 class="heroTitle">Case Studies</h1>
+    <p class="heroDesc">
+      Discover how transparency and data analysis have uncovered insights, improved oversight, and driven accountability in federal spending.
+    </p>
+  </section>
+
+  <section class="cs-section">
+    <div class="cs-grid">
+      <!-- Case Study 1: ML Model -->
+      <article class="cs-card">
+        <div class="cs-img" style="background-image: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);">
+          <img src="https://gmufiscalpatriots.bytechisel.com/casestudies_icon1.png" class="cs-icon" alt="Predictive Analytics Icon" onerror="this.style.display='none'">
+        </div>
+        <div class="cs-content">
+          <span class="cs-tag">Predictive Analytics</span>
+          <h2 class="cs-title">Predicting Next-Year Audit Findings</h2>
+          <p class="cs-excerpt">
+            View how Machine Learning can be used on data to predict what it looks like in the future.
+          </p>
+          <a href="ml_model_casestudy.html" class="cs-link">Read Full Study &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Case Study 2: Audit Health Score -->
+      <article class="cs-card">
+        <div class="cs-img" style="background-image: linear-gradient(135deg, #dcfce7 0%, #dbeafe 100%);">
+          <img src="https://gmufiscalpatriots.bytechisel.com/casestudies_icon2.png" class="cs-icon" alt="Audit Health Score Icon" onerror="this.style.display='none'">
+        </div>
+        <div class="cs-content">
+          <span class="cs-tag">Risk Assessment</span>
+          <h2 class="cs-title">Audit Health Score</h2>
+          <p class="cs-excerpt">
+            Creating innovative methodology from data.
+          </p>
+          <a href="audit_health_score_casestudy.html" class="cs-link">Read Full Study &rarr;</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2026 Fiscal Patriots Team
+  </footer>
+</body>
+</html>

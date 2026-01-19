@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About the Team | Fiscal Patriots</title>
+  
+  <!-- Handwriting font for the "Tips" -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --ink:#0b0b0c;
+      --muted:#a6a6a9;
+      --bg:#ffffff;
+
+      /* Unified font stack */
+      --site-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+
+      /* Brand colors */
+      --pill-bg:#0b0b0c;
+      --pill-fg:#ffffff;
+      --pill-hover:0.92;
+      
+      --accent:#3b3fe0;
+      --decoration-purple: #9d65c9;
+      
+      --card-border: rgba(0,0,0,0.08);
+      --card-shadow: 0 12px 32px rgba(0,0,0,0.04);
+    }
+
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--site-font);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+
+    a{color:inherit;text-decoration:none}
+    a:hover{opacity:.85}
+    button{font-family:inherit}
+
+    /* ---------- Header ---------- */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:22px 56px;
+    }
+    .brand{
+      font-size:28px;
+      font-weight:600;
+      letter-spacing:-0.02em;
+    }
+    .topnav{
+      display:flex;
+      gap:44px;
+      font-size:18px;
+      font-weight:500;
+    }
+    .topnav a.active {
+      color: var(--accent);
+      font-weight: 650;
+    }
+    
+    .pillBtn{
+      background:var(--pill-bg);
+      color:var(--pill-fg);
+      border:0;
+      border-radius:999px;
+      padding:12px 24px;
+      font-size:16px;
+      font-weight:650;
+      cursor:pointer;
+      line-height:1;
+      transition: all 0.2s;
+    }
+    .pillBtn:hover{opacity:var(--pill-hover); transform: translateY(-1px);}
+
+    /* ---------- Hero ---------- */
+    .hero{
+      padding: 80px 56px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .kicker{
+      font-size:18px;
+      font-weight:500;
+      margin:0 0 20px 0;
+      color: var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+    }
+    .heroTitle{
+      margin:0;
+      font-size:clamp(48px, 6vw, 84px);
+      line-height:1.05;
+      letter-spacing:-0.03em;
+      font-weight:650;
+    }
+    .heroSub {
+      font-size: 24px;
+      color: rgba(0,0,0,0.6);
+      max-width: 800px;
+      margin: 24px auto 0;
+      line-height: 1.4;
+    }
+
+    /* ---------- Section Styles ---------- */
+    .section {
+      padding: 80px 56px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    /* ---------- Team Grid ---------- */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+      margin-bottom: 60px;
+    }
+
+    .team-card {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      background: #f0f0f0;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--muted);
+      overflow: hidden; /* Clips image to circle */
+    }
+    
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures photos fill the circle without distortion */
+    }
+
+    /* Specific styling for avatars based on role colors (background visible if image fails) */
+    .avatar.lead { background: rgba(59, 63, 224, 0.1); color: var(--accent); }
+    .avatar.pm { background: rgba(157, 101, 201, 0.1); color: var(--decoration-purple); }
+    .avatar.dev { background: rgba(11, 11, 12, 0.05); color: var(--ink); }
+
+    .member-name {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      color: var(--ink);
+    }
+    .member-role {
+      font-size: 16px;
+      color: var(--muted);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* ---------- Mission Statement ---------- */
+    .mission-section {
+      background: #fafafa;
+      border-radius: 32px;
+      padding: 80px 40px;
+      text-align: center;
+      margin: 40px auto;
+    }
+    .mission-text {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 600;
+      line-height: 1.4;
+      color: var(--ink);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .mission-label {
+      display: inline-block;
+      margin-bottom: 24px;
+      font-family: 'Nanum Pen Script', cursive;
+      font-size: 32px;
+      color: var(--accent);
+      transform: rotate(-2deg);
+    }
+
+    /* ---------- Process/Timeline ---------- */
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    
+    .process-card {
+      background: #fff;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+    }
+    
+    .process-step {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: block;
+    }
+    
+    .process-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    
+    .process-desc {
+      font-size: 16px;
+      color: rgba(0,0,0,0.7);
+      line-height: 1.6;
+    }
+
+    /* ---------- Tech Stack ---------- */
+    .stack-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    
+    .stack-pill {
+      border: 1px solid rgba(0,0,0,0.15);
+      border-radius: 12px;
+      padding: 12px 24px;
+      font-weight: 600;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    /* Footer */
+    footer{
+      background:#121212;
+      color:#fff;
+      padding:64px 0;
+      margin-top: 80px;
+    }
+    .footerWrap{
+      max-width:90rem;
+      margin:0 auto;
+      padding:0 56px;
+      text-align: center;
+    }
+    .footer-note {
+      color: #666;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px){
+      .topbar{padding:18px 18px}
+      .hero{padding:60px 18px 40px}
+      .section{padding: 60px 18px;}
+      .container{padding:0 18px}
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">fiscal patriots</div>
+
+    <nav class="topnav" aria-label="primary">
+        <a href="landing_page.html">Explore Data</a>
+        <a href="landing_page.html#datasets">Datasets</a>
+        <a href="next_steps.html">What's next?</a>
+        <a href="case_studies.html">Case Studies</a>
+        <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026">GitHub</a>
+        <a href="https://gmufiscalpatriots.bytechisel.com/about_the_team.html" class="active">About The Team</a>
+      </nav>
+
+    <a href="landing_page.html" class="pillBtn">Back to Dashboard</a>
+  </header>
+
+  <section class="hero">
+    <p class="kicker">AGA Datathon 2026</p>
+    <h1 class="heroTitle">Meet the Fiscal Patriots</h1>
+    <p class="heroSub">
+      We built <strong>AuditsMadeSimple</strong> as a launchpad for understanding federal spending and audit data.
+    </p>
+  </section>
+
+  <!-- Team Grid -->
+  <section class="section">
+    <div class="team-grid">
+      <!-- Khaled -->
+      <div class="team-card">
+        <div class="avatar lead">
+          <img src="k.png" alt="Khaled Alkurd" onerror="this.style.display='none';this.parentElement.innerText='KA'">
+        </div>
+        <h3 class="member-name">Khaled Alkurd</h3>
+        <span class="member-role">Team Lead</span>
+      </div>
+
+      <!-- Pranavi -->
+      <div class="team-card">
+        <div class="avatar pm">
+          <img src="p.png" alt="Pranavi Doodala" onerror="this.style.display='none';this.parentElement.innerText='PD'">
+        </div>
+        <h3 class="member-name">Pranavi Doodala</h3>
+        <span class="member-role">Project Manager</span>
+      </div>
+
+      <!-- Mariam -->
+      <div class="team-card">
+        <div class="avatar lead">
+          <img src="m.png" alt="Mariam Debas" onerror="this.style.display='none';this.parentElement.innerText='MD'">
+        </div>
+        <h3 class="member-name">Mariam Debas</h3>
+        <span class="member-role">Visualization Lead</span>
+      </div>
+
+      <!-- Nikita -->
+      <div class="team-card">
+        <div class="avatar pm">
+          <img src="n.png" alt="Nikita Chandrasing" onerror="this.style.display='none';this.parentElement.innerText='NC'">
+        </div>
+        <h3 class="member-name">Nikita Chandrasing</h3>
+        <span class="member-role">Product Manager</span>
+      </div>
+
+      <!-- Andy -->
+      <div class="team-card">
+        <div class="avatar dev">
+          <img src="a.png" alt="Andy Yaro" onerror="this.style.display='none';this.parentElement.innerText='AY'">
+        </div>
+        <h3 class="member-name">Andy Yaro</h3>
+        <span class="member-role">Product Developer</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Mission -->
+  <section class="container">
+    <div class="mission-section">
+      <span class="mission-label">Our Mission</span>
+      <p class="mission-text">
+        "Create a supplemental resource promoting literacy in audit terminology and data to make government engagement accessible for the general public."
+      </p>
+    </div>
+  </section>
+
+  <!-- The Process -->
+  <section class="section">
+    <h2 class="section-title">How We Built This</h2>
+    <div class="process-grid">
+      
+      <div class="process-card">
+        <span class="process-step">Step 1</span>
+        <h3 class="process-title">Data Integration</h3>
+        <p class="process-desc">
+          We connected three major datasets (USAspending, FAC, and SAM) using the Unique Entity Identifier (UEI) to reveal gaps between funding and exclusion status.
+        </p>
+      </div>
+
+      <div class="process-card">
+        <span class="process-step">Step 2</span>
+        <h3 class="process-title">Visualization</h3>
+        <p class="process-desc">
+          Using Tableau, we created exploratory dashboards to highlight patterns in funding concentration (Top 10 States) and audit finding signals.
+        </p>
+      </div>
+
+      <div class="process-card">
+        <span class="process-step">Step 3</span>
+        <h3 class="process-title">Machine Learning</h3>
+        <p class="process-desc">
+          We trained a HistGradientBoosting classifier to predict next-year audit findings based on award complexity and prior history (ROC-AUC: 0.77).
+        </p>
+      </div>
+
+      <div class="process-card">
+        <span class="process-step">Step 4</span>
+        <h3 class="process-title">Web Development</h3>
+        <p class="process-desc">
+          We built a responsive, accessible web platform using HTML/CSS and deployed it on AWS to make these insights public.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="section" style="padding-top: 0;">
+    <h2 class="section-title" style="margin-bottom: 20px; font-size: 24px;">Built With</h2>
+    <div class="stack-container">
+      <div class="stack-pill">Google Gemini (Code Gen)</div>
+      <div class="stack-pill">HTML5 / CSS3</div>
+      <div class="stack-pill">Python (Scikit-Learn)</div>
+      <div class="stack-pill">Tableau</div>
+      <div class="stack-pill">AWS Hosting</div>
+      <div class="stack-pill">Alteryx</div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footerWrap">
+      <div class="footer-note">&copy; 2026 Fiscal Patriots Team</div>
+    </div>
+  </footer>
+
+</body>
+</html>

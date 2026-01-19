@@ -1,0 +1,484 @@
+<!-- Glossary Page (Updated Header to Match Landing Page) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glossary | Fiscal Patriots</title>
+  <meta name="description" content="Financial literacy glossary for government spending and audit terms." />
+
+  <style>
+    :root{
+      --ink:#0b0b0c;
+      --muted:#a6a6a9;
+      --bg:#ffffff;
+
+      /* Match landing page font everywhere */
+      --site-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+
+      /* Match landing page pill button style */
+      --pill-bg:#0b0b0c;
+      --pill-fg:#ffffff;
+      --pill-hover:0.92;
+
+      --border: rgba(0,0,0,.14);
+      --chipBg:#f0f0f0;
+      --chipHover:#e0e0e0;
+      --accent:#6B2CF5;
+    }
+
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html{ scroll-behavior:smooth; }
+    body{
+      font-family: var(--site-font);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ opacity:.85; }
+    button{ font-family:inherit; }
+
+    .container{
+      max-width: 90rem;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+
+    /* ---------- Header (MATCHES landing_page.html) ---------- */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:22px 56px;
+    }
+    .brand{
+      font-size:28px;
+      font-weight:600;
+      letter-spacing:-0.02em;
+      white-space:nowrap;
+    }
+    .topnav{
+      display:flex;
+      gap:44px;
+      font-size:18px;
+      font-weight:500;
+      align-items:center;
+      justify-content:center;
+      flex:1;
+    }
+    .topnav a{ color: var(--ink); }
+
+    /* Unified pill button (same as landing "Search glossary term") */
+    .topbtn{
+      background:var(--pill-bg);
+      color:var(--pill-fg);
+      border:0;
+      border-radius:999px;
+      padding:12px 18px;
+      font-size:16px;
+      font-weight:650;
+      cursor:pointer;
+      line-height:1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      white-space:nowrap;
+    }
+    .topbtn:hover{ opacity:var(--pill-hover); }
+    .topbtn:active{ transform:translateY(1px); }
+
+    @media (max-width: 980px){
+      .topbar{ padding:18px 18px; }
+      .container{ padding:0 18px; }
+      .topnav{ gap:22px; font-size:16px; }
+    }
+    @media (max-width: 768px){
+      .topnav{ display:none; }
+    }
+
+    /* ---------- Glossary page content ---------- */
+    .page-header{
+      padding-top: 64px;
+      padding-bottom: 60px;
+      text-align:center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .page-title{
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+    .page-subtitle{
+      font-size: 1.1rem;
+      color: rgba(0,0,0,.70);
+    }
+
+    .glossary-controls{
+      margin-bottom: 40px;
+      max-width: 800px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .glossary-search{
+      width:100%;
+      padding:16px 24px;
+      font-size:1.1rem;
+      border:1px solid rgba(0,0,0,.18);
+      border-radius:12px;
+      margin-bottom:24px;
+      outline:none;
+      transition:border-color .2s;
+      font-family: inherit;
+    }
+    .glossary-search:focus{ border-color: var(--accent); }
+
+    .glossary-chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:center;
+    }
+    .glossary-chip{
+      padding:8px 18px;
+      background: var(--chipBg);
+      border-radius:999px;
+      font-size:.95rem;
+      cursor:pointer;
+      border:1px solid transparent;
+      transition: all .2s;
+      font-weight:500;
+      user-select:none;
+    }
+    .glossary-chip:hover{ background: var(--chipHover); }
+    .glossary-chip.active{
+      background: var(--pill-bg);
+      color: var(--pill-fg);
+    }
+
+    /* 3D Flip Cards */
+    .term-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap:24px;
+      padding-bottom:80px;
+    }
+    .term-card{
+      perspective: 1000px;
+      background: transparent;
+      min-height: 280px;
+      cursor: pointer;
+    }
+    .term-card-inner{
+      position:relative;
+      width:100%;
+      height:100%;
+      text-align:center;
+      transition: transform .6s;
+      transform-style: preserve-3d;
+    }
+    .term-card:hover .term-card-inner{ transform: rotateY(180deg); }
+
+    .term-card-front, .term-card-back{
+      position:absolute;
+      width:100%;
+      height:100%;
+      backface-visibility:hidden;
+      border:1px solid rgba(0,0,0,.14);
+      border-radius:20px;
+      padding:32px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      background: #fff;
+    }
+    .term-card-back{
+      transform: rotateY(180deg);
+      background:#fafafa;
+      border-color: var(--accent);
+      align-items:flex-start;
+      text-align:left;
+    }
+
+    .term-title{
+      font-weight:700;
+      font-size:1.6rem;
+      margin-bottom:8px;
+      letter-spacing:-0.5px;
+    }
+    .term-cat{
+      font-size:.85rem;
+      text-transform:uppercase;
+      color: var(--accent);
+      letter-spacing: 1px;
+      font-weight:600;
+      background: rgba(107, 44, 245, 0.10);
+      padding:4px 10px;
+      border-radius: 4px;
+    }
+    .term-def{
+      font-size:1.05rem;
+      line-height:1.6;
+      margin-bottom:16px;
+      color: var(--ink);
+    }
+    .term-why{
+      font-size:.9rem;
+      color: rgba(0,0,0,.65);
+      font-style: italic;
+      border-top: 1px solid #eee;
+      padding-top: 12px;
+      width:100%;
+    }
+
+    .view-more-container{
+      text-align:center;
+      margin-top:20px;
+      padding-bottom:60px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+    }
+    .view-more-status{
+      font-size:.9rem;
+      color: rgba(0,0,0,.65);
+    }
+    .view-more-btn{
+      padding:12px 32px;
+      border-radius:999px;
+      background:#fff;
+      border:1px solid rgba(0,0,0,.14);
+      font-weight:600;
+      cursor:pointer;
+      box-shadow:0 2px 5px rgba(0,0,0,.05);
+      transition: all .2s;
+      font-size:.95rem;
+      color: var(--ink);
+    }
+    .view-more-btn:hover{
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,.08);
+    }
+
+    footer{
+      background:#121212;
+      color:#fff;
+      padding:64px 0;
+    }
+    .disclaimer{
+      border-top:1px solid #333;
+      padding-top:24px;
+      margin-top:0;
+      text-align:center;
+      color:#666;
+      font-size:.85rem;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER (Matches landing page layout) -->
+  <header class="topbar">
+    <a href="landing_page.html" class="brand">fiscal patriots</a>
+
+    <nav class="topnav" aria-label="primary">
+      <a href="landing_page.html">Explore Data</a>
+      <a href="landing_page.html#datasets">Datasets</a>
+      <a href="next_steps.html">What's next?</a>
+      <a href="case_studies.html">Case Studies</a>
+      <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026">GitHub</a>
+      <a href="https://gmufiscalpatriots.bytechisel.com/about_the_team.html" class="active">About The Team</a>
+    </nav>
+
+    <a class="topbtn" href="landing_page.html">Close Glossary</a>
+  </header>
+
+  <!-- PAGE CONTENT -->
+  <div class="container">
+    <header class="page-header">
+      <h1 class="page-title">Financial Literacy & Context</h1>
+      <p class="page-subtitle">Government data is complex. Use this glossary to understand key terms like "Material Weakness" or "Obligation."</p>
+    </header>
+
+    <div class="glossary-controls">
+      <input
+        type="text"
+        id="glossarySearch"
+        class="glossary-search"
+        placeholder="Search terms (e.g., 'audit', 'risk')..."
+        onkeyup="filterGlossary()"
+      />
+      <div class="glossary-chips" id="glossaryCategories"></div>
+    </div>
+
+    <div id="glossaryList" class="term-grid"></div>
+
+    <div id="viewMoreContainer" class="view-more-container">
+      <div id="viewMoreStatus" class="view-more-status">Showing 12 of -- terms</div>
+      <button id="viewMoreBtn" class="view-more-btn" onclick="handleViewMore()">View more</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="disclaimer">&copy; 2026 Fiscal Patriots Team</div>
+    </div>
+  </footer>
+
+  <script>
+    const glossaryTerms = [
+      { term: "Risk points", cat: "Basics", def: "A points-based summary of audit and funding risk signals; capped to 0–100 when computing Audit Health score for interpretability.", why: "The raw metric behind the Audit Health Score tier." },
+
+      { term: "Audit", cat: "Basics", def: "An independent examination of an entity’s financial statements, operations, or programs to assess accuracy, compliance, and performance.", why: "Ensures public funds are used as intended." },
+      { term: "Auditor", cat: "Basics", def: "An independent professional or oversight body authorized to conduct audits, such as the Government Accountability Office (GAO) or an Office of Inspector General (OIG).", why: "Provides an objective view." },
+      { term: "Audit Report", cat: "Basics", def: "A formal document presenting audit objectives, scope, findings, conclusions, and recommendations.", why: "Communicates the results of the oversight work." },
+      { term: "Audit Scope", cat: "Basics", def: "The boundaries of the audit, including the time period, programs, and data reviewed.", why: "Defines what was checked and what was not." },
+      { term: "Audit Evidence", cat: "Basics", def: "Documents, data, and analyses used by auditors to support findings and conclusions.", why: "The proof backing up the audit's claims." },
+
+      { term: "Finding", cat: "Findings", def: "A specific problem or condition identified during an audit, such as noncompliance, weak controls, or inefficient operations.", why: "Signals where improvements are needed." },
+      { term: "Recommendation", cat: "Findings", def: "An auditor’s proposed action to correct a finding or improve accountability or performance.", why: "Offers a path to fix the problem." },
+      { term: "Management Response", cat: "Outcomes", def: "The audited entity’s official reply to audit findings and recommendations.", why: "Shows if the agency agrees to fix the issue." },
+      { term: "Corrective Action Plan", cat: "Outcomes", def: "A documented plan describing how and when an agency will address audit findings.", why: "Shows commitment to solving the problem." },
+      { term: "Implementation Status", cat: "Outcomes", def: "Information indicating whether corrective actions are complete, in progress, or not started.", why: "Tracks if promises are being kept." },
+
+      { term: "GAO", cat: "Oversight", def: "Government Accountability Office. The supreme audit institution of the federal government, serving Congress.", why: "The 'congressional watchdog' for tax dollars." },
+      { term: "OIG", cat: "Oversight", def: "Office of Inspector General. Independent oversight offices within federal agencies.", why: "Polices fraud and waste from the inside." },
+      { term: "Yellow Book", cat: "Standards", def: "Generally Accepted Government Auditing Standards (GAGAS) issued by the GAO.", why: "The gold standard for government audits." },
+      { term: "Uniform Guidance", cat: "Standards", def: "2 CFR 200. The authoritative set of rules for federal grants and audits.", why: "The rulebook for spending federal money." },
+      { term: "Single Audit", cat: "Oversight", def: "An audit required for non-federal entities that expend $750,000 or more in federal awards in a fiscal year.", why: "The main oversight tool for grant recipients." },
+
+      { term: "Obligation", cat: "Finance", def: "A binding commitment by the government to spend money (e.g., contract awards or grants).", why: "Tracks legal commitments, not just cash flow." },
+      { term: "Outlay", cat: "Finance", def: "Actual payments made to satisfy obligations.", why: "Real cash leaving the treasury." },
+      { term: "Appropriation", cat: "Finance", def: "Legal authority provided by Congress to incur obligations and make payments.", why: "The legal permission to spend." },
+      { term: "Questioned Cost", cat: "Findings", def: "A cost that is questioned by the auditor because of an audit finding (e.g., missing documentation).", why: "Money potentially misspent." },
+      { term: "Allowable Cost", cat: "Finance", def: "A cost that meets the criteria for reimbursement under a federal grant.", why: "Ensures money buys what it's supposed to." },
+
+      { term: "Internal Control", cat: "Controls", def: "Processes designed to provide reasonable assurance regarding achievement of objectives in effectiveness and efficiency of operations.", why: "The first line of defense against fraud." },
+      { term: "Material Weakness", cat: "Controls", def: "A severe deficiency in internal control such that there is a reasonable possibility a material misstatement will not be prevented.", why: "The most serious red flag in an audit." },
+      { term: "Significant Deficiency", cat: "Controls", def: "A deficiency in internal control that is less severe than a material weakness yet important enough to merit attention.", why: "A warning sign of control problems." },
+
+      { term: "Program Performance", cat: "Performance", def: "The degree to which a government program achieves its intended objectives.", why: "Measures if the program works." },
+      { term: "Efficiency", cat: "Performance", def: "Achieving results at the lowest reasonable cost.", why: "Ensures value for money." },
+      { term: "Effectiveness", cat: "Performance", def: "The extent to which a program produces its intended outcomes.", why: "Measures real-world impact." },
+      { term: "Outcome Measure", cat: "Performance", def: "A metric that evaluates real-world results rather than activities or spending alone.", why: "Focuses on results, not just effort." },
+
+      { term: "Fraud", cat: "Risk", def: "Intentional deception for unlawful gain.", why: "Criminal misuse of funds." },
+      { term: "Waste", cat: "Risk", def: "The inefficient or unnecessary use of government resources.", why: "Poor stewardship of tax dollars." },
+      { term: "Abuse", cat: "Risk", def: "Improper or excessive actions that may not violate the law but are prudent.", why: "Misuse of authority or resources." },
+      { term: "Risk Assessment", cat: "Risk", def: "An evaluation of potential events that could negatively affect finances or operations.", why: "Helps prevent problems before they happen." },
+
+      { term: "Publicly Available Data", cat: "Data", def: "Government information accessible to citizens without restriction.", why: "Allows citizens to oversee their government." },
+      { term: "Open Data", cat: "Data", def: "Data released in machine-readable formats to encourage analysis and reuse.", why: "Empowers deeper analysis." },
+      { term: "Data Reliability", cat: "Data", def: "The degree to which data are accurate, complete, and appropriate for their intended use.", why: "Ensures decisions are based on facts." },
+      { term: "Limitations", cat: "Data", def: "Constraints identified by auditors that affect how much reliance can be placed on findings or data.", why: "Contextualizes the findings." },
+
+      { term: "Resolved Recommendation", cat: "Outcomes", def: "A recommendation for which management has agreed on corrective action.", why: "Shows progress is being made." },
+      { term: "Unresolved Recommendation", cat: "Outcomes", def: "A recommendation that remains disputed or unaddressed.", why: "Highlights ongoing disagreements or neglect." },
+      { term: "Accountability", cat: "Outcomes", def: "The obligation of agencies to explain, justify, and take responsibility for their actions and use of public funds.", why: "The core principle of democracy." }
+    ];
+
+    let activeCategory = "All";
+    let visibleCount = 12;
+    const LOAD_STEP = 12;
+    let currentFiltered = [];
+
+    function initGlossary(){
+      const catContainer = document.getElementById("glossaryCategories");
+      const categories = ["All", ...new Set(glossaryTerms.map(t => t.cat))];
+
+      catContainer.innerHTML = categories.map(c =>
+        `<span class="glossary-chip ${c === "All" ? "active" : ""}" onclick="filterCategory('${c}')">${c}</span>`
+      ).join("");
+
+      filterGlossary();
+    }
+
+    function renderTerms(){
+      const list = document.getElementById("glossaryList");
+      const toShow = currentFiltered.slice(0, visibleCount);
+
+      list.innerHTML = toShow.map(t => `
+        <div class="term-card">
+          <div class="term-card-inner">
+            <div class="term-card-front">
+              <span class="term-title">${t.term}</span>
+              <span class="term-cat">${t.cat}</span>
+            </div>
+            <div class="term-card-back">
+              <p class="term-def">${t.def}</p>
+              <div class="term-why">Why it matters: ${t.why}</div>
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      updateViewMoreButton();
+    }
+
+    function updateViewMoreButton(){
+      const btn = document.getElementById("viewMoreBtn");
+      const status = document.getElementById("viewMoreStatus");
+
+      const showing = Math.min(visibleCount, currentFiltered.length);
+      const total = currentFiltered.length;
+
+      if(total === 0){
+        status.innerText = "No terms found matching your filters.";
+        btn.style.display = "none";
+        return;
+      }
+
+      status.innerText = `Showing ${showing} of ${total} terms`;
+      btn.style.display = (visibleCount >= total) ? "none" : "inline-block";
+    }
+
+    function handleViewMore(){
+      visibleCount += LOAD_STEP;
+      renderTerms();
+    }
+
+    function filterCategory(cat){
+      activeCategory = cat;
+      document.querySelectorAll(".glossary-chip").forEach(chip => {
+        chip.classList.toggle("active", chip.innerText === cat);
+      });
+      filterGlossary();
+    }
+
+    function filterGlossary(){
+      const searchVal = document.getElementById("glossarySearch").value.toLowerCase();
+
+      currentFiltered = glossaryTerms.filter(t => {
+        const matchesSearch =
+          t.term.toLowerCase().includes(searchVal) ||
+          t.def.toLowerCase().includes(searchVal);
+        const matchesCat = (activeCategory === "All" || t.cat === activeCategory);
+        return matchesSearch && matchesCat;
+      });
+
+      visibleCount = LOAD_STEP;
+      renderTerms();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initGlossary();
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const term = urlParams.get("search");
+      if(term){
+        const input = document.getElementById("glossarySearch");
+        input.value = term;
+        filterGlossary();
+      }
+    });
+  </script>
+</body>
+</html>

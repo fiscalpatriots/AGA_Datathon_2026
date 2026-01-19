@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Case Study: Predicting Next-Year Audit Findings | Fiscal Patriots</title>
+
+  <style>
+    :root{
+      --ink:#0b0b0c;
+      --muted:#a6a6a9;
+      --bg:#ffffff;
+
+      /* Unified font stack */
+      --site-font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+
+      /* Brand colors */
+      --pill-bg:#0b0b0c;
+      --pill-fg:#ffffff;
+      --pill-hover:0.92;
+      --accent:#3b3fe0;
+      --decoration-purple: #9d65c9;
+      
+      --code-bg: #f4f4f5;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family:var(--site-font);
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    a{color:inherit;text-decoration:none}
+    a:hover{opacity:.85}
+    button{font-family:inherit}
+
+    /* ---------- Header (Consistent with Next Steps) ---------- */
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:22px 56px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .brand{
+      font-size:28px;
+      font-weight:600;
+      letter-spacing:-0.02em;
+      white-space:nowrap;
+    }
+    .topnav{
+      display:flex;
+      gap:44px;
+      font-size:18px;
+      font-weight:500;
+      align-items:center;
+      justify-content:center;
+      flex:1;
+    }
+
+    /* Standard Pill Button */
+    .pillBtn{
+      background:var(--pill-bg);
+      color:var(--pill-fg);
+      border:0;
+      border-radius:999px;
+      padding:12px 18px;
+      font-size:16px;
+      font-weight:650;
+      cursor:pointer;
+      line-height:1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      white-space:nowrap;
+      transition:opacity 0.2s, transform 0.1s;
+    }
+    .pillBtn:hover{opacity:var(--pill-hover)}
+    .pillBtn:active{transform:translateY(1px)}
+
+    /* Ghost variant */
+    .pillBtn.ghost{
+      background:transparent;
+      color:var(--ink);
+      border:1px solid rgba(0,0,0,0.18);
+    }
+    .pillBtn.ghost:hover{border-color: rgba(0,0,0,0.35); opacity:1;}
+
+    /* ---------- Hero Section ---------- */
+    .hero{
+      padding:80px 56px 60px;
+      text-align:center;
+      max-width:1200px;
+      margin:0 auto;
+    }
+    .kicker{
+      font-size:18px;
+      font-weight:500;
+      margin:0 0 16px 0;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:0.05em;
+    }
+    .heroTitle{
+      margin:0 auto;
+      font-size:clamp(42px, 5vw, 64px);
+      line-height:1.05;
+      letter-spacing:-0.03em;
+      font-weight:650;
+      max-width: 900px;
+    }
+    .heroSub{
+      margin: 24px auto 0;
+      font-size: 20px;
+      color: rgba(0,0,0,0.65);
+      max-width: 900px;
+    }
+
+    /* ---------- Case Study Content Layout ---------- */
+    .case-study-container{
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 56px 100px;
+    }
+
+    .study-meta{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+      justify-content: center;
+    }
+
+    .meta-tag{
+      background: #f0f0f0;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #444;
+    }
+
+    .study-section{
+      margin-bottom: 48px;
+    }
+
+    .study-heading{
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(0,0,0,0.05);
+      color: var(--ink);
+    }
+
+    .study-subheading{
+      font-size: 20px;
+      font-weight: 650;
+      margin-top: 32px;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+
+    p {
+      margin-bottom: 24px;
+      font-size: 18px;
+      color: rgba(0,0,0,0.8);
+      line-height: 1.65;
+    }
+
+    ul {
+      margin-bottom: 24px;
+      padding-left: 24px;
+    }
+    
+    li {
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: rgba(0,0,0,0.8);
+      padding-left: 8px;
+    }
+    
+    strong {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* Code/Technical Box */
+    .tech-box{
+      background: #fafafa;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 16px;
+      padding: 24px 32px;
+      margin: 32px 0;
+    }
+    
+    .tech-box h4 {
+      margin-top: 0;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    
+    .tech-item span {
+      display: block;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .tech-item div {
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    /* Callout for Results */
+    .result-card {
+      background: var(--ink);
+      color: #fff;
+      border-radius: 20px;
+      padding: 32px;
+      margin: 40px 0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .result-card h3 {
+      margin-top: 0;
+      font-size: 24px;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    
+    .result-card p {
+      color: rgba(255,255,255, 0.9);
+      margin-bottom: 16px;
+    }
+
+    .metric-row {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .metric {
+      flex: 1;
+      min-width: 250px;
+    }
+    .metric-val {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 8px;
+      color: var(--decoration-purple);
+    }
+    .metric-label {
+      font-size: 14px;
+      opacity: 0.8;
+      line-height: 1.4;
+      color: #fff;
+    }
+
+    /* Action Footer */
+    .case-footer {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .github-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 18px;
+    }
+    .github-link:hover { text-decoration: underline; }
+
+    /* Footer (match others) */
+    footer{
+      background:#121212;
+      color:#fff;
+      padding:64px 0;
+    }
+    .footerWrap{
+      max-width:90rem;
+      margin:0 auto;
+      padding:0 56px;
+    }
+    .disclaimer{
+      border-top:1px solid #333;
+      padding-top:24px;
+      margin-top:0;
+      text-align:center;
+      color:#666;
+      font-size:.85rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .topbar{padding:18px 18px}
+      .hero{padding:60px 18px 40px}
+      .case-study-container{padding:0 18px 80px}
+      .metric-row{gap:24px}
+    }
+
+    @media (max-width: 768px){
+      .topnav{ display:none; }
+      .heroTitle{ font-size: 36px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="topbar">
+    <a href="landing_page.html" class="brand">fiscal patriots</a>
+
+    <nav class="topnav" aria-label="primary">
+      <a href="landing_page.html">Explore Data</a>
+      <a href="landing_page.html#datasets">Datasets</a>
+      <a href="next_steps.html">What's next?</a>
+      <a href="case_studies.html">Case Studies</a>
+      <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026">GitHub</a>
+      <a href="https://gmufiscalpatriots.bytechisel.com/about_the_team.html" class="active">About The Team</a>
+    </nav>  
+
+    <a href="landing_page.html" class="pillBtn">Back to Home</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="kicker">Case Study</p>
+    <h1 class="heroTitle">Predicting Next-Year Audit Findings Using FAC Data</h1>
+    <p class="heroSub">
+      We built a predictive model that functions as an early warning signal for which organizations are more likely to have audit findings next year (t+1) based on what we already know about them this year (t). The output notifies potential future findings for an entity that helps oversight teams prioritize attention and support -- especially when resources are limited.
+    </p>
+  </section>
+
+  <!-- Main Content -->
+  <article class="case-study-container">
+    
+    <div class="study-meta">
+      <span class="meta-tag">Predictive Modeling</span>
+      <span class="meta-tag">Python / Scikit-Learn</span>
+      <span class="meta-tag">FAC Data</span>
+      <span class="meta-tag">Risk Assessment</span>
+    </div>
+
+    <div class="study-section">
+      <div class="tech-box">
+        <h4>Analytical Tools & Software Used</h4>
+        <div class="tech-grid">
+          <div class="tech-item">
+            <span>Programming environment</span>
+            <div>Python (Jupyter Notebook)</div>
+          </div>
+          <div class="tech-item">
+            <span>Core libraries</span>
+            <div>pandas / NumPy for data preparation and feature engineering; scikit-learn for modeling, evaluation, and permutation feature importance; SHAP for model interpretability and stakeholder-friendly explanations</div>
+          </div>
+          <div class="tech-item">
+            <span>Data sources</span>
+            <div>Federal Audit Clearinghouse (FAC): general-ay, findings-ay, federal_awards-ay (Audit Year files, 2019-2022)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="study-section">
+      <h2 class="study-heading">Methodology: Data Preparation & Preprocessing</h2>
+      
+      <h3 class="study-subheading">1) Dataset grain: entity-year (t)</h3>
+      <p>
+        FAC files are naturally organized around submission/report records, so the first step was building a clean panel at the right grain: one row per entity per audit year.
+      </p>
+
+      <h3 class="study-subheading">2) Entity identifier strategy (EIN vs UEI)</h3>
+      <p>
+        Older years (2019-2021) contain many placeholder UEIs (e.g., <code>GSA_MIGRATION</code>), making UEI unreliable for identifying unique entities in those years. To keep continuity across 2019-2022:
+      </p>
+      <ul>
+        <li>We used EIN as the stable entity key for modeling across years.</li>
+        <li>UEI was treated as supplemental metadata (and crosswalked where clean in 2022).</li>
+      </ul>
+
+      <h3 class="study-subheading">3) Outcome creation: findings at t+1</h3>
+      <p>
+        We created:
+      </p>
+      <ul>
+        <li>current-year outcomes: <code>has_finding_t</code>, <code>finding_count_t</code></li>
+        <li>next-year labels: <code>y_has_finding_t1</code> by shifting outcomes forward one year within each entity</li>
+      </ul>
+      <p>Only years with observable next-year outcomes were kept for supervised training:</p>
+      <ul>
+        <li>Predictors from 2019-2021</li>
+        <li>Labels from 2020-2022</li>
+      </ul>
+
+      <h3 class="study-subheading">4) Feature engineering (award-based predictors)</h3>
+      <p>
+        From federal_awards-ay, we aggregated program activity into entity-year features such as:
+      </p>
+      <ul>
+        <li>total amount expended (<code>total_expended</code>)</li>
+        <li>number of award lines (<code>award_lines</code>)</li>
+        <li>breadth across agencies and programs (<code>distinct_agencies</code>, <code>distinct_programs</code>)</li>
+        <li>structural indicators (direct awards, major programs, pass-through, loans)</li>
+        <li>concentration signals (e.g., <code>max_program_total</code>)</li>
+      </ul>
+    </div>
+
+    <div class="study-section">
+      <h2 class="study-heading">Model Choice and Performance</h2>
+      <p><strong>Chosen model: HistGradientBoosting (HGB)</strong></p>
+      <p>
+        We selected a HistGradientBoostingClassifier, a highly effective supervised learning model available in the scikit-learn Python library, because it's strong at detecting complex patterns in large datasets (for example, how award complexity and prior findings combine to elevate risk).
+      </p>
+
+      <div class="result-card">
+        <h3>Performance metrics</h3>
+        <p>We evaluated using two standard classification ranking metrics:</p>
+        
+        <div class="metric-row">
+          <div class="metric">
+            <div class="metric-val">0.7656</div>
+            <div class="metric-label">
+                <strong>ROC-AUC</strong><br>
+                Interpretation: If you randomly choose one entity-year that will have findings next year and one that won't, the model ranks the "will have findings" case higher about 77% of the time.
+            </div>
+          </div>
+          <div class="metric">
+            <div class="metric-val">0.5439</div>
+            <div class="metric-label">
+                <strong>PR-AUC</strong><br>
+                PR-AUC is especially useful when the outcome is relatively uncommon (audit findings are not present for everyone). A PR-AUC of 0.5439 indicates the model does a solid job concentrating true positives toward the top of the ranking, which is useful for prioritization.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        For comparison, here's a logistic regression model run on the same data as a baseline:
+      </p>
+      <ul>
+          <li>ROC-AUC = 0.7575</li>
+          <li>PR-AUC = 0.5044</li>
+      </ul>
+      <p>The HGB model provided a meaningful lift, especially on PR-AUC.</p>
+    </div>
+
+    <div class="study-section">
+      <h2 class="study-heading">Interpreting What the Model Learned</h2>
+      <p>
+        We also want the model to be explainable, not a black box. We use Permutation feature importance to accomplish just that.
+      </p>
+      <p>
+        Permutation importance measures how much performance drops when a feature is shuffled. The top signals included:
+      </p>
+      <ul>
+        <li>prior findings indicators (whether findings occurred, and how many)</li>
+        <li>award structure/complexity (e.g., direct award lines, major award lines)</li>
+        <li>breadth across programs/agencies (distinct programs, agencies)</li>
+        <li>program concentration (<code>max_program_total</code>)</li>
+      </ul>
+    </div>
+
+    <div class="study-section">
+      <h2 class="study-heading">How This Output Can Be Used</h2>
+      <p>
+        This model supports more targeted oversight, while keeping final decisions with program staff, auditors, and policy.
+      </p>
+      <p>Example applications:</p>
+      <ul>
+        <li><strong>Funding review triggers:</strong> When risk is elevated, require additional documentation, consistency checks, or program review before moving forward.</li>
+        <li><strong>Repeat findings workflow step:</strong> For entities with recurring issues, make a risk-model check a standard part of reviewing new awards.</li>
+        <li><strong>Targeted outreach/support:</strong> Prioritize technical assistance or compliance support for high-risk entities.</li>
+      </ul>
+    </div>
+
+    <div class="study-section">
+      <h2 class="study-heading">Recommendations for Improvement</h2>
+      <p>
+        This short case study is just a taste of how powerful analytical tools can transform data into valuable insights. Some ways this model could be made even more effective include:
+      </p>
+      <ul>
+        <li><strong>Expanding the time window:</strong> Incorporate more audit years to increase training data, improve stability, and enable stronger "train on past → test on future" validation across multiple years</li>
+        <li><strong>Refining the outcome:</strong> Move beyond "any findings" by predicting more specific outcomes where possible - such as repeat findings, higher-volume findings, or finding categories (i.e., going concerns, material weaknesses) - to make the risk score more actionable for oversight workflows</li>
+      </ul>
+    </div>
+
+    <div class="case-footer">
+      <a href="https://github.com/fiscalpatriots/AGA_Datathon_2026" class="pillBtn">
+        Click here to view the code &rarr;
+      </a>
+      <p style="margin-top:20px; font-size:16px; color:var(--muted);">
+        <!-- Text implied by link context in PDF, though PDF only has text pointing to link -->
+        View the Jupyter Notebooks on our GitHub repository.
+      </p>
+    </div>
+
+  </article>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footerWrap">
+      <div class="disclaimer">&copy; 2026 Fiscal Patriots Team</div>
+    </div>
+  </footer>
+
+</body>
+</html>
