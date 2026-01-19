@@ -4,8 +4,8 @@
 
 | Name | Role | Phone | Bio |
 |------|------|------|------|
-| Khaled Alkurd | Team Lead | (703) 231-4491 |
-| Pranavi Doodala | Project Manager |------|
+| Khaled Alkurd | Team Lead | (703) 231-4491 | GMU Spring '26 Accounting and Business Analytics
+| Pranavi Doodala | Project Manager |------| GMU Spring '26 Business Analytics; Data Mining, Predictive Modeling, Project Management
 | Mariam Debas | Visualization Lead |------|
 | Nikita Chandrasing | Product Manager |------|
 | Andy Yaro | Product Developer |------|
