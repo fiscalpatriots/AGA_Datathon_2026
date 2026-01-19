@@ -4,11 +4,11 @@
 
 | Name | Role | Phone | Bio |
 |------|------|------|------|
-| Khaled Alkurd | Team Lead | (703) 231-4491 | GMU Spring '26 Accounting and Business Analytics
+| Khaled Alkurd | Team Lead | (703) 231-4491 | GMU Spring '26 Accounting and Business Analytics, Alteryx, Tableau, R
 | Pranavi Doodala | Project Manager |------| GMU Spring '26 Business Analytics; Data Mining, Predictive Modeling, Project Management
-| Mariam Debas | Visualization Lead |------|
-| Nikita Chandrasing | Product Manager |------|
-| Andy Yaro | Product Developer |------|
+| Mariam Debas | Visualization Lead |------| GMU Spring '26 Accounting, Data Analytics, Tableau, R
+| Nikita Chandrasing | Product Manager |------| GMU Fall '25 Business Analytics and MIS; Data Mining, Data Visualization, Product Design
+| Andy Yaro | Product Developer |------| GMU Fall '2028 Cybersecurity Engineering; python, git, aws
 
 **AuditsMadeSimple • AGA Datathon 2026**
 
