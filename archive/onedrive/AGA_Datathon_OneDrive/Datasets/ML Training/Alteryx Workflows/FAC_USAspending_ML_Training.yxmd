@@ -3,7 +3,7 @@
   <Nodes>
     <Node ToolID="28">
       <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
-        <Position x="66" y="186" width="360" height="468" />
+        <Position x="90" y="186" width="360" height="468" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -55,7 +55,7 @@ MODEL OUTPUTS
     </Node>
     <Node ToolID="29">
       <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
-        <Position x="30" y="54" width="420" height="107" />
+        <Position x="54" y="54" width="420" height="107" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -82,7 +82,7 @@ Fiscal Patriots | AGA Datathon 2026
     </Node>
     <Node ToolID="27">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="2345" y="221" width="152" height="324" />
+        <Position x="2369" y="221" width="152" height="324" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -101,7 +101,7 @@ Fiscal Patriots | AGA Datathon 2026
       <ChildNodes>
         <Node ToolID="15">
           <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-            <Position x="2370" y="270" />
+            <Position x="2394" y="270" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -124,15 +124,12 @@ Fiscal Patriots | AGA Datathon 2026
               <DefaultAnnotationText>FAC_ML_Test.csv</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
-            <Dependencies>
-              <Implicit />
-            </Dependencies>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
         </Node>
         <Node ToolID="17">
           <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-            <Position x="2370" y="414" />
+            <Position x="2394" y="414" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -140,7 +137,7 @@ Fiscal Patriots | AGA Datathon 2026
               <Passwords />
               <Disable>False</Disable>
               <FormatSpecificOptions>
-                <OutputOption>Create</OutputOption>
+                <OutputOption>Overwrite</OutputOption>
               </FormatSpecificOptions>
               <MultiFile value="False" />
             </Configuration>
@@ -150,9 +147,6 @@ Fiscal Patriots | AGA Datathon 2026
               <DefaultAnnotationText>FAC_ML_Test.hyper</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
-            <Dependencies>
-              <Implicit />
-            </Dependencies>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
         </Node>
@@ -160,7 +154,7 @@ Fiscal Patriots | AGA Datathon 2026
     </Node>
     <Node ToolID="26">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="2141" y="221" width="175" height="327" />
+        <Position x="2165" y="221" width="175" height="327" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -179,7 +173,7 @@ Fiscal Patriots | AGA Datathon 2026
       <ChildNodes>
         <Node ToolID="16">
           <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-            <Position x="2166" y="270" />
+            <Position x="2190" y="270" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -202,15 +196,12 @@ Fiscal Patriots | AGA Datathon 2026
               <DefaultAnnotationText>FAC_ML_Train.csv</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
-            <Dependencies>
-              <Implicit />
-            </Dependencies>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
         </Node>
         <Node ToolID="14">
           <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-            <Position x="2166" y="402" />
+            <Position x="2190" y="402" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -218,7 +209,7 @@ Fiscal Patriots | AGA Datathon 2026
               <Passwords />
               <Disable>False</Disable>
               <FormatSpecificOptions>
-                <OutputOption>Create</OutputOption>
+                <OutputOption>Overwrite</OutputOption>
               </FormatSpecificOptions>
               <MultiFile value="False" />
             </Configuration>
@@ -228,9 +219,6 @@ Fiscal Patriots | AGA Datathon 2026
               <DefaultAnnotationText>FAC_ML_Train.hyper</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
-            <Dependencies>
-              <Implicit />
-            </Dependencies>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
         </Node>
@@ -238,7 +226,7 @@ Fiscal Patriots | AGA Datathon 2026
     </Node>
     <Node ToolID="25">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="1937" y="221" width="167" height="327" />
+        <Position x="1961" y="221" width="167" height="327" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -257,7 +245,7 @@ Fiscal Patriots | AGA Datathon 2026
       <ChildNodes>
         <Node ToolID="20">
           <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-            <Position x="1962" y="402" />
+            <Position x="1986" y="402" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -265,7 +253,7 @@ Fiscal Patriots | AGA Datathon 2026
               <Passwords />
               <Disable>False</Disable>
               <FormatSpecificOptions>
-                <OutputOption>Create</OutputOption>
+                <OutputOption>Overwrite</OutputOption>
               </FormatSpecificOptions>
               <MultiFile value="False" />
             </Configuration>
@@ -275,15 +263,12 @@ Fiscal Patriots | AGA Datathon 2026
               <DefaultAnnotationText>FAC_ML_Features_Master.hyper</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
-            <Dependencies>
-              <Implicit />
-            </Dependencies>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
         </Node>
         <Node ToolID="19">
           <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
-            <Position x="1962" y="270" />
+            <Position x="1986" y="270" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -306,9 +291,6 @@ Fiscal Patriots | AGA Datathon 2026
               <DefaultAnnotationText>FAC_ML_Features_Master.csv</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
-            <Dependencies>
-              <Implicit />
-            </Dependencies>
           </Properties>
           <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
         </Node>
@@ -316,7 +298,7 @@ Fiscal Patriots | AGA Datathon 2026
     </Node>
     <Node ToolID="24">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="1361" y="185" width="545" height="381" />
+        <Position x="1385" y="185" width="545" height="381" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -335,7 +317,7 @@ Fiscal Patriots | AGA Datathon 2026
       <ChildNodes>
         <Node ToolID="11">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="1386" y="378" />
+            <Position x="1410" y="378" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -355,7 +337,7 @@ Fiscal Patriots | AGA Datathon 2026
         </Node>
         <Node ToolID="18">
           <GuiSettings>
-            <Position x="1530" y="378" />
+            <Position x="1554" y="378" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -379,15 +361,12 @@ Fiscal Patriots | AGA Datathon 2026
               <DefaultAnnotationText />
               <Left value="False" />
             </Annotation>
-            <Dependencies>
-              <Implicit />
-            </Dependencies>
           </Properties>
           <EngineSettings Macro="Cleanse.yxmc" />
         </Node>
         <Node ToolID="10">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
-            <Position x="1650" y="378" />
+            <Position x="1674" y="378" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -419,11 +398,11 @@ Fiscal Patriots | AGA Datathon 2026
         </Node>
         <Node ToolID="12">
           <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-            <Position x="1794" y="234" />
+            <Position x="1818" y="234" />
           </GuiSettings>
           <Properties>
             <Configuration>
-              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_30700_0ce18230b39a47f58dc7e27b82b08b57_\Engine_30700_170e733cbbedbf459e43a059a09c770d~.yxdb</TempFile>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_5696_61a98fea030b4157aab5b0352abf2d26_\Engine_5696_9829a57f299ad64db8cf1553d6e7eed4~.yxdb</TempFile>
               <TempFileDataProfiling />
               <Layout>
                 <ViewMode>Single</ViewMode>
@@ -439,7 +418,7 @@ Fiscal Patriots | AGA Datathon 2026
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
-              <AnnotationText>QA: Train Set - 34k rows</AnnotationText>
+              <AnnotationText>QA: Train Set - 154.1k rows</AnnotationText>
               <DefaultAnnotationText />
               <Left value="False" />
             </Annotation>
@@ -448,11 +427,11 @@ Fiscal Patriots | AGA Datathon 2026
         </Node>
         <Node ToolID="13">
           <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-            <Position x="1794" y="450" />
+            <Position x="1818" y="450" />
           </GuiSettings>
           <Properties>
             <Configuration>
-              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_30700_0ce18230b39a47f58dc7e27b82b08b57_\Engine_30700_5a3d82234b53b942a794c02a33b8bc19~.yxdb</TempFile>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_5696_61a98fea030b4157aab5b0352abf2d26_\Engine_5696_4bf5b6894997a44897325d56993700f1~.yxdb</TempFile>
               <TempFileDataProfiling />
               <Layout>
                 <ViewMode>Single</ViewMode>
@@ -468,7 +447,7 @@ Fiscal Patriots | AGA Datathon 2026
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
-              <AnnotationText>QA: Test Set - 8.5k rows</AnnotationText>
+              <AnnotationText>QA: Test Set - 38.5k rows</AnnotationText>
               <DefaultAnnotationText />
               <Left value="False" />
             </Annotation>
@@ -477,11 +456,11 @@ Fiscal Patriots | AGA Datathon 2026
         </Node>
         <Node ToolID="30">
           <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-            <Position x="1638" y="234" />
+            <Position x="1662" y="234" />
           </GuiSettings>
           <Properties>
             <Configuration>
-              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_30700_0ce18230b39a47f58dc7e27b82b08b57_\Engine_30700_47ee9db54c7d584dbd45cd6e45224841~.yxdb</TempFile>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_5696_61a98fea030b4157aab5b0352abf2d26_\Engine_5696_ff3e77fb331adf4a94c8da7c0b1f0bc1~.yxdb</TempFile>
               <TempFileDataProfiling />
               <Layout>
                 <ViewMode>Single</ViewMode>
@@ -497,7 +476,7 @@ Fiscal Patriots | AGA Datathon 2026
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
-              <AnnotationText>QA: Verify data cleansing (42k entities)</AnnotationText>
+              <AnnotationText>QA: Verify data cleansing (192.6k entities)</AnnotationText>
               <DefaultAnnotationText />
               <Left value="False" />
             </Annotation>
@@ -508,7 +487,7 @@ Fiscal Patriots | AGA Datathon 2026
     </Node>
     <Node ToolID="23">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="1085" y="245" width="248" height="264" />
+        <Position x="1109" y="245" width="248" height="264" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -527,7 +506,7 @@ Fiscal Patriots | AGA Datathon 2026
       <ChildNodes>
         <Node ToolID="7">
           <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
-            <Position x="1110" y="378" />
+            <Position x="1134" y="378" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -548,11 +527,11 @@ Fiscal Patriots | AGA Datathon 2026
         </Node>
         <Node ToolID="8">
           <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-            <Position x="1206" y="294" />
+            <Position x="1230" y="294" />
           </GuiSettings>
           <Properties>
             <Configuration>
-              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_30700_0ce18230b39a47f58dc7e27b82b08b57_\Engine_30700_cf06ebe61b08464c969e49b57c620fcb~.yxdb</TempFile>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_5696_61a98fea030b4157aab5b0352abf2d26_\Engine_5696_bcea98239303b7408c4c7503d0df0e20~.yxdb</TempFile>
               <TempFileDataProfiling />
               <Layout>
                 <ViewMode>Single</ViewMode>
@@ -579,7 +558,7 @@ Fiscal Patriots | AGA Datathon 2026
     </Node>
     <Node ToolID="22">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="689" y="245" width="378" height="249" />
+        <Position x="713" y="245" width="370" height="249" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -598,7 +577,7 @@ Fiscal Patriots | AGA Datathon 2026
       <ChildNodes>
         <Node ToolID="4">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
-            <Position x="870" y="378" />
+            <Position x="894" y="378" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -706,7 +685,7 @@ Fiscal Patriots | AGA Datathon 2026
         </Node>
         <Node ToolID="5">
           <GuiSettings Plugin="AlteryxBasePluginsGui.AutoField.AutoField">
-            <Position x="714" y="378" />
+            <Position x="738" y="378" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -878,8 +857,8 @@ Fiscal Patriots | AGA Datathon 2026
                 <Field name="modified_opinion_num" size="135" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
                 <Field name="other_findings_num" size="10" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
                 <Field name="other_matters_num" size="10" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
-                <Field name="going_concern_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
-                <Field name="internal_control_def_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="going_concern_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="internal_control_def_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
                 <Field name="material_weakness_gen_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
                 <Field name="noncompliance_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
                 <Field name="prior_findings_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
@@ -903,17 +882,15 @@ Fiscal Patriots | AGA Datathon 2026
                 <Field name="state_code" size="2" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="String" />
                 <Field name="state_name" size="24" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
                 <Field name="city" size="26" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
-                <Field name="business_type" size="188" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="business_type" size="192" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
                 <Field name="total_funding" size="21" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
                 <Field name="Right_award_count" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
                 <Field name="agency_count" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
                 <Field name="primary_agency" size="50" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
                 <Field name="program_count" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
-                <Field name="Right_primary_program" size="189" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="Right_primary_program" size="203" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
                 <Field name="first_award_date" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Date" />
                 <Field name="last_award_date" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Date" />
-                <Field name="first_fiscal_year" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
-                <Field name="last_fiscal_year" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
               </RecordInfo>
             </MetaInfo>
           </Properties>
@@ -921,11 +898,11 @@ Fiscal Patriots | AGA Datathon 2026
         </Node>
         <Node ToolID="6">
           <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-            <Position x="942" y="294" />
+            <Position x="966" y="294" />
           </GuiSettings>
           <Properties>
             <Configuration>
-              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_30700_0ce18230b39a47f58dc7e27b82b08b57_\Engine_30700_53ea5cb4ab2dd64ab5b6100c7b64a9e5~.yxdb</TempFile>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_5696_61a98fea030b4157aab5b0352abf2d26_\Engine_5696_52f710e0b354c549a76e7eb47b5192ae~.yxdb</TempFile>
               <TempFileDataProfiling />
               <Layout>
                 <ViewMode>Single</ViewMode>
@@ -941,7 +918,7 @@ Fiscal Patriots | AGA Datathon 2026
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
-              <AnnotationText><![CDATA[QA: Feature set ready - 42K rows
+              <AnnotationText><![CDATA[QA: Feature set ready - 192.6K rows
 ]]></AnnotationText>
               <DefaultAnnotationText />
               <Left value="False" />
@@ -953,7 +930,7 @@ Fiscal Patriots | AGA Datathon 2026
     </Node>
     <Node ToolID="21">
       <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
-        <Position x="461" y="245" width="204" height="276" />
+        <Position x="485" y="245" width="212" height="276" />
       </GuiSettings>
       <Properties>
         <Configuration>
@@ -972,7 +949,7 @@ Fiscal Patriots | AGA Datathon 2026
       <ChildNodes>
         <Node ToolID="2">
           <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
-            <Position x="486" y="390" />
+            <Position x="510" y="390" />
           </GuiSettings>
           <Properties>
             <Configuration>
@@ -997,9 +974,6 @@ Fiscal Patriots | AGA Datathon 2026
               <DefaultAnnotationText>FAC_USAspending_Merged_Detail.csv</DefaultAnnotationText>
               <Left value="False" />
             </Annotation>
-            <Dependencies>
-              <Implicit />
-            </Dependencies>
             <MetaInfo connection="Output">
               <RecordInfo>
                 <Field name="auditee_uei" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
@@ -1096,8 +1070,6 @@ Fiscal Patriots | AGA Datathon 2026
                 <Field name="Right_primary_program" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
                 <Field name="first_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
                 <Field name="last_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
-                <Field name="first_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
-                <Field name="last_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
               </RecordInfo>
             </MetaInfo>
           </Properties>
@@ -1105,11 +1077,11 @@ Fiscal Patriots | AGA Datathon 2026
         </Node>
         <Node ToolID="3">
           <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
-            <Position x="558" y="294" />
+            <Position x="582" y="294" />
           </GuiSettings>
           <Properties>
             <Configuration>
-              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_30700_0ce18230b39a47f58dc7e27b82b08b57_\Engine_30700_6d4ba635d80cdb4aa5a9d705f8fc3162~.yxdb</TempFile>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_5696_61a98fea030b4157aab5b0352abf2d26_\Engine_5696_d8d82360190eb1499fd98f444d49c782~.yxdb</TempFile>
               <TempFileDataProfiling />
               <Layout>
                 <ViewMode>Single</ViewMode>
@@ -1125,7 +1097,7 @@ Fiscal Patriots | AGA Datathon 2026
             </Configuration>
             <Annotation DisplayMode="0">
               <Name />
-              <AnnotationText>QA: Raw data import (42k entities)</AnnotationText>
+              <AnnotationText>QA: Raw data import (192.6k records)</AnnotationText>
               <DefaultAnnotationText />
               <Left value="False" />
             </Annotation>

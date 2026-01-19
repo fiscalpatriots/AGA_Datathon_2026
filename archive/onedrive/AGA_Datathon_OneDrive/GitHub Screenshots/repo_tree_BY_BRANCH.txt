@@ -1,0 +1,565 @@
+Repo tree by branch (10 branches/refs total)
+
+============================================================
+BRANCH: archive/onedrive-snapshot
+TOTAL FILES: 138
+============================================================
+├── archive/
+│   └── onedrive/
+│       ├── AGA_Datathon_OneDrive/
+│       │   ├── Competition Info/
+│       │   │   ├── AGA 2026 Datathon Kick-Off Call.pptx  [archive/onedrive/AGA_Datathon_OneDrive/Competition Info/AGA 2026 Datathon Kick-Off Call.pptx]
+│       │   │   ├── Allowable Data Sources.png  [archive/onedrive/AGA_Datathon_OneDrive/Competition Info/Allowable Data Sources.png]
+│       │   │   └── Prior Winners Video Presentations.docx  [archive/onedrive/AGA_Datathon_OneDrive/Competition Info/Prior Winners Video Presentations.docx]
+│       │   ├── Datasets/
+│       │   │   ├── FAC/
+│       │   │   │   ├── Alteryx Workflows/
+│       │   │   │   │   ├── FAC_Master_Clean.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/Alteryx Workflows/FAC_Master_Clean.yxmd]
+│       │   │   │   │   └── FAC_With_Risk_Score.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/Alteryx Workflows/FAC_With_Risk_Score.yxmd]
+│       │   │   │   ├── CSV Files/
+│       │   │   │   │   ├── FAC_Master_Clean.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/CSV Files/FAC_Master_Clean.csv]
+│       │   │   │   │   ├── FAC_Master_With_Risk_Score.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/CSV Files/FAC_Master_With_Risk_Score.csv]
+│       │   │   │   │   ├── FAC_Risk_Summary_By_Tier.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/CSV Files/FAC_Risk_Summary_By_Tier.csv]
+│       │   │   │   │   └── FAC_Top_10_Red_Entities_By_Spending.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/CSV Files/FAC_Top_10_Red_Entities_By_Spending.csv]
+│       │   │   │   ├── Data Dictionaries/
+│       │   │   │   │   ├── FAC_Master_Data_Dictionary.docx  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/Data Dictionaries/FAC_Master_Data_Dictionary.docx]
+│       │   │   │   │   ├── FAC_Master_With_Risk_Score_Data_Dictionary.docx  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/Data Dictionaries/FAC_Master_With_Risk_Score_Data_Dictionary.docx]
+│       │   │   │   │   ├── FAC_Risk_Summary_By_Tier_Data_Dictionary.docx  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/Data Dictionaries/FAC_Risk_Summary_By_Tier_Data_Dictionary.docx]
+│       │   │   │   │   └── FAC_Top_10_Red_Entities_By_Spending_Data_Dictionary.docx  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/Data Dictionaries/FAC_Top_10_Red_Entities_By_Spending_Data_Dictionary.docx]
+│       │   │   │   └── Tableau .Hyper Files/
+│       │   │   │       ├── FAC_Master_Clean.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/Tableau .Hyper Files/FAC_Master_Clean.hyper]
+│       │   │   │       ├── FAC_Master_With_Risk_Score.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/Tableau .Hyper Files/FAC_Master_With_Risk_Score.hyper]
+│       │   │   │       ├── FAC_Risk_Summary_By_Tier.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/Tableau .Hyper Files/FAC_Risk_Summary_By_Tier.hyper]
+│       │   │   │       └── FAC_Top_10_Red_Entities_By_Spending.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/FAC/Tableau .Hyper Files/FAC_Top_10_Red_Entities_By_Spending.hyper]
+│       │   │   ├── Merged/
+│       │   │   │   ├── Alteryx Workflows/
+│       │   │   │   │   ├── FAC_USAspending_Merged.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Alteryx Workflows/FAC_USAspending_Merged.yxmd]
+│       │   │   │   │   ├── SAM_FAC_Merged.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Alteryx Workflows/SAM_FAC_Merged.yxmd]
+│       │   │   │   │   └── SAM_USAspending_Merged.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Alteryx Workflows/SAM_USAspending_Merged.yxmd]
+│       │   │   │   ├── CSV Files/
+│       │   │   │   │   ├── FAC_USAspending_FY2023_Merged_Detail.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/CSV Files/FAC_USAspending_FY2023_Merged_Detail.csv]
+│       │   │   │   │   ├── FAC_USAspending_FY2023_Summary_By_Tier.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/CSV Files/FAC_USAspending_FY2023_Summary_By_Tier.csv]
+│       │   │   │   │   ├── FAC_USAspending_FY2023_Top_10_Red_By_Federal_Funding.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/CSV Files/FAC_USAspending_FY2023_Top_10_Red_By_Federal_Funding.csv]
+│       │   │   │   │   ├── FAC_USAspending_FY2024_Merged_Detail.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/CSV Files/FAC_USAspending_FY2024_Merged_Detail.csv]
+│       │   │   │   │   ├── FAC_USAspending_FY2024_Summary_By_Tier.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/CSV Files/FAC_USAspending_FY2024_Summary_By_Tier.csv]
+│       │   │   │   │   ├── FAC_USAspending_FY2024_Top_10_Red_By_Federal_Funding.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/CSV Files/FAC_USAspending_FY2024_Top_10_Red_By_Federal_Funding.csv]
+│       │   │   │   │   ├── FAC_USAspending_Merged_Detail.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/CSV Files/FAC_USAspending_Merged_Detail.csv]
+│       │   │   │   │   ├── FAC_USAspending_Summary_By_Tier.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/CSV Files/FAC_USAspending_Summary_By_Tier.csv]
+│       │   │   │   │   ├── FAC_USAspending_Top_10_Red_By_Federal_Funding.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/CSV Files/FAC_USAspending_Top_10_Red_By_Federal_Funding.csv]
+│       │   │   │   │   ├── SAM_FAC_Merged.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/CSV Files/SAM_FAC_Merged.csv]
+│       │   │   │   │   └── SAM_USAspending_Merged.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/CSV Files/SAM_USAspending_Merged.csv]
+│       │   │   │   ├── Data Dictionaries/
+│       │   │   │   │   ├── FAC_USAspending_Merged_Detail_Data_Dictionary.docx  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Data Dictionaries/FAC_USAspending_Merged_Detail_Data_Dictionary.docx]
+│       │   │   │   │   ├── FAC_USAspending_Summary_By_Tier_Data_Dictionary.docx  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Data Dictionaries/FAC_USAspending_Summary_By_Tier_Data_Dictionary.docx]
+│       │   │   │   │   ├── FAC_USAspending_Top_10_Red_By_Federal_Funding_Data_Dictionary.docx  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Data Dictionaries/FAC_USAspending_Top_10_Red_By_Federal_Funding_Data_Dictionary.docx]
+│       │   │   │   │   ├── SAM_FAC_Merged_Data_Dictionary.docx  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Data Dictionaries/SAM_FAC_Merged_Data_Dictionary.docx]
+│       │   │   │   │   └── SAM_USAspending_Merged_Data_Dictionary.docx  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Data Dictionaries/SAM_USAspending_Merged_Data_Dictionary.docx]
+│       │   │   │   └── Tableau .Hyper Files/
+│       │   │   │       ├── FAC_USAspending_FY2023_Merged_Detail.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Tableau .Hyper Files/FAC_USAspending_FY2023_Merged_Detail.hyper]
+│       │   │   │       ├── FAC_USAspending_FY2023_Summary_By_Tier.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Tableau .Hyper Files/FAC_USAspending_FY2023_Summary_By_Tier.hyper]
+│       │   │   │       ├── FAC_USAspending_FY2023_Top_10_Red_By_Federal_Funding.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Tableau .Hyper Files/FAC_USAspending_FY2023_Top_10_Red_By_Federal_Funding.hyper]
+│       │   │   │       ├── FAC_USAspending_FY2024_Merged_Detail.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Tableau .Hyper Files/FAC_USAspending_FY2024_Merged_Detail.hyper]
+│       │   │   │       ├── FAC_USAspending_FY2024_Summary_By_Tier.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Tableau .Hyper Files/FAC_USAspending_FY2024_Summary_By_Tier.hyper]
+│       │   │   │       ├── FAC_USAspending_FY2024_Top_10_Red_By_Federal_Funding.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Tableau .Hyper Files/FAC_USAspending_FY2024_Top_10_Red_By_Federal_Funding.hyper]
+│       │   │   │       ├── FAC_USAspending_Merged_Detail.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Tableau .Hyper Files/FAC_USAspending_Merged_Detail.hyper]
+│       │   │   │       ├── FAC_USAspending_Summary_By_Tier.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Tableau .Hyper Files/FAC_USAspending_Summary_By_Tier.hyper]
+│       │   │   │       ├── FAC_USAspending_Top_10_Red_By_Federal_Funding.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Tableau .Hyper Files/FAC_USAspending_Top_10_Red_By_Federal_Funding.hyper]
+│       │   │   │       ├── SAM_FAC_Merged.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Tableau .Hyper Files/SAM_FAC_Merged.hyper]
+│       │   │   │       └── SAM_USAspending_Merged.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/Merged/Tableau .Hyper Files/SAM_USAspending_Merged.hyper]
+│       │   │   ├── ML Training/
+│       │   │   │   ├── Alteryx Workflows/
+│       │   │   │   │   └── FAC_USAspending_ML_Training.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/ML Training/Alteryx Workflows/FAC_USAspending_ML_Training.yxmd]
+│       │   │   │   ├── CSV Files/
+│       │   │   │   │   ├── FAC_ML_Features_Master.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/ML Training/CSV Files/FAC_ML_Features_Master.csv]
+│       │   │   │   │   ├── FAC_ML_Test.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/ML Training/CSV Files/FAC_ML_Test.csv]
+│       │   │   │   │   └── FAC_ML_Train.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/ML Training/CSV Files/FAC_ML_Train.csv]
+│       │   │   │   ├── Data Dictionaries/
+│       │   │   │   │   └── FAC_USAspending_ML_Training_Data_Dictionary.docx  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/ML Training/Data Dictionaries/FAC_USAspending_ML_Training_Data_Dictionary.docx]
+│       │   │   │   └── Tableau .Hyper Files/
+│       │   │   │       ├── FAC_ML_Features_Master.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/ML Training/Tableau .Hyper Files/FAC_ML_Features_Master.hyper]
+│       │   │   │       ├── FAC_ML_Test.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/ML Training/Tableau .Hyper Files/FAC_ML_Test.hyper]
+│       │   │   │       └── FAC_ML_Train.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/ML Training/Tableau .Hyper Files/FAC_ML_Train.hyper]
+│       │   │   ├── SAM/
+│       │   │   │   ├── Alteryx Workflows/
+│       │   │   │   │   └── SAM_Exclusion_Cleaning.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM/Alteryx Workflows/SAM_Exclusion_Cleaning.yxmd]
+│       │   │   │   ├── CSV Files/
+│       │   │   │   │   ├── SAM_Exclusions_ACT_III_Case_Studies.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM/CSV Files/SAM_Exclusions_ACT_III_Case_Studies.csv]
+│       │   │   │   │   ├── SAM_Exclusions_No_UEI_By_Agency.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM/CSV Files/SAM_Exclusions_No_UEI_By_Agency.csv]
+│       │   │   │   │   ├── SAM_Exclusions_No_UEI_By_Year.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM/CSV Files/SAM_Exclusions_No_UEI_By_Year.csv]
+│       │   │   │   │   ├── SAM_Exclusions_No_UEI_Summary.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM/CSV Files/SAM_Exclusions_No_UEI_Summary.csv]
+│       │   │   │   │   └── SAM_Exclusions_with_UEI.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM/CSV Files/SAM_Exclusions_with_UEI.csv]
+│       │   │   │   ├── Data Dictionaries/
+│       │   │   │   │   └── SAM_Master_Data_Dictionary.docx  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM/Data Dictionaries/SAM_Master_Data_Dictionary.docx]
+│       │   │   │   └── Tableau .Hyper Files/
+│       │   │   │       ├── SAM_Exclusions_ACT_III_Case_Studies.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM/Tableau .Hyper Files/SAM_Exclusions_ACT_III_Case_Studies.hyper]
+│       │   │   │       ├── SAM_Exclusions_No_UEI_By_Agency.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM/Tableau .Hyper Files/SAM_Exclusions_No_UEI_By_Agency.hyper]
+│       │   │   │       ├── SAM_Exclusions_No_UEI_By_Year.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM/Tableau .Hyper Files/SAM_Exclusions_No_UEI_By_Year.hyper]
+│       │   │   │       ├── SAM_Exclusions_No_UEI_Summary.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM/Tableau .Hyper Files/SAM_Exclusions_No_UEI_Summary.hyper]
+│       │   │   │       └── SAM_Exclusions_with_UEI.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/SAM/Tableau .Hyper Files/SAM_Exclusions_with_UEI.hyper]
+│       │   │   └── USAspending/
+│       │   │       ├── Alteryx Workflows/
+│       │   │       │   ├── USAspending_All_Years.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Alteryx Workflows/USAspending_All_Years.yxmd]
+│       │   │       │   ├── USAspending_FY2019.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Alteryx Workflows/USAspending_FY2019.yxmd]
+│       │   │       │   ├── USAspending_FY2020.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Alteryx Workflows/USAspending_FY2020.yxmd]
+│       │   │       │   ├── USAspending_FY2021.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Alteryx Workflows/USAspending_FY2021.yxmd]
+│       │   │       │   ├── USAspending_FY2022.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Alteryx Workflows/USAspending_FY2022.yxmd]
+│       │   │       │   ├── USAspending_FY2023.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Alteryx Workflows/USAspending_FY2023.yxmd]
+│       │   │       │   └── USAspending_FY2024.yxmd  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Alteryx Workflows/USAspending_FY2024.yxmd]
+│       │   │       ├── CSV Files/
+│       │   │       │   ├── USAspending_All_Years - Copy.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/CSV Files/USAspending_All_Years - Copy.csv]
+│       │   │       │   ├── USAspending_All_Years.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/CSV Files/USAspending_All_Years.csv]
+│       │   │       │   ├── USAspending_FY2019.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/CSV Files/USAspending_FY2019.csv]
+│       │   │       │   ├── USAspending_FY2020.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/CSV Files/USAspending_FY2020.csv]
+│       │   │       │   ├── USAspending_FY2021.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/CSV Files/USAspending_FY2021.csv]
+│       │   │       │   ├── USAspending_FY2022.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/CSV Files/USAspending_FY2022.csv]
+│       │   │       │   ├── USAspending_FY2023.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/CSV Files/USAspending_FY2023.csv]
+│       │   │       │   └── USAspending_FY2024.csv  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/CSV Files/USAspending_FY2024.csv]
+│       │   │       ├── Data Dictionaries/
+│       │   │       │   └── USAspending_Data_Dictionary.docx  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Data Dictionaries/USAspending_Data_Dictionary.docx]
+│       │   │       └── Tableau .Hyper Files/
+│       │   │           ├── USAspending_All_Years.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Tableau .Hyper Files/USAspending_All_Years.hyper]
+│       │   │           ├── USAspending_FY2019.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Tableau .Hyper Files/USAspending_FY2019.hyper]
+│       │   │           ├── USAspending_FY2020.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Tableau .Hyper Files/USAspending_FY2020.hyper]
+│       │   │           ├── USAspending_FY2021.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Tableau .Hyper Files/USAspending_FY2021.hyper]
+│       │   │           ├── USAspending_FY2022.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Tableau .Hyper Files/USAspending_FY2022.hyper]
+│       │   │           ├── USAspending_FY2023.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Tableau .Hyper Files/USAspending_FY2023.hyper]
+│       │   │           └── USAspending_FY2024.hyper  [archive/onedrive/AGA_Datathon_OneDrive/Datasets/USAspending/Tableau .Hyper Files/USAspending_FY2024.hyper]
+│       │   ├── Presentation Templates/
+│       │   │   ├── business_case_template.pptx  [archive/onedrive/AGA_Datathon_OneDrive/Presentation Templates/business_case_template.pptx]
+│       │   │   ├── consulting_maps.pptx  [archive/onedrive/AGA_Datathon_OneDrive/Presentation Templates/consulting_maps.pptx]
+│       │   │   └── consulting_toolkit.pptx  [archive/onedrive/AGA_Datathon_OneDrive/Presentation Templates/consulting_toolkit.pptx]
+│       │   ├── Recordings/
+│       │   │   ├── 12-19-25 Team Sync.mp4  [archive/onedrive/AGA_Datathon_OneDrive/Recordings/12-19-25 Team Sync.mp4]
+│       │   │   ├── 12-21-25 Team Sync.mp4  [archive/onedrive/AGA_Datathon_OneDrive/Recordings/12-21-25 Team Sync.mp4]
+│       │   │   └── 12-29-25 Team Sync.mp4  [archive/onedrive/AGA_Datathon_OneDrive/Recordings/12-29-25 Team Sync.mp4]
+│       │   ├── Tableau Visualizations/
+│       │   │   ├── AGA datathon visualizations - USAspending Updated.twbx  [archive/onedrive/AGA_Datathon_OneDrive/Tableau Visualizations/AGA datathon visualizations - USAspending Updated.twbx]
+│       │   │   └── FAC-Merged set AGA datathon.twbx  [archive/onedrive/AGA_Datathon_OneDrive/Tableau Visualizations/FAC-Merged set AGA datathon.twbx]
+│       │   ├── Fiscal Patriots Presentation.pdf  [archive/onedrive/AGA_Datathon_OneDrive/Fiscal Patriots Presentation.pdf]
+│       │   ├── Fiscal Patriots Presentation.pptx  [archive/onedrive/AGA_Datathon_OneDrive/Fiscal Patriots Presentation.pptx]
+│       │   ├── Fiscal_Patriots_Presentation_Guide.docx  [archive/onedrive/AGA_Datathon_OneDrive/Fiscal_Patriots_Presentation_Guide.docx]
+│       │   ├── Fiscal_Patriots_Team_Hub.docx  [archive/onedrive/AGA_Datathon_OneDrive/Fiscal_Patriots_Team_Hub.docx]
+│       │   ├── Meeting Notes.docx  [archive/onedrive/AGA_Datathon_OneDrive/Meeting Notes.docx]
+│       │   ├── Presentation Outline.docx  [archive/onedrive/AGA_Datathon_OneDrive/Presentation Outline.docx]
+│       │   ├── Presentation.pptx  [archive/onedrive/AGA_Datathon_OneDrive/Presentation.pptx]
+│       │   └── Project Ideas and Societal Impact.docx  [archive/onedrive/AGA_Datathon_OneDrive/Project Ideas and Societal Impact.docx]
+│       └── README.md  [archive/onedrive/README.md]
+├── assets/
+│   ├── dashboard.png  [assets/dashboard.png]
+│   └── pipeline.png  [assets/pipeline.png]
+├── data/
+│   ├── analysis_core/
+│   │   ├── merged_detail/
+│   │   │   ├── FAC_USAspending_Merged_Detail.csv  [data/analysis_core/merged_detail/FAC_USAspending_Merged_Detail.csv]
+│   │   │   └── FAC_USAspending_Merged_Detail_Data_Dictionary.docx  [data/analysis_core/merged_detail/FAC_USAspending_Merged_Detail_Data_Dictionary.docx]
+│   │   ├── summary_by_tier/
+│   │   │   ├── FAC_USAspending_Summary_By_Tier.csv  [data/analysis_core/summary_by_tier/FAC_USAspending_Summary_By_Tier.csv]
+│   │   │   └── FAC_USAspending_Summary_By_Tier_Data_Dictionary.docx  [data/analysis_core/summary_by_tier/FAC_USAspending_Summary_By_Tier_Data_Dictionary.docx]
+│   │   └── top_10_red_by_federal_funding/
+│   │       ├── FAC_USAspending_Top_10_Red_By_Federal_Funding.csv  [data/analysis_core/top_10_red_by_federal_funding/FAC_USAspending_Top_10_Red_By_Federal_Funding.csv]
+│   │       └── FAC_USAspending_Top_10_Red_By_Federal_Funding_Data_Dictionary.docx  [data/analysis_core/top_10_red_by_federal_funding/FAC_USAspending_Top_10_Red_By_Federal_Funding_Data_Dictionary.docx]
+│   └── README.md  [data/README.md]
+├── deliverables/
+│   ├── dashboard/
+│   │   ├── AGA datathon visualizations - USAspending Updated.twbx  [deliverables/dashboard/AGA datathon visualizations - USAspending Updated.twbx]
+│   │   ├── FAC-Merged set AGA datathon.twbx  [deliverables/dashboard/FAC-Merged set AGA datathon.twbx]
+│   │   └── README.md  [deliverables/dashboard/README.md]
+│   ├── slides/
+│   │   └── Fiscal Patriots Presentation.pdf  [deliverables/slides/Fiscal Patriots Presentation.pdf]
+│   └── video/
+│       └── README.md  [deliverables/video/README.md]
+├── docs/
+│   ├── competition/
+│   │   ├── AGA 2026 Datathon Kick-Off Call.pptx  [docs/competition/AGA 2026 Datathon Kick-Off Call.pptx]
+│   │   ├── Allowable Data Sources.png  [docs/competition/Allowable Data Sources.png]
+│   │   └── Prior Winners Video Presentations.docx  [docs/competition/Prior Winners Video Presentations.docx]
+│   ├── data_dictionaries/
+│   │   └── USAspending_Data_Dictionary.docx  [docs/data_dictionaries/USAspending_Data_Dictionary.docx]
+│   ├── presentation/
+│   │   ├── Fiscal_Patriots_Presentation_Guide.docx  [docs/presentation/Fiscal_Patriots_Presentation_Guide.docx]
+│   │   ├── Presentation Outline.docx  [docs/presentation/Presentation Outline.docx]
+│   │   └── Project Ideas and Societal Impact.docx  [docs/presentation/Project Ideas and Societal Impact.docx]
+│   └── team/
+│       ├── Fiscal_Patriots_Team_Hub.docx  [docs/team/Fiscal_Patriots_Team_Hub.docx]
+│       └── Meeting Notes.docx  [docs/team/Meeting Notes.docx]
+├── pipeline/
+│   ├── alteryx/
+│   │   └── FAC_USAspending_Merged.yxmd  [pipeline/alteryx/FAC_USAspending_Merged.yxmd]
+│   ├── workflows/
+│   │   └── README.md  [pipeline/workflows/README.md]
+│   ├── data_contract.md  [pipeline/data_contract.md]
+│   ├── inputs_outputs.md  [pipeline/inputs_outputs.md]
+│   └── README.md  [pipeline/README.md]
+├── .gitattributes  [.gitattributes]
+├── .gitignore  [.gitignore]
+└── README.md  [README.md]
+
+============================================================
+BRANCH: chore/repo-scaffold
+TOTAL FILES: 55
+============================================================
+├── .github/
+│   ├── workflows/
+│   │   ├── ci.yml  [.github/workflows/ci.yml]
+│   │   └── README.txt  [.github/workflows/README.txt]
+│   ├── CODEOWNERS  [.github/CODEOWNERS]
+│   ├── PULL_REQUEST_TEMPLATE.md  [.github/PULL_REQUEST_TEMPLATE.md]
+│   └── README.txt  [.github/README.txt]
+├── configs/
+│   ├── README.txt  [configs/README.txt]
+│   ├── use_case_1.yaml  [configs/use_case_1.yaml]
+│   └── use_case_2.yaml  [configs/use_case_2.yaml]
+├── dashboard/
+│   ├── tableau/
+│   │   ├── workbook/
+│   │   │   └── README.txt  [dashboard/tableau/workbook/README.txt]
+│   │   ├── README.md  [dashboard/tableau/README.md]
+│   │   └── README.txt  [dashboard/tableau/README.txt]
+│   ├── web_embed/
+│   │   ├── index.html  [dashboard/web_embed/index.html]
+│   │   ├── README.md  [dashboard/web_embed/README.md]
+│   │   └── README.txt  [dashboard/web_embed/README.txt]
+│   └── README.txt  [dashboard/README.txt]
+├── data/
+│   ├── samples/
+│   │   ├── README.md  [data/samples/README.md]
+│   │   └── README.txt  [data/samples/README.txt]
+│   ├── README.md  [data/README.md]
+│   └── README.txt  [data/README.txt]
+├── docs/
+│   ├── meeting_notes/
+│   │   └── README.txt  [docs/meeting_notes/README.txt]
+│   ├── 00_project_overview.md  [docs/00_project_overview.md]
+│   ├── 01_data_sources.md  [docs/01_data_sources.md]
+│   ├── 02_data_dictionary.md  [docs/02_data_dictionary.md]
+│   ├── 03_methodology.md  [docs/03_methodology.md]
+│   ├── 04_limits_and_assumptions.md  [docs/04_limits_and_assumptions.md]
+│   └── README.txt  [docs/README.txt]
+├── infra/
+│   ├── aws/
+│   │   ├── README.md  [infra/aws/README.md]
+│   │   └── README.txt  [infra/aws/README.txt]
+│   ├── README.md  [infra/README.md]
+│   └── README.txt  [infra/README.txt]
+├── notebooks/
+│   ├── README.md  [notebooks/README.md]
+│   └── README.txt  [notebooks/README.txt]
+├── reports/
+│   ├── figures/
+│   │   └── README.txt  [reports/figures/README.txt]
+│   ├── final_submission/
+│   │   └── README.txt  [reports/final_submission/README.txt]
+│   ├── tables/
+│   │   └── README.txt  [reports/tables/README.txt]
+│   └── README.txt  [reports/README.txt]
+├── scripts/
+│   ├── bootstrap_folder_readmes.py  [scripts/bootstrap_folder_readmes.py]
+│   ├── README.txt  [scripts/README.txt]
+│   ├── run_checks.py  [scripts/run_checks.py]
+│   └── run_pipeline.py  [scripts/run_pipeline.py]
+├── src/
+│   ├── clean/
+│   │   └── README.txt  [src/clean/README.txt]
+│   ├── features/
+│   │   └── README.txt  [src/features/README.txt]
+│   ├── ingest/
+│   │   └── README.txt  [src/ingest/README.txt]
+│   ├── merge/
+│   │   └── README.txt  [src/merge/README.txt]
+│   ├── modeling/
+│   │   └── README.txt  [src/modeling/README.txt]
+│   ├── validate/
+│   │   └── README.txt  [src/validate/README.txt]
+│   ├── viz/
+│   │   └── README.txt  [src/viz/README.txt]
+│   └── README.txt  [src/README.txt]
+├── .env.example  [.env.example]
+├── .gitignore  [.gitignore]
+├── CONTRIBUTING.md  [CONTRIBUTING.md]
+├── LICENSE  [LICENSE]
+├── Makefile  [Makefile]
+├── README.md  [README.md]
+└── requirements.txt  [requirements.txt]
+
+============================================================
+BRANCH: docs/report-and-slides
+TOTAL FILES: 1
+============================================================
+└── README.md  [README.md]
+
+============================================================
+BRANCH: feature/dashboard
+TOTAL FILES: 1
+============================================================
+└── README.md  [README.md]
+
+============================================================
+BRANCH: feature/data-cleaning
+TOTAL FILES: 20
+============================================================
+├── Federal Audit ClearingHouse/
+│   ├── FAC_Master_With_Risk_Score.csv  [Federal Audit ClearingHouse/FAC_Master_With_Risk_Score.csv]
+│   ├── FAC_Master_With_Risk_Score.yxmd  [Federal Audit ClearingHouse/FAC_Master_With_Risk_Score.yxmd]
+│   └── temp.txt  [Federal Audit ClearingHouse/temp.txt]
+├── USAspending/
+│   ├── Dataset_Archive.txt  [USAspending/Dataset_Archive.txt]
+│   ├── FY2019_USASpending.yxmd  [USAspending/FY2019_USASpending.yxmd]
+│   ├── FY2020_USASpending.yxmd  [USAspending/FY2020_USASpending.yxmd]
+│   ├── FY2021_USASpending.yxmd  [USAspending/FY2021_USASpending.yxmd]
+│   ├── FY2022_USASpending.yxmd  [USAspending/FY2022_USASpending.yxmd]
+│   ├── FY2023_USASpending.yxmd  [USAspending/FY2023_USASpending.yxmd]
+│   ├── FY2024_USASpending.yxmd  [USAspending/FY2024_USASpending.yxmd]
+│   ├── temp.txt  [USAspending/temp.txt]
+│   ├── USAspending_AllYears_ByEntity.csv  [USAspending/USAspending_AllYears_ByEntity.csv]
+│   ├── USAspending_Combine_AllYears.yxmd  [USAspending/USAspending_Combine_AllYears.yxmd]
+│   ├── USAspending_FY2019_ByEntity.csv  [USAspending/USAspending_FY2019_ByEntity.csv]
+│   ├── USAspending_FY2020_ByEntity.csv  [USAspending/USAspending_FY2020_ByEntity.csv]
+│   ├── USAspending_FY2021_ByEntity.csv  [USAspending/USAspending_FY2021_ByEntity.csv]
+│   ├── USAspending_FY2022_ByEntity.csv  [USAspending/USAspending_FY2022_ByEntity.csv]
+│   ├── USAspending_FY2023_ByEntity.csv  [USAspending/USAspending_FY2023_ByEntity.csv]
+│   └── USAspending_FY2024_ByEntity.csv  [USAspending/USAspending_FY2024_ByEntity.csv]
+└── README.md  [README.md]
+
+============================================================
+BRANCH: feature/data-intake
+TOTAL FILES: 4
+============================================================
+├── USAspending & FAC ML Training/
+│   ├── FAC_USASpending_ML_Training.csv  [USAspending & FAC ML Training/FAC_USASpending_ML_Training.csv]
+│   ├── FAC_USAspending_ML_Training.yxmd  [USAspending & FAC ML Training/FAC_USAspending_ML_Training.yxmd]
+│   └── temp.txt  [USAspending & FAC ML Training/temp.txt]
+└── README.md  [README.md]
+
+============================================================
+BRANCH: feature/data-merge
+TOTAL FILES: 4
+============================================================
+├── USAspending & FAC/
+│   ├── FAC_USASpending_Merged.csv  [USAspending & FAC/FAC_USASpending_Merged.csv]
+│   ├── FAC_USAspending_Merged.yxmd  [USAspending & FAC/FAC_USAspending_Merged.yxmd]
+│   └── temp.txt  [USAspending & FAC/temp.txt]
+└── README.md  [README.md]
+
+============================================================
+BRANCH: feature/modeling-forecast
+TOTAL FILES: 1
+============================================================
+└── README.md  [README.md]
+
+============================================================
+BRANCH: main
+TOTAL FILES: 73
+============================================================
+├── assets/
+│   ├── dashboard.png  [assets/dashboard.png]
+│   └── pipeline.png  [assets/pipeline.png]
+├── data/
+│   ├── analysis_core/
+│   │   ├── merged_detail/
+│   │   │   ├── FAC_USAspending_Merged_Detail.csv  [data/analysis_core/merged_detail/FAC_USAspending_Merged_Detail.csv]
+│   │   │   └── FAC_USAspending_Merged_Detail_Data_Dictionary.docx  [data/analysis_core/merged_detail/FAC_USAspending_Merged_Detail_Data_Dictionary.docx]
+│   │   ├── summary_by_tier/
+│   │   │   ├── FAC_USAspending_Summary_By_Tier.csv  [data/analysis_core/summary_by_tier/FAC_USAspending_Summary_By_Tier.csv]
+│   │   │   └── FAC_USAspending_Summary_By_Tier_Data_Dictionary.docx  [data/analysis_core/summary_by_tier/FAC_USAspending_Summary_By_Tier_Data_Dictionary.docx]
+│   │   └── top_10_red_by_federal_funding/
+│   │       ├── FAC_USAspending_Top_10_Red_By_Federal_Funding.csv  [data/analysis_core/top_10_red_by_federal_funding/FAC_USAspending_Top_10_Red_By_Federal_Funding.csv]
+│   │       └── FAC_USAspending_Top_10_Red_By_Federal_Funding_Data_Dictionary.docx  [data/analysis_core/top_10_red_by_federal_funding/FAC_USAspending_Top_10_Red_By_Federal_Funding_Data_Dictionary.docx]
+│   └── README.md  [data/README.md]
+├── deliverables/
+│   ├── dashboard/
+│   │   ├── AGA datathon visualizations - USAspending Updated.twbx  [deliverables/dashboard/AGA datathon visualizations - USAspending Updated.twbx]
+│   │   ├── FAC-Merged set AGA datathon.twbx  [deliverables/dashboard/FAC-Merged set AGA datathon.twbx]
+│   │   └── README.md  [deliverables/dashboard/README.md]
+│   ├── model/
+│   │   └── features.md  [deliverables/model/features.md]
+│   ├── report/
+│   │   └── README.md  [deliverables/report/README.md]
+│   ├── slides/
+│   │   └── Fiscal Patriots Presentation.pdf  [deliverables/slides/Fiscal Patriots Presentation.pdf]
+│   └── video/
+│       └── README.md  [deliverables/video/README.md]
+├── docs/
+│   ├── appendix_hubs/
+│   │   ├── case_studies/
+│   │   │   ├── example_drilldown_one_red_entity.md  [docs/appendix_hubs/case_studies/example_drilldown_one_red_entity.md]
+│   │   │   ├── full_audit_findings.md  [docs/appendix_hubs/case_studies/full_audit_findings.md]
+│   │   │   ├── full_audit_findings_for_flagged_entities.md  [docs/appendix_hubs/case_studies/full_audit_findings_for_flagged_entities.md]
+│   │   │   ├── sam_exclusions_crosscheck_examples.md  [docs/appendix_hubs/case_studies/sam_exclusions_crosscheck_examples.md]
+│   │   │   └── supporting_documentation.md  [docs/appendix_hubs/case_studies/supporting_documentation.md]
+│   │   ├── data_sources/
+│   │   │   ├── allowable_data_sources_competition_rules.md  [docs/appendix_hubs/data_sources/allowable_data_sources_competition_rules.md]
+│   │   │   ├── data_dictionaries_in_repo.md  [docs/appendix_hubs/data_sources/data_dictionaries_in_repo.md]
+│   │   │   ├── fac_dataset_overview_and_files_used.md  [docs/appendix_hubs/data_sources/fac_dataset_overview_and_files_used.md]
+│   │   │   ├── sam_exclusions_public_extract.md  [docs/appendix_hubs/data_sources/sam_exclusions_public_extract.md]
+│   │   │   └── usaspending_api_and_dictionary.md  [docs/appendix_hubs/data_sources/usaspending_api_and_dictionary.md]
+│   │   ├── methodology/
+│   │   │   ├── alteryx_workflows_and_screenshots.md  [docs/appendix_hubs/methodology/alteryx_workflows_and_screenshots.md]
+│   │   │   ├── data_acquisition_notes.md  [docs/appendix_hubs/methodology/data_acquisition_notes.md]
+│   │   │   ├── join_logic_uei_mapping.md  [docs/appendix_hubs/methodology/join_logic_uei_mapping.md]
+│   │   │   ├── outputs_and_reproducibility.md  [docs/appendix_hubs/methodology/outputs_and_reproducibility.md]
+│   │   │   └── pipeline_overview_visual.md  [docs/appendix_hubs/methodology/pipeline_overview_visual.md]
+│   │   ├── ml/
+│   │   │   ├── feature_list_and_importance.md  [docs/appendix_hubs/ml/feature_list_and_importance.md]
+│   │   │   ├── final_ml_ready_outputs.md  [docs/appendix_hubs/ml/final_ml_ready_outputs.md]
+│   │   │   ├── ml_training_dataset_build_workflow.md  [docs/appendix_hubs/ml/ml_training_dataset_build_workflow.md]
+│   │   │   ├── model_validation_metrics.md  [docs/appendix_hubs/ml/model_validation_metrics.md]
+│   │   │   └── train_test_split_methodology.md  [docs/appendix_hubs/ml/train_test_split_methodology.md]
+│   │   ├── regulatory/
+│   │   │   ├── 2cfr200_subpart_f.md  [docs/appendix_hubs/regulatory/2cfr200_subpart_f.md]
+│   │   │   ├── gao_05_479.md  [docs/appendix_hubs/regulatory/gao_05_479.md]
+│   │   │   ├── gao_09_174.md  [docs/appendix_hubs/regulatory/gao_09_174.md]
+│   │   │   └── other_standards.md  [docs/appendix_hubs/regulatory/other_standards.md]
+│   │   └── scoring/
+│   │       ├── final_scoring_outputs.md  [docs/appendix_hubs/scoring/final_scoring_outputs.md]
+│   │       ├── problem_entity_rule.md  [docs/appendix_hubs/scoring/problem_entity_rule.md]
+│   │       ├── score_formula_and_tiers.md  [docs/appendix_hubs/scoring/score_formula_and_tiers.md]
+│   │       ├── variable_definitions.md  [docs/appendix_hubs/scoring/variable_definitions.md]
+│   │       └── weighting_rationale.md  [docs/appendix_hubs/scoring/weighting_rationale.md]
+│   ├── competition/
+│   │   ├── AGA 2026 Datathon Kick-Off Call.pptx  [docs/competition/AGA 2026 Datathon Kick-Off Call.pptx]
+│   │   ├── Allowable Data Sources.png  [docs/competition/Allowable Data Sources.png]
+│   │   └── Prior Winners Video Presentations.docx  [docs/competition/Prior Winners Video Presentations.docx]
+│   ├── data_dictionaries/
+│   │   └── USAspending_Data_Dictionary.docx  [docs/data_dictionaries/USAspending_Data_Dictionary.docx]
+│   ├── presentation/
+│   │   ├── Fiscal_Patriots_Presentation_Guide.docx  [docs/presentation/Fiscal_Patriots_Presentation_Guide.docx]
+│   │   ├── Presentation Outline.docx  [docs/presentation/Presentation Outline.docx]
+│   │   └── Project Ideas and Societal Impact.docx  [docs/presentation/Project Ideas and Societal Impact.docx]
+│   └── team/
+│       ├── Fiscal_Patriots_Team_Hub.docx  [docs/team/Fiscal_Patriots_Team_Hub.docx]
+│       └── Meeting Notes.docx  [docs/team/Meeting Notes.docx]
+├── ML model/
+│   ├── Datathon Predictive Modeling.ipynb  [ML model/Datathon Predictive Modeling.ipynb]
+│   └── temp  [ML model/temp]
+├── pipeline/
+│   ├── alteryx workflow (main)/
+│   │   └── FAC_USAspending_Merged.yxmd  [pipeline/alteryx workflow (main)/FAC_USAspending_Merged.yxmd]
+│   ├── data_contract.md  [pipeline/data_contract.md]
+│   ├── inputs_outputs.md  [pipeline/inputs_outputs.md]
+│   └── README.md  [pipeline/README.md]
+├── webapp development/
+│   ├── README.md  [webapp development/README.md]
+│   ├── sample_webapp_aga_datathon.html  [webapp development/sample_webapp_aga_datathon.html]
+│   ├── sample_webapp_aga_datathon_v10.html  [webapp development/sample_webapp_aga_datathon_v10.html]
+│   ├── sample_webapp_aga_datathon_v2.html  [webapp development/sample_webapp_aga_datathon_v2.html]
+│   ├── sample_webapp_aga_datathon_v3.html  [webapp development/sample_webapp_aga_datathon_v3.html]
+│   ├── sample_webapp_aga_datathon_v4.html  [webapp development/sample_webapp_aga_datathon_v4.html]
+│   ├── sample_webapp_aga_datathon_v5.html  [webapp development/sample_webapp_aga_datathon_v5.html]
+│   ├── sample_webapp_aga_datathon_v6.html  [webapp development/sample_webapp_aga_datathon_v6.html]
+│   ├── sample_webapp_aga_datathon_v7.html  [webapp development/sample_webapp_aga_datathon_v7.html]
+│   ├── sample_webapp_aga_datathon_v8.html  [webapp development/sample_webapp_aga_datathon_v8.html]
+│   └── sample_webapp_aga_datathon_v9.html  [webapp development/sample_webapp_aga_datathon_v9.html]
+├── .gitignore  [.gitignore]
+└── README.md  [README.md]
+
+============================================================
+BRANCH: origin
+TOTAL FILES: 78
+============================================================
+├── assets/
+│   ├── dashboard.png  [assets/dashboard.png]
+│   └── pipeline.png  [assets/pipeline.png]
+├── data/
+│   ├── analysis_core/
+│   │   ├── merged_detail/
+│   │   │   ├── FAC_USAspending_Merged_Detail.csv  [data/analysis_core/merged_detail/FAC_USAspending_Merged_Detail.csv]
+│   │   │   └── FAC_USAspending_Merged_Detail_Data_Dictionary.docx  [data/analysis_core/merged_detail/FAC_USAspending_Merged_Detail_Data_Dictionary.docx]
+│   │   ├── summary_by_tier/
+│   │   │   ├── FAC_USAspending_Summary_By_Tier.csv  [data/analysis_core/summary_by_tier/FAC_USAspending_Summary_By_Tier.csv]
+│   │   │   └── FAC_USAspending_Summary_By_Tier_Data_Dictionary.docx  [data/analysis_core/summary_by_tier/FAC_USAspending_Summary_By_Tier_Data_Dictionary.docx]
+│   │   └── top_10_red_by_federal_funding/
+│   │       ├── FAC_USAspending_Top_10_Red_By_Federal_Funding.csv  [data/analysis_core/top_10_red_by_federal_funding/FAC_USAspending_Top_10_Red_By_Federal_Funding.csv]
+│   │       └── FAC_USAspending_Top_10_Red_By_Federal_Funding_Data_Dictionary.docx  [data/analysis_core/top_10_red_by_federal_funding/FAC_USAspending_Top_10_Red_By_Federal_Funding_Data_Dictionary.docx]
+│   └── README.md  [data/README.md]
+├── deliverables/
+│   ├── dashboard/
+│   │   ├── AGA datathon visualizations - USAspending Updated.twbx  [deliverables/dashboard/AGA datathon visualizations - USAspending Updated.twbx]
+│   │   ├── FAC-Merged set AGA datathon.twbx  [deliverables/dashboard/FAC-Merged set AGA datathon.twbx]
+│   │   └── README.md  [deliverables/dashboard/README.md]
+│   ├── model/
+│   │   └── features.md  [deliverables/model/features.md]
+│   ├── report/
+│   │   └── README.md  [deliverables/report/README.md]
+│   ├── slides/
+│   │   └── Fiscal Patriots Presentation.pdf  [deliverables/slides/Fiscal Patriots Presentation.pdf]
+│   └── video/
+│       └── README.md  [deliverables/video/README.md]
+├── docs/
+│   ├── appendix_hubs/
+│   │   ├── case_studies/
+│   │   │   ├── example_drilldown_one_red_entity.md  [docs/appendix_hubs/case_studies/example_drilldown_one_red_entity.md]
+│   │   │   ├── full_audit_findings.md  [docs/appendix_hubs/case_studies/full_audit_findings.md]
+│   │   │   ├── full_audit_findings_for_flagged_entities.md  [docs/appendix_hubs/case_studies/full_audit_findings_for_flagged_entities.md]
+│   │   │   ├── sam_exclusions_crosscheck_examples.md  [docs/appendix_hubs/case_studies/sam_exclusions_crosscheck_examples.md]
+│   │   │   └── supporting_documentation.md  [docs/appendix_hubs/case_studies/supporting_documentation.md]
+│   │   ├── data_sources/
+│   │   │   ├── allowable_data_sources_competition_rules.md  [docs/appendix_hubs/data_sources/allowable_data_sources_competition_rules.md]
+│   │   │   ├── data_dictionaries_in_repo.md  [docs/appendix_hubs/data_sources/data_dictionaries_in_repo.md]
+│   │   │   ├── fac_dataset_overview_and_files_used.md  [docs/appendix_hubs/data_sources/fac_dataset_overview_and_files_used.md]
+│   │   │   ├── sam_exclusions_public_extract.md  [docs/appendix_hubs/data_sources/sam_exclusions_public_extract.md]
+│   │   │   └── usaspending_api_and_dictionary.md  [docs/appendix_hubs/data_sources/usaspending_api_and_dictionary.md]
+│   │   ├── methodology/
+│   │   │   ├── alteryx_workflows_and_screenshots.md  [docs/appendix_hubs/methodology/alteryx_workflows_and_screenshots.md]
+│   │   │   ├── data_acquisition_notes.md  [docs/appendix_hubs/methodology/data_acquisition_notes.md]
+│   │   │   ├── join_logic_uei_mapping.md  [docs/appendix_hubs/methodology/join_logic_uei_mapping.md]
+│   │   │   ├── outputs_and_reproducibility.md  [docs/appendix_hubs/methodology/outputs_and_reproducibility.md]
+│   │   │   └── pipeline_overview_visual.md  [docs/appendix_hubs/methodology/pipeline_overview_visual.md]
+│   │   ├── ml/
+│   │   │   ├── feature_list_and_importance.md  [docs/appendix_hubs/ml/feature_list_and_importance.md]
+│   │   │   ├── final_ml_ready_outputs.md  [docs/appendix_hubs/ml/final_ml_ready_outputs.md]
+│   │   │   ├── ml_training_dataset_build_workflow.md  [docs/appendix_hubs/ml/ml_training_dataset_build_workflow.md]
+│   │   │   ├── model_validation_metrics.md  [docs/appendix_hubs/ml/model_validation_metrics.md]
+│   │   │   └── train_test_split_methodology.md  [docs/appendix_hubs/ml/train_test_split_methodology.md]
+│   │   ├── regulatory/
+│   │   │   ├── 2cfr200_subpart_f.md  [docs/appendix_hubs/regulatory/2cfr200_subpart_f.md]
+│   │   │   ├── gao_05_479.md  [docs/appendix_hubs/regulatory/gao_05_479.md]
+│   │   │   ├── gao_09_174.md  [docs/appendix_hubs/regulatory/gao_09_174.md]
+│   │   │   └── other_standards.md  [docs/appendix_hubs/regulatory/other_standards.md]
+│   │   └── scoring/
+│   │       ├── final_scoring_outputs.md  [docs/appendix_hubs/scoring/final_scoring_outputs.md]
+│   │       ├── problem_entity_rule.md  [docs/appendix_hubs/scoring/problem_entity_rule.md]
+│   │       ├── score_formula_and_tiers.md  [docs/appendix_hubs/scoring/score_formula_and_tiers.md]
+│   │       ├── variable_definitions.md  [docs/appendix_hubs/scoring/variable_definitions.md]
+│   │       └── weighting_rationale.md  [docs/appendix_hubs/scoring/weighting_rationale.md]
+│   ├── competition/
+│   │   ├── AGA 2026 Datathon Kick-Off Call.pptx  [docs/competition/AGA 2026 Datathon Kick-Off Call.pptx]
+│   │   ├── Allowable Data Sources.png  [docs/competition/Allowable Data Sources.png]
+│   │   └── Prior Winners Video Presentations.docx  [docs/competition/Prior Winners Video Presentations.docx]
+│   ├── data_dictionaries/
+│   │   └── USAspending_Data_Dictionary.docx  [docs/data_dictionaries/USAspending_Data_Dictionary.docx]
+│   ├── presentation/
+│   │   ├── Fiscal_Patriots_Presentation_Guide.docx  [docs/presentation/Fiscal_Patriots_Presentation_Guide.docx]
+│   │   ├── Presentation Outline.docx  [docs/presentation/Presentation Outline.docx]
+│   │   └── Project Ideas and Societal Impact.docx  [docs/presentation/Project Ideas and Societal Impact.docx]
+│   └── team/
+│       ├── Fiscal_Patriots_Team_Hub.docx  [docs/team/Fiscal_Patriots_Team_Hub.docx]
+│       └── Meeting Notes.docx  [docs/team/Meeting Notes.docx]
+├── ML model/
+│   ├── Datathon Predictive Modeling v3.ipynb  [ML model/Datathon Predictive Modeling v3.ipynb]
+│   ├── Datathon Predictive Modeling.ipynb  [ML model/Datathon Predictive Modeling.ipynb]
+│   ├── FAC_Data_RandomForest.ipynb  [ML model/FAC_Data_RandomForest.ipynb]
+│   └── temp  [ML model/temp]
+├── pipeline/
+│   ├── alteryx workflow (main)/
+│   │   └── FAC_USAspending_Merged.yxmd  [pipeline/alteryx workflow (main)/FAC_USAspending_Merged.yxmd]
+│   ├── data_contract.md  [pipeline/data_contract.md]
+│   ├── inputs_outputs.md  [pipeline/inputs_outputs.md]
+│   └── README.md  [pipeline/README.md]
+├── webapp development/
+│   ├── README.md  [webapp development/README.md]
+│   ├── sample_webapp_aga_datathon.html  [webapp development/sample_webapp_aga_datathon.html]
+│   ├── sample_webapp_aga_datathon_v10.html  [webapp development/sample_webapp_aga_datathon_v10.html]
+│   ├── sample_webapp_aga_datathon_v11.html  [webapp development/sample_webapp_aga_datathon_v11.html]
+│   ├── sample_webapp_aga_datathon_v12.html  [webapp development/sample_webapp_aga_datathon_v12.html]
+│   ├── sample_webapp_aga_datathon_v13.html  [webapp development/sample_webapp_aga_datathon_v13.html]
+│   ├── sample_webapp_aga_datathon_v2.html  [webapp development/sample_webapp_aga_datathon_v2.html]
+│   ├── sample_webapp_aga_datathon_v3.html  [webapp development/sample_webapp_aga_datathon_v3.html]
+│   ├── sample_webapp_aga_datathon_v4.html  [webapp development/sample_webapp_aga_datathon_v4.html]
+│   ├── sample_webapp_aga_datathon_v5.html  [webapp development/sample_webapp_aga_datathon_v5.html]
+│   ├── sample_webapp_aga_datathon_v6.html  [webapp development/sample_webapp_aga_datathon_v6.html]
+│   ├── sample_webapp_aga_datathon_v7.html  [webapp development/sample_webapp_aga_datathon_v7.html]
+│   ├── sample_webapp_aga_datathon_v8.html  [webapp development/sample_webapp_aga_datathon_v8.html]
+│   └── sample_webapp_aga_datathon_v9.html  [webapp development/sample_webapp_aga_datathon_v9.html]
+├── .gitignore  [.gitignore]
+└── README.md  [README.md]
+
