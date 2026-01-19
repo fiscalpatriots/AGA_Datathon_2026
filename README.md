@@ -83,6 +83,16 @@ Four FAC tables (General, Findings, Corrective Action Plans, Federal Awards) wer
 
 <img width="2083" height="1109" alt="FAC Master Clean" src="https://github.com/user-attachments/assets/676f71b2-e1c8-4644-8104-6bc4053b31c6" />
 
+USAspending and FAC Merge:
+ 
+FAC audit data (FY2023–FY2024) was joined to USAspending financial assistance records on auditee_uei = recipient_uei by fiscal year, linking audit findings to federal funding received. Outputs include merged detail records, summary by risk tier, and top 10 high-risk recipients by federal funding.
+
+<img width="2097" height="928" alt="FAC_USAspending_Merged" src="https://github.com/user-attachments/assets/6487e733-e40f-4f8d-b077-3eabfe35e464" />
+
+FAC USAspending ML Training:
+Training data was constructed by joining consecutive fiscal years (FY22→FY23, FY23→FY24) on UEI, using prior-year audit findings as predictors and next-year finding occurrence as the target variable. The stacked dataset enables Random Forest modeling to identify which audit indicators best predict future compliance issues.
+
+<img width="2554" height="704" alt="FAC_USAspending_ML_Training" src="https://github.com/user-attachments/assets/2cac7b6e-0223-44f4-897b-ebb223ac8361" />
 
 ## Audit Health Score
 
