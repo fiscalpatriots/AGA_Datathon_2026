@@ -18,6 +18,8 @@
 
 📊 **Presentation:** [View Presentation on Canva](https://www.canva.com/design/DAG-i1oWD9I/KMNis1ROB6pK2cwoNZs0Cg/edit?utm_content=DAG-i1oWD9I&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
+▶️ **Video Walkthrough:** [Watch on YouTube](https://youtu.be/i0x2yidgPiY)
+
 ---
 
 ## Abstract
