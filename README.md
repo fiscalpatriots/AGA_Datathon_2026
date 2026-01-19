@@ -68,9 +68,18 @@ USAspending transaction-level data was transformed into recipient-level summarie
 
 <img width="1728" height="932" alt="USAspending_FY2024" src="https://github.com/user-attachments/assets/c9c9ff4f-81b6-488b-acb6-cb003f5e7798" />
 
+SAM FAC Merge:
+FAC audit data was joined to USAspending financial assistance records on UEI to link audit findings with federal funding received. This merge enables analysis of how much taxpayer money flowed to entities with material weaknesses, repeat findings, or going concern flags.
+
 <img width="1285" height="806" alt="SAM_FAC_Merged" src="https://github.com/user-attachments/assets/c39614c7-d663-4933-b062-093513ea3b05" />
 
+SAM Exclusion Cleaning:
+SAM exclusion records were split by UEI availability (38K with UEI, 120K legacy records without), with date parsing to calculate exclusion duration and active status. Outputs support transparency gap analysis and cross-referencing of excluded entities against federal award recipients.
+
 <img width="1272" height="1132" alt="SAM_Exclusion_Cleaning" src="https://github.com/user-attachments/assets/b983f7d1-e5ea-40dd-8efe-7947c34f0cf8" />
+
+FAC Master Clean:
+Four FAC tables (General, Findings, Corrective Action Plans, Federal Awards) were joined and aggregated to entity level by auditee_uei, producing 57.4K clean audited entity records. Outputs preserve audit flags, finding counts, and federal expenditure amounts for risk scoring and USAspending integration.
 
 <img width="2083" height="1109" alt="FAC Master Clean" src="https://github.com/user-attachments/assets/676f71b2-e1c8-4644-8104-6bc4053b31c6" />
 
