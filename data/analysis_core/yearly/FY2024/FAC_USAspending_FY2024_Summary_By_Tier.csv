@@ -1,0 +1,4 @@
+risk_tier,CountDistinct_auditee_uei,Sum_total_funding_num,Sum_award_count_num,Sum_agency_count_num,Avg_taxpayer_protection_score_num,Avg_risk_points_num
+Green - Trusted,24480,174891040797.599,471203,37046,89.2987707763303,10.6411156940417
+Red - High Risk,3274,104952379044.69,216604,7884,15.1521972132905,414.511254019293
+Yellow - Watch List,1341,17648429351.13,34782,2316,69.7163636363636,30.2836363636364

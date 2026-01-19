@@ -1,0 +1,4 @@
+risk_tier,Count,Sum_total_expended_num,Sum_dollars_at_risk_red,Sum_dollars_at_risk_elevated,Avg_risk_points,Avg_taxpayer_protection_score,Sum_is_problem_entity
+Green - Trusted,16891,118162634212,0,0,13.8693979042093,86.0076964063703,96
+Red - High Risk,12332,5051600083995,5051600083995,5051600083995,397.88047356471,17.9006649367499,8757
+Yellow - Watch List,28225,1142764212697,0,1142764212697,31.5784942426926,68.4215057573074,417

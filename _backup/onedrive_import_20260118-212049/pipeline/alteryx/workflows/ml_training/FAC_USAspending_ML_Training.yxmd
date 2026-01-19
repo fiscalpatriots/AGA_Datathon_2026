@@ -1,0 +1,1259 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2024.1" RunE2="T">
+  <Nodes>
+    <Node ToolID="28">
+      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+        <Position x="66" y="186" width="360" height="468" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Text>TRAIN/TEST SPLIT METHODOLOGY — ML PREPARATION LOGIC
+
+BINARY TARGET VARIABLE
+   is_high_risk = 1 if risk_tier = "Red" (0-59 points)
+   is_high_risk = 0 if risk_tier = "Yellow" or "Green" (60-100 points)
+   
+   Purpose: Simplifies multi-class problem into binary classification
+   Rationale: Red-tier entities require immediate intervention vs. monitoring
+
+TRAIN/TEST SPLIT STRATEGY
+   Training Set (80%): ~34K entities
+      Used to train Random Forest model on historical patterns
+      Model learns relationships between features and high-risk outcomes
+   
+   Test Set (20%): ~8K entities
+      Held out for unbiased validation
+      Measures model accuracy on unseen data
+      Proves model generalizes beyond training examples
+
+   Random Seed = 42: Ensures reproducible split across runs
+
+FEATURE SELECTION (87 columns retained)
+   Risk Indicators: All audit finding metrics (_num fields)
+   Financial Metrics: Total spending, award counts, agency diversity
+   Temporal Patterns: Multi-year audit history, CAP trends
+   Entity Characteristics: Type, geographic location, business category
+   
+   Removed: Duplicate identifiers, high-cardinality text fields
+
+MODEL OUTPUTS
+   Master Dataset (42K): Full feature set for Tableau risk visualization
+   Training Dataset (34K): Input for Random Forest training in Python
+   Test Dataset (8K): Validation set for accuracy/precision metrics</Text>
+          <Font name="Arial" size="8.25" style="0" />
+          <TextColor name="Black" />
+          <FillColor name="WhiteSmoke" />
+          <Shape shape="0" />
+          <Justification Justification="3" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="29">
+      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+        <Position x="30" y="54" width="420" height="107" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Text><![CDATA[
+FAC USASPENDING ML TRAINING
+Input: FAC USAspending Merged Detail (42K entities)
+Output: ML-ready features with 80/20 train/test split
+Key fields: Risk indicators, financial metrics, entity characteristics
+
+Fiscal Patriots | AGA Datathon 2026
+]]></Text>
+          <Font name="Arial" size="8.25" style="0" />
+          <TextColor name="Black" />
+          <FillColor r="255" g="245" b="200" />
+          <Shape shape="0" />
+          <Justification Justification="4" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="27">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="2345" y="221" width="152" height="324" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Test Outputs</Caption>
+          <Style TextColor="#314c4a" FillColor="#ffe4d5" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Test Outputs</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="15">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="2370" y="270" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\Users\Khaled\Documents\!--AGA Datathon\ML Training\FAC_ML_Test.csv</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Output: ML Test Set - CSV (8K rows)</AnnotationText>
+              <DefaultAnnotationText>FAC_ML_Test.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="17">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="2370" y="414" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="64" MaxRecords="">C:\Users\Khaled\Documents\!--AGA Datathon\ML Training\FAC_ML_Test.hyper</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <OutputOption>Create</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Output: ML Test Set - Tableau Hyper (8K rows)</AnnotationText>
+              <DefaultAnnotationText>FAC_ML_Test.hyper</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="26">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="2141" y="221" width="175" height="327" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Training Outputs</Caption>
+          <Style TextColor="#314c4a" FillColor="#ffe4d5" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Training Outputs</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="16">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="2166" y="270" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\Users\Khaled\Documents\!--AGA Datathon\ML Training\FAC_ML_Train.csv</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Output: ML Training Set - CSV (34K rows)</AnnotationText>
+              <DefaultAnnotationText>FAC_ML_Train.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="14">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="2166" y="402" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="64" MaxRecords="">C:\Users\Khaled\Documents\!--AGA Datathon\ML Training\FAC_ML_Train.hyper</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <OutputOption>Create</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Output: ML Training Set - Tableau Hyper (34K rows)</AnnotationText>
+              <DefaultAnnotationText>FAC_ML_Train.hyper</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="25">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="1937" y="221" width="167" height="327" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Master Outputs</Caption>
+          <Style TextColor="#314c4a" FillColor="#ffe4d5" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Master Outputs</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="20">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1962" y="402" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="64" MaxRecords="">C:\Users\Khaled\Documents\!--AGA Datathon\ML Training\FAC_ML_Features_Master.hyper</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <OutputOption>Create</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Output: ML Features - Tableau Hyper (42K rows)</AnnotationText>
+              <DefaultAnnotationText>FAC_ML_Features_Master.hyper</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="19">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1962" y="270" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\Users\Khaled\Documents\!--AGA Datathon\ML Training\FAC_ML_Features_Master.csv</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Output: ML Features - CSV (42K rows)</AnnotationText>
+              <DefaultAnnotationText>FAC_ML_Features_Master.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="24">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="1361" y="185" width="545" height="381" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Train/Test Split</Caption>
+          <Style TextColor="#314c4a" FillColor="#fff3d5" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Train/Test Split</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="11">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="1386" y="378" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="Rand()" field="split_value" size="8" type="Double" enabled="true" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Generate random split_value</AnnotationText>
+              <DefaultAnnotationText><![CDATA[split_value = Rand()
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="18">
+          <GuiSettings>
+            <Position x="1530" y="378" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Value name="Check Box (135)">False</Value>
+              <Value name="Check Box (136)">False</Value>
+              <Value name="List Box (11)">"auditee_uei","max_audit_year","min_audit_year","auditee_ein","auditee_name","auditee_city","auditee_state","entity_type","distinct_audits","sum_total_expended","cognizant_agency","oversight_agency","sum_going_concern","sum_internal_control_def","sum_material_weakness_gen","sum_noncompliance","sum_low_risk","sum_is_public","sum_prior_findings","award_count","distinct_agencies","distinct_programs","distinct_clusters","sum_amount_expended","sum_loan_balance","sum_passthrough_amount","max_federal_program_total","sum_findings_on_awards","sum_major_programs","sum_loan_programs","sum_direct_awards","sum_passthrough_awards","primary_program","findings_count","distinct_awards_with_findings","sum_material_weakness","sum_repeat_finding","sum_questioned_costs","sum_significant_deficiency","sum_modified_opinion","sum_other_findings","sum_other_matters","distinct_audits_with_cap","distinct_cap_years","sum_has_cap","sum_cap_length","min_cap_year","max_cap_year","findings_count_num","material_weakness_num","repeat_finding_num","questioned_costs_num","significant_deficiency_num","modified_opinion_num","other_findings_num","other_matters_num","going_concern_num","internal_control_def_num","material_weakness_gen_num","noncompliance_num","prior_findings_num","low_risk_num","has_cap_num","avg_cap_length_num","cap_count_num","total_expended_num","amount_expended_num","distinct_audit_years_num","risk_points","taxpayer_protection_score","risk_tier","is_problem_entity","dollars_at_risk_red","dollars_at_risk_elevated","risk_per_million","total_federal_exposure","state_name","business_type","total_funding","Right_award_count","agency_count","primary_agency","program_count","first_award_date","last_award_date","first_fiscal_year","last_fiscal_year","is_high_risk","split_value"</Value>
+              <Value name="Check Box (84)">True</Value>
+              <Value name="Check Box (117)">True</Value>
+              <Value name="Check Box (15)">False</Value>
+              <Value name="Check Box (109)">False</Value>
+              <Value name="Check Box (122)">False</Value>
+              <Value name="Check Box (53)">False</Value>
+              <Value name="Check Box (58)">False</Value>
+              <Value name="Check Box (70)">False</Value>
+              <Value name="Check Box (77)">False</Value>
+              <Value name="Drop Down (81)">upper</Value>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Replace Nulls with 0</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings Macro="Cleanse.yxmc" />
+        </Node>
+        <Node ToolID="10">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="1650" y="378" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Mode>Simple</Mode>
+              <Simple>
+                <Operator>&lt;=</Operator>
+                <Field>split_value</Field>
+                <Operands>
+                  <IgnoreTimeInDateTime>True</IgnoreTimeInDateTime>
+                  <DateType>fixed</DateType>
+                  <PeriodDate>2026-01-02 14:23:43</PeriodDate>
+                  <PeriodType>
+                  </PeriodType>
+                  <PeriodCount>0</PeriodCount>
+                  <Operand>0.8</Operand>
+                  <StartDate>2026-01-02 14:23:43</StartDate>
+                  <EndDate>2026-01-02 14:23:43</EndDate>
+                </Operands>
+              </Simple>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Split 80% Train / 20% Test</AnnotationText>
+              <DefaultAnnotationText>[split_value] &lt;= 0.8</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="12">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="1794" y="234" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_30700_0ce18230b39a47f58dc7e27b82b08b57_\Engine_30700_170e733cbbedbf459e43a059a09c770d~.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Train Set - 34k rows</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="13">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="1794" y="450" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_30700_0ce18230b39a47f58dc7e27b82b08b57_\Engine_30700_5a3d82234b53b942a794c02a33b8bc19~.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Test Set - 8.5k rows</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="30">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="1638" y="234" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_30700_0ce18230b39a47f58dc7e27b82b08b57_\Engine_30700_47ee9db54c7d584dbd45cd6e45224841~.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Verify data cleansing (42k entities)</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="23">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="1085" y="245" width="248" height="264" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Feature Engineering</Caption>
+          <Style TextColor="#314c4a" FillColor="#d5f8e8" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Feature Engineering</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="7">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="1110" y="378" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="IF [risk_tier] = &quot;Red - High Risk&quot; THEN 1 ELSE 0 ENDIF" field="is_high_risk" size="1" type="Byte" enabled="true" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Formula: Create is_high_risk binary target
+]]></AnnotationText>
+              <DefaultAnnotationText><![CDATA[is_high_risk = IF [risk_tier] = "Red - High Risk" THEN 1 ELSE 0 ENDIF
+]]></DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="8">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="1206" y="294" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_30700_0ce18230b39a47f58dc7e27b82b08b57_\Engine_30700_cf06ebe61b08464c969e49b57c620fcb~.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Verify binary target creation</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="22">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="689" y="245" width="378" height="249" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Data Preparation</Caption>
+          <Style TextColor="#314c4a" FillColor="#d5e8f8" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Data Preparation</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="4">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="870" y="378" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="auditee_uei" selected="True" />
+                <SelectField field="max_audit_year" selected="True" />
+                <SelectField field="min_audit_year" selected="True" />
+                <SelectField field="auditee_ein" selected="True" />
+                <SelectField field="auditee_name" selected="True" />
+                <SelectField field="auditee_city" selected="True" />
+                <SelectField field="auditee_state" selected="True" />
+                <SelectField field="entity_type" selected="True" />
+                <SelectField field="distinct_audits" selected="True" />
+                <SelectField field="sum_total_expended" selected="True" />
+                <SelectField field="cognizant_agency" selected="True" />
+                <SelectField field="oversight_agency" selected="True" />
+                <SelectField field="sum_going_concern" selected="True" />
+                <SelectField field="sum_internal_control_def" selected="True" />
+                <SelectField field="sum_material_weakness_gen" selected="True" />
+                <SelectField field="sum_noncompliance" selected="True" />
+                <SelectField field="sum_low_risk" selected="True" />
+                <SelectField field="sum_is_public" selected="True" />
+                <SelectField field="sum_prior_findings" selected="True" />
+                <SelectField field="award_count" selected="True" />
+                <SelectField field="distinct_agencies" selected="True" />
+                <SelectField field="distinct_programs" selected="True" />
+                <SelectField field="distinct_clusters" selected="True" />
+                <SelectField field="sum_amount_expended" selected="True" />
+                <SelectField field="sum_loan_balance" selected="True" />
+                <SelectField field="sum_passthrough_amount" selected="True" />
+                <SelectField field="max_federal_program_total" selected="True" />
+                <SelectField field="sum_findings_on_awards" selected="True" />
+                <SelectField field="sum_major_programs" selected="True" />
+                <SelectField field="sum_loan_programs" selected="True" />
+                <SelectField field="sum_direct_awards" selected="True" />
+                <SelectField field="sum_passthrough_awards" selected="True" />
+                <SelectField field="primary_program" selected="True" />
+                <SelectField field="findings_count" selected="True" />
+                <SelectField field="distinct_awards_with_findings" selected="True" />
+                <SelectField field="sum_material_weakness" selected="True" />
+                <SelectField field="sum_repeat_finding" selected="True" />
+                <SelectField field="sum_questioned_costs" selected="True" />
+                <SelectField field="sum_significant_deficiency" selected="True" />
+                <SelectField field="sum_modified_opinion" selected="True" />
+                <SelectField field="sum_other_findings" selected="True" />
+                <SelectField field="sum_other_matters" selected="True" />
+                <SelectField field="distinct_audits_with_cap" selected="True" />
+                <SelectField field="distinct_cap_years" selected="True" />
+                <SelectField field="sum_has_cap" selected="True" />
+                <SelectField field="sum_cap_length" selected="True" />
+                <SelectField field="min_cap_year" selected="True" />
+                <SelectField field="max_cap_year" selected="True" />
+                <SelectField field="findings_count_num" selected="True" />
+                <SelectField field="material_weakness_num" selected="True" />
+                <SelectField field="repeat_finding_num" selected="True" />
+                <SelectField field="questioned_costs_num" selected="True" />
+                <SelectField field="significant_deficiency_num" selected="True" />
+                <SelectField field="modified_opinion_num" selected="True" />
+                <SelectField field="other_findings_num" selected="True" />
+                <SelectField field="other_matters_num" selected="True" />
+                <SelectField field="going_concern_num" selected="True" />
+                <SelectField field="internal_control_def_num" selected="True" />
+                <SelectField field="material_weakness_gen_num" selected="True" />
+                <SelectField field="noncompliance_num" selected="True" />
+                <SelectField field="prior_findings_num" selected="True" />
+                <SelectField field="low_risk_num" selected="True" />
+                <SelectField field="has_cap_num" selected="True" />
+                <SelectField field="avg_cap_length_num" selected="True" />
+                <SelectField field="cap_count_num" selected="True" />
+                <SelectField field="total_expended_num" selected="True" />
+                <SelectField field="amount_expended_num" selected="True" />
+                <SelectField field="distinct_audit_years_num" selected="True" />
+                <SelectField field="risk_points" selected="True" />
+                <SelectField field="taxpayer_protection_score" selected="True" />
+                <SelectField field="risk_tier" selected="True" />
+                <SelectField field="is_problem_entity" selected="True" />
+                <SelectField field="dollars_at_risk_red" selected="True" />
+                <SelectField field="dollars_at_risk_elevated" selected="True" />
+                <SelectField field="risk_per_million" selected="True" />
+                <SelectField field="total_federal_exposure" selected="True" />
+                <SelectField field="state_name" selected="True" />
+                <SelectField field="business_type" selected="True" />
+                <SelectField field="total_funding" selected="True" />
+                <SelectField field="Right_award_count" selected="True" />
+                <SelectField field="agency_count" selected="True" />
+                <SelectField field="primary_agency" selected="True" />
+                <SelectField field="program_count" selected="True" />
+                <SelectField field="first_award_date" selected="True" />
+                <SelectField field="last_award_date" selected="True" />
+                <SelectField field="first_fiscal_year" selected="True" />
+                <SelectField field="last_fiscal_year" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Keep key columns for analysis</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="5">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AutoField.AutoField">
+            <Position x="714" y="378" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Fields>
+                <Field field="auditee_uei" selected="True" />
+                <Field field="max_audit_year" selected="True" />
+                <Field field="min_audit_year" selected="True" />
+                <Field field="auditee_ein" selected="True" />
+                <Field field="auditee_name" selected="True" />
+                <Field field="auditee_city" selected="True" />
+                <Field field="auditee_state" selected="True" />
+                <Field field="auditee_zip" selected="True" />
+                <Field field="entity_type" selected="True" />
+                <Field field="distinct_audits" selected="True" />
+                <Field field="distinct_audit_years" selected="True" />
+                <Field field="sum_total_expended" selected="True" />
+                <Field field="cognizant_agency" selected="True" />
+                <Field field="oversight_agency" selected="True" />
+                <Field field="sum_going_concern" selected="True" />
+                <Field field="sum_internal_control_def" selected="True" />
+                <Field field="sum_material_weakness_gen" selected="True" />
+                <Field field="sum_noncompliance" selected="True" />
+                <Field field="sum_low_risk" selected="True" />
+                <Field field="sum_is_public" selected="True" />
+                <Field field="sum_prior_findings" selected="True" />
+                <Field field="award_count" selected="True" />
+                <Field field="distinct_agencies" selected="True" />
+                <Field field="distinct_programs" selected="True" />
+                <Field field="distinct_clusters" selected="True" />
+                <Field field="sum_amount_expended" selected="True" />
+                <Field field="sum_loan_balance" selected="True" />
+                <Field field="sum_passthrough_amount" selected="True" />
+                <Field field="max_federal_program_total" selected="True" />
+                <Field field="sum_findings_on_awards" selected="True" />
+                <Field field="sum_major_programs" selected="True" />
+                <Field field="sum_loan_programs" selected="True" />
+                <Field field="sum_direct_awards" selected="True" />
+                <Field field="sum_passthrough_awards" selected="True" />
+                <Field field="primary_program" selected="True" />
+                <Field field="findings_count" selected="True" />
+                <Field field="distinct_awards_with_findings" selected="True" />
+                <Field field="sum_material_weakness" selected="True" />
+                <Field field="sum_repeat_finding" selected="True" />
+                <Field field="sum_questioned_costs" selected="True" />
+                <Field field="sum_significant_deficiency" selected="True" />
+                <Field field="sum_modified_opinion" selected="True" />
+                <Field field="sum_other_findings" selected="True" />
+                <Field field="sum_other_matters" selected="True" />
+                <Field field="cap_count" selected="True" />
+                <Field field="distinct_audits_with_cap" selected="True" />
+                <Field field="distinct_cap_years" selected="True" />
+                <Field field="sum_has_cap" selected="True" />
+                <Field field="sum_cap_length" selected="True" />
+                <Field field="avg_cap_length" selected="True" />
+                <Field field="min_cap_year" selected="True" />
+                <Field field="max_cap_year" selected="True" />
+                <Field field="findings_count_num" selected="True" />
+                <Field field="material_weakness_num" selected="True" />
+                <Field field="repeat_finding_num" selected="True" />
+                <Field field="questioned_costs_num" selected="True" />
+                <Field field="significant_deficiency_num" selected="True" />
+                <Field field="modified_opinion_num" selected="True" />
+                <Field field="other_findings_num" selected="True" />
+                <Field field="other_matters_num" selected="True" />
+                <Field field="going_concern_num" selected="True" />
+                <Field field="internal_control_def_num" selected="True" />
+                <Field field="material_weakness_gen_num" selected="True" />
+                <Field field="noncompliance_num" selected="True" />
+                <Field field="prior_findings_num" selected="True" />
+                <Field field="low_risk_num" selected="True" />
+                <Field field="has_cap_num" selected="True" />
+                <Field field="avg_cap_length_num" selected="True" />
+                <Field field="cap_count_num" selected="True" />
+                <Field field="total_expended_num" selected="True" />
+                <Field field="amount_expended_num" selected="True" />
+                <Field field="distinct_audit_years_num" selected="True" />
+                <Field field="risk_points" selected="True" />
+                <Field field="taxpayer_protection_score" selected="True" />
+                <Field field="risk_tier" selected="True" />
+                <Field field="is_problem_entity" selected="True" />
+                <Field field="dollars_at_risk_red" selected="True" />
+                <Field field="dollars_at_risk_elevated" selected="True" />
+                <Field field="risk_per_million" selected="True" />
+                <Field field="total_federal_exposure" selected="True" />
+                <Field field="recipient_uei" selected="True" />
+                <Field field="recipient_name" selected="True" />
+                <Field field="state_code" selected="True" />
+                <Field field="state_name" selected="True" />
+                <Field field="city" selected="True" />
+                <Field field="business_type" selected="True" />
+                <Field field="total_funding" selected="True" />
+                <Field field="Right_award_count" selected="True" />
+                <Field field="agency_count" selected="True" />
+                <Field field="primary_agency" selected="True" />
+                <Field field="program_count" selected="True" />
+                <Field field="Right_primary_program" selected="True" />
+                <Field field="first_award_date" selected="True" />
+                <Field field="last_award_date" selected="True" />
+                <Field field="first_fiscal_year" selected="True" />
+                <Field field="last_fiscal_year" selected="True" />
+                <Field field="*Unknown" selected="True" />
+              </Fields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Convert to proper data types</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="auditee_uei" size="50" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="max_audit_year" size="28" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="min_audit_year" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="auditee_ein" size="9" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="String" />
+                <Field name="auditee_name" size="98" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="auditee_city" size="30" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="auditee_state" size="2" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="String" />
+                <Field name="auditee_zip" size="9" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="String" />
+                <Field name="entity_type" size="10" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="String" />
+                <Field name="distinct_audits" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="distinct_audit_years" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="sum_total_expended" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int64" />
+                <Field name="cognizant_agency" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="oversight_agency" size="2" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="String" />
+                <Field name="sum_going_concern" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="sum_internal_control_def" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="sum_material_weakness_gen" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="sum_noncompliance" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="sum_low_risk" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="sum_is_public" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="sum_prior_findings" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="award_count" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int32" />
+                <Field name="distinct_agencies" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="distinct_programs" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="distinct_clusters" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="sum_amount_expended" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int64" />
+                <Field name="sum_loan_balance" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Double" />
+                <Field name="sum_passthrough_amount" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int64" />
+                <Field name="max_federal_program_total" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int64" />
+                <Field name="sum_findings_on_awards" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="sum_major_programs" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="sum_loan_programs" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="sum_direct_awards" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="sum_passthrough_awards" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="primary_program" size="224" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="findings_count" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int32" />
+                <Field name="distinct_awards_with_findings" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int32" />
+                <Field name="sum_material_weakness" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="sum_repeat_finding" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="sum_questioned_costs" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="sum_significant_deficiency" size="19" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_modified_opinion" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="sum_other_findings" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int32" />
+                <Field name="sum_other_matters" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int32" />
+                <Field name="cap_count" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Double" />
+                <Field name="distinct_audits_with_cap" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int32" />
+                <Field name="distinct_cap_years" size="12" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_has_cap" size="45" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_cap_length" size="5" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="String" />
+                <Field name="avg_cap_length" size="16" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="min_cap_year" size="13" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="max_cap_year" size="79" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="findings_count_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Double" />
+                <Field name="material_weakness_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="repeat_finding_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="questioned_costs_num" size="43" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="significant_deficiency_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="modified_opinion_num" size="135" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="other_findings_num" size="10" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="other_matters_num" size="10" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="going_concern_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="internal_control_def_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="material_weakness_gen_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="noncompliance_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="prior_findings_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="low_risk_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="has_cap_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="avg_cap_length_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Double" />
+                <Field name="cap_count_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="total_expended_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int64" />
+                <Field name="amount_expended_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int64" />
+                <Field name="distinct_audit_years_num" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="risk_points" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int32" />
+                <Field name="taxpayer_protection_score" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="risk_tier" size="19" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="String" />
+                <Field name="is_problem_entity" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="dollars_at_risk_red" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int64" />
+                <Field name="dollars_at_risk_elevated" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int64" />
+                <Field name="risk_per_million" size="21" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="String" />
+                <Field name="total_federal_exposure" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int64" />
+                <Field name="recipient_uei" size="12" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="String" />
+                <Field name="recipient_name" size="120" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="state_code" size="2" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="String" />
+                <Field name="state_name" size="24" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="city" size="26" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="business_type" size="188" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="total_funding" size="21" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="Right_award_count" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="agency_count" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="primary_agency" size="50" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="program_count" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Byte" />
+                <Field name="Right_primary_program" size="189" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="first_award_date" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Date" />
+                <Field name="last_award_date" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Date" />
+                <Field name="first_fiscal_year" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+                <Field name="last_fiscal_year" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="Int16" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxAutoField" />
+        </Node>
+        <Node ToolID="6">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="942" y="294" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_30700_0ce18230b39a47f58dc7e27b82b08b57_\Engine_30700_53ea5cb4ab2dd64ab5b6100c7b64a9e5~.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[QA: Feature set ready - 42K rows
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="21">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="461" y="245" width="204" height="276" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Data Loading</Caption>
+          <Style TextColor="#314c4a" FillColor="#e6e6fa" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Data Loading</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="2">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="486" y="390" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv</File>
+              <FormatSpecificOptions>
+                <HeaderRow>True</HeaderRow>
+                <IgnoreErrors>True</IgnoreErrors>
+                <AllowShareWrite>False</AllowShareWrite>
+                <ImportLine>1</ImportLine>
+                <FieldLen>254</FieldLen>
+                <SingleThreadRead>False</SingleThreadRead>
+                <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                <Delimeter>,</Delimeter>
+                <QuoteRecordBreak>False</QuoteRecordBreak>
+                <CodePage>28591</CodePage>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>FAC USAspending Merged Detail (42K entities)</AnnotationText>
+              <DefaultAnnotationText>FAC_USAspending_Merged_Detail.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="auditee_uei" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="max_audit_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="min_audit_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="auditee_ein" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="auditee_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="auditee_city" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="auditee_state" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="auditee_zip" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="entity_type" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="distinct_audits" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="distinct_audit_years" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_total_expended" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="cognizant_agency" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="oversight_agency" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_going_concern" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_internal_control_def" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_material_weakness_gen" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_noncompliance" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_low_risk" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_is_public" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_prior_findings" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="award_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="distinct_agencies" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="distinct_programs" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="distinct_clusters" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_amount_expended" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_loan_balance" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_passthrough_amount" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="max_federal_program_total" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_findings_on_awards" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_major_programs" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_loan_programs" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_direct_awards" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_passthrough_awards" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="primary_program" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="findings_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="distinct_awards_with_findings" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_material_weakness" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_repeat_finding" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_questioned_costs" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_significant_deficiency" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_modified_opinion" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_other_findings" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_other_matters" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="cap_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="distinct_audits_with_cap" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="distinct_cap_years" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_has_cap" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="sum_cap_length" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="avg_cap_length" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="min_cap_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="max_cap_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="findings_count_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="material_weakness_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="repeat_finding_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="questioned_costs_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="significant_deficiency_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="modified_opinion_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="other_findings_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="other_matters_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="going_concern_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="internal_control_def_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="material_weakness_gen_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="noncompliance_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="prior_findings_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="low_risk_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="has_cap_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="avg_cap_length_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="cap_count_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="total_expended_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="amount_expended_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="distinct_audit_years_num" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="risk_points" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="taxpayer_protection_score" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="risk_tier" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="is_problem_entity" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="dollars_at_risk_red" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="dollars_at_risk_elevated" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="risk_per_million" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="total_federal_exposure" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="recipient_uei" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="recipient_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="state_code" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="state_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="city" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="business_type" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="total_funding" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="Right_award_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="agency_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="primary_agency" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="program_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="Right_primary_program" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="first_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="last_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="first_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+                <Field name="last_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\Merged\FAC_USAspending_Merged_Detail.csv" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="3">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="558" y="294" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_30700_0ce18230b39a47f58dc7e27b82b08b57_\Engine_30700_6d4ba635d80cdb4aa5a9d705f8fc3162~.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Raw data import (42k entities)</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+      </ChildNodes>
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="11" Connection="Output" />
+      <Destination ToolID="18" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output26" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output26" />
+      <Destination ToolID="19" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output26" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="18" Connection="Output26" />
+      <Destination ToolID="30" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="True" />
+      <Destination ToolID="12" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="False" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="True" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="True" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="False" />
+      <Destination ToolID="15" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="False" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="7" Connection="Output" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <IsTemplate value="False" />
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>FAC_USAspending_ML_Training</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="2ea55aa1-3893-44b6-95d1-8a5397279fce" />
+      <Telemetry>
+        <PreviousWorkflowId value="9b53eb8f-71a8-47e5-a728-48cb18eac9b7" />
+        <OriginWorkflowId value="9b53eb8f-71a8-47e5-a728-48cb18eac9b7" />
+      </Telemetry>
+      <PlatformWorkflowId value="" />
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

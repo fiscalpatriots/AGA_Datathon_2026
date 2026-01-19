@@ -1,0 +1,1072 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2024.1">
+  <Nodes>
+    <Node ToolID="28">
+      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+        <Position x="486" y="30" width="432" height="107" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Text><![CDATA[
+SAM EXCLUSION CLEANING
+Input: SAM.gov exclusions (167,326 records)
+Output: Clean exclusions split by UEI availability (37,900 with UEI, 120,099 without)
+Key fields: UEI, exclusion type, agency, dates, duration, is_currently_excluded
+
+Fiscal Patriots | AGA Datathon 2026
+]]></Text>
+          <Font name="Arial" size="8.25" style="0" />
+          <TextColor name="Black" />
+          <FillColor name="White" />
+          <Shape shape="0" />
+          <Justification Justification="4" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="36">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="905" y="593" width="405" height="867" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>NO UEI - Summary Analysis</Caption>
+          <Style TextColor="#314c4a" FillColor="#ffebb4" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>NO UEI - Summary Analysis</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="13">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="930" y="738" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="excluded_uei" action="Count" rename="total_records" />
+                <SummarizeField field="Excluding Agency" action="CountDistinct" rename="unique_agencies" />
+                <SummarizeField field="Exclusion Type" action="CountDistinct" rename="unique_exclusion_types" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Count totals for dark data</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="14">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="1038" y="642" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_27344_823be8e32cd1493e930654a75b25c872_\Engine_26564_886e7f26d2354fa1874b13f9ad9f0d6e_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[QA: No-UEI summary stats - 120K records analyzed
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="16">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="930" y="918" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="Excluding Agency" action="GroupBy" rename="excluding_agency" />
+                <SummarizeField field="Excluding Agency" action="Count" rename="record_count" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Breakdown by excluding agency</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="17">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="930" y="1182" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="exclusion_year" action="GroupBy" rename="exclusion_year" />
+                <SummarizeField field="exclusion_year" action="Count" rename="record_count" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Breakdown by year</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="18">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="1038" y="834" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_27344_823be8e32cd1493e930654a75b25c872_\Engine_26564_dac674f0ee594b4baf304d4f7d9f61f7_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Agency breakdown</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="19">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="1038" y="1098" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_27344_823be8e32cd1493e930654a75b25c872_\Engine_26564_b4c7741e7c4340ba825194bcd65ba80b_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Year breakdown</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="21">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1182" y="642" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_No_UEI_Summary.csv</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Output: No-UEI Summary Statistics - CSV (1 row)
+]]></AnnotationText>
+              <DefaultAnnotationText>SAM_Exclusions_No_UEI_Summary.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="22">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1182" y="918" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_No_UEI_By_Agency.csv</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Output: No-UEI Breakdown by Agency - CSV (58 rows)
+]]></AnnotationText>
+              <DefaultAnnotationText>SAM_Exclusions_No_UEI_By_Agency.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="23">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1182" y="1182" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_No_UEI_By_Year.csv</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Output: No-UEI Breakdown by Year - CSV (50 rows)
+]]></AnnotationText>
+              <DefaultAnnotationText>SAM_Exclusions_No_UEI_By_Year.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="25">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1182" y="762" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="64" MaxRecords="">C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_No_UEI_Summary.hyper</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <OutputOption>Create</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Output: No-UEI Summary Statistics - Tableau Hyper (1 row)
+]]></AnnotationText>
+              <DefaultAnnotationText>SAM_Exclusions_No_UEI_Summary.hyper</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="26">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1182" y="1050" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="64" MaxRecords="">C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_No_UEI_By_Agency.hyper</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <OutputOption>Create</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Output: No-UEI Breakdown by Agency - Tableau Hyper (58 rows)
+]]></AnnotationText>
+              <DefaultAnnotationText>SAM_Exclusions_No_UEI_By_Agency.hyper</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="27">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1182" y="1314" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="64" MaxRecords="">C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_No_UEI_By_Year.hyper</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <OutputOption>Create</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Output: No-UEI Breakdown by Year - Tableau Hyper (50 rows)
+]]></AnnotationText>
+              <DefaultAnnotationText>SAM_Exclusions_No_UEI_By_Year.hyper</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="35">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="761" y="173" width="671" height="399" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>WITH UEI - Deduplication &amp; Outputs</Caption>
+          <Style TextColor="#314c4a" FillColor="#c8ebc8" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>WITH UEI - Deduplication &amp; Outputs</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="9">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="918" y="222" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_27344_823be8e32cd1493e930654a75b25c872_\Engine_26564_ef5c263429674f40bee9dcc4b374bd1a_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[QA: Deduplication complete - 38K unique entities
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="10">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="786" y="330" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="excluded_uei" action="GroupBy" rename="excluded_uei" />
+                <SummarizeField field="excluded_name_clean" action="First" rename="First_excluded_name_clean" />
+                <SummarizeField field="excluded_state" action="First" rename="First_excluded_state" />
+                <SummarizeField field="excluded_city" action="First" rename="First_excluded_city" />
+                <SummarizeField field="Exclusion Program" action="First" rename="First_Exclusion Program" />
+                <SummarizeField field="Excluding Agency" action="First" rename="First_Excluding Agency" />
+                <SummarizeField field="Exclusion Type" action="First" rename="First_Exclusion Type" />
+                <SummarizeField field="exclusion_start_date_parsed" action="Min" rename="Min_exclusion_start_date_parsed" />
+                <SummarizeField field="exclusion_end_date_parsed" action="Max" rename="Max_exclusion_end_date_parsed" />
+                <SummarizeField field="is_currently_excluded" action="Max" rename="Max_is_currently_excluded" />
+                <SummarizeField field="exclusion_duration_days" action="Max" rename="Max_exclusion_duration_days" />
+                <SummarizeField field="excluded_uei" action="Count" rename="Count" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Dedupe by UEI → 37,900 unique</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="12">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="930" y="426" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Output: SAM Exclusions with UEI - CSV (38K rows)</AnnotationText>
+              <DefaultAnnotationText>SAM_Exclusions_with_UEI.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="24">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1110" y="426" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="64" MaxRecords="">C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.hyper</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <OutputOption>Create</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Output: SAM Exclusions with UEI - Tableau Hyper (38K rows)
+]]></AnnotationText>
+              <DefaultAnnotationText>SAM_Exclusions_with_UEI.hyper</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="29">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="1062" y="318" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>Contains([First_excluded_name_clean], "MFA Incorporated")
+OR
+Contains([First_excluded_name_clean], "Overseas Shipholding")</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>SAM_Case_Studies_ACT_III.csv</AnnotationText>
+              <DefaultAnnotationText>Contains([First_excluded_name_clean], "MFA Incorporated")
+OR
+Contains([First_exc...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="30">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="1170" y="222" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_27344_823be8e32cd1493e930654a75b25c872_\Engine_26564_8c18bf548cca4343b7cb4f1ad17a8ff8_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: ACT III Case Studies - 2 entities</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="31">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1302" y="222" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_ACT_III_Case_Studies.csv</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Output: SAM ACT III Case Studies - CSV (2 rows)</AnnotationText>
+              <DefaultAnnotationText>SAM_Exclusions_ACT_III_Case_Studies.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="32">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1302" y="342" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="64" MaxRecords="">C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_ACT_III_Case_Studies.hyper</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <OutputOption>Create</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Output: SAM ACT III Case Studies - Tableau Hyper (2 rows)</AnnotationText>
+              <DefaultAnnotationText>SAM_Exclusions_ACT_III_Case_Studies.hyper</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="34">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="377" y="173" width="342" height="444" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Data Cleaning &amp; Date Parsing</Caption>
+          <Style TextColor="#314c4a" FillColor="#f5c8c8" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Data Cleaning &amp; Date Parsing</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="5">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Filter.Filter">
+            <Position x="402" y="342" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Expression>Length(Trim([excluded_uei])) &gt; 0</Expression>
+              <Mode>Custom</Mode>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Split: Has UEI (T) vs No UEI (F)</AnnotationText>
+              <DefaultAnnotationText>Length(Trim([excluded_uei])) &gt; 0</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFilter" />
+        </Node>
+        <Node ToolID="6">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="498" y="222" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_27344_823be8e32cd1493e930654a75b25c872_\Engine_26564_c3d30addebaa47a98cb1f6a6c383367d_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: WITH UEI - 47K records (28%)</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="8">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="582" y="330" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="IIF(Length(Trim([excluded_entity_name])) &gt; 0, &#xA;    [excluded_entity_name], &#xA;    Trim([excluded_first_name] + &quot; &quot; + [excluded_last_name]))" field="excluded_name_clean" size="1073741823" type="V_WString" enabled="true" />
+                <FormulaField expression="DateTimeParse([exclusion_start_date], &quot;%m/%d/%y&quot;)" field="exclusion_start_date_parsed" size="10" type="Date" enabled="true" />
+                <FormulaField expression="IIF([exclusion_end_date] = &quot;Indefinite&quot;, &#xA;    Null(), &#xA;    DateTimeParse([exclusion_end_date], &quot;%m/%d/%y&quot;))" field="exclusion_end_date_parsed" size="10" type="Date" enabled="true" />
+                <FormulaField expression="IIF(IsNull([exclusion_end_date_parsed]), &#xA;    1, &#xA;    [exclusion_end_date_parsed] &gt;= DateTimeToday())" field="is_currently_excluded" size="1" type="Bool" enabled="true" />
+                <FormulaField expression="DateTimeDiff(DateTimeToday(), [exclusion_start_date_parsed], &quot;days&quot;)" field="exclusion_duration_days" size="4" type="Int32" enabled="true" />
+                <FormulaField expression="DateTimeYear([exclusion_start_date_parsed])&#xA;" field="exclusion_year" size="2" type="Int16" enabled="true" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Parse dates, calc duration, clean names</AnnotationText>
+              <DefaultAnnotationText>excluded_name_clean = IIF(Length(Trim([excluded_entity_name])) &gt; 0, 
+    [exclud...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="20">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="594" y="486" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="DateTimeYear(DateTimeParse([exclusion_start_date], &quot;%m/%d/%y&quot;))" field="exclusion_year" size="2" type="Int16" enabled="true" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Extract exclusion year</AnnotationText>
+              <DefaultAnnotationText>exclusion_year = DateTimeYear(DateTimeParse([exclusion_start_date], "%m/%d/%y"))...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="7">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="498" y="486" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_27344_823be8e32cd1493e930654a75b25c872_\Engine_26564_18c38bab75df4ab2af8aca7a59dd4e7a_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[QA: NO UEI - 120K records (72%)
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="33">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="53" y="173" width="282" height="336" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Data Import &amp; Validation</Caption>
+          <Style TextColor="#314c4a" FillColor="#c8dcf0" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Data Import &amp; Validation</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="2">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="78" y="378" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV</File>
+              <FormatSpecificOptions>
+                <HeaderRow>True</HeaderRow>
+                <IgnoreErrors>False</IgnoreErrors>
+                <AllowShareWrite>False</AllowShareWrite>
+                <ImportLine>1</ImportLine>
+                <FieldLen>254</FieldLen>
+                <SingleThreadRead>False</SingleThreadRead>
+                <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                <Delimeter>,</Delimeter>
+                <QuoteRecordBreak>False</QuoteRecordBreak>
+                <CodePage>28591</CodePage>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>SAM Exclusions raw data (167K records)</AnnotationText>
+              <DefaultAnnotationText>SAM_Exclusions_Public_Extract_V2_25361.CSV</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="Classification" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Name" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Prefix" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="First" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Middle" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Last" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Suffix" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Address 1" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Address 2" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Address 3" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Address 4" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="City" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="State / Province" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Country" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Zip Code" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Open Data Flag" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Blank (Deprecated)" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Unique Entity ID" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Exclusion Program" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Excluding Agency" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="CT Code" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Exclusion Type" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Additional Comments" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Active Date" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Termination Date" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Record Status" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Cross-Reference" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="SAM Number" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="CAGE" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="NPI" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+                <Field name="Creation_Date" size="254" source="File: C:\Users\Khaled\Downloads\SAM_Exclusions_Public_Extract_V2_25361\SAM_Exclusions_Public_Extract_V2_25361.CSV" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="3">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="162" y="222" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_27344_823be8e32cd1493e930654a75b25c872_\Engine_26564_fda12ed09f6d4e169c942db4ff8c45d5_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Verify raw import 167K total records</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="4">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="222" y="390" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="Classification" selected="True" rename="entity_type" />
+                <SelectField field="Name" selected="True" rename="excluded_entity_name" />
+                <SelectField field="First" selected="True" rename="excluded_first_name" />
+                <SelectField field="Last" selected="True" rename="excluded_last_name" />
+                <SelectField field="City" selected="True" rename="excluded_city" />
+                <SelectField field="State / Province" selected="True" rename="excluded_state" />
+                <SelectField field="Country" selected="True" rename="excluded_country" />
+                <SelectField field="Zip Code" selected="True" rename="excluded_zip" />
+                <SelectField field="Unique Entity ID" selected="True" rename="excluded_uei" />
+                <SelectField field="Exclusion Program" selected="True" />
+                <SelectField field="Excluding Agency" selected="True" />
+                <SelectField field="CT Code" selected="True" />
+                <SelectField field="Exclusion Type" selected="True" />
+                <SelectField field="Additional Comments" selected="True" />
+                <SelectField field="Active Date" selected="True" rename="exclusion_start_date" />
+                <SelectField field="Termination Date" selected="True" rename="exclusion_end_date" />
+                <SelectField field="Record Status" selected="True" />
+                <SelectField field="Cross-Reference" selected="True" />
+                <SelectField field="SAM Number" selected="True" rename="sam_number" />
+                <SelectField field="CAGE" selected="True" rename="cage_code" />
+                <SelectField field="Creation_Date" selected="True" rename="record_creation_date" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Rename fields, set data types</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+      </ChildNodes>
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="13" Connection="Output" />
+      <Destination ToolID="14" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output" />
+      <Destination ToolID="21" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output" />
+      <Destination ToolID="25" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="18" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="22" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="26" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="17" Connection="Output" />
+      <Destination ToolID="19" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="17" Connection="Output" />
+      <Destination ToolID="23" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="17" Connection="Output" />
+      <Destination ToolID="27" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="Output" />
+      <Destination ToolID="12" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="Output" />
+      <Destination ToolID="24" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="Output" />
+      <Destination ToolID="29" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="True" />
+      <Destination ToolID="30" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="True" />
+      <Destination ToolID="31" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="True" />
+      <Destination ToolID="32" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="True" />
+      <Destination ToolID="6" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="False" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="True" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="False" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="False" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="False" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="20" Connection="Output" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <IsTemplate value="False" />
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>SAM_Exclusion_Cleaning</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="bf347582-12bf-4a2a-81e5-4ea3236f1165" />
+      <Telemetry>
+        <PreviousWorkflowId value="a351ae82-3696-4ee6-9bf8-b364104f4007" />
+        <OriginWorkflowId value="4730f87d-2cda-4c6b-b3e2-cd29c9dce004" />
+      </Telemetry>
+      <PlatformWorkflowId value="" />
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

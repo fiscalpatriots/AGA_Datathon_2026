@@ -1,0 +1,765 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2024.1" RunE2="T">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+        <Position x="271" y="54" width="420" height="107" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Text><![CDATA[
+SAM USASPENDING MERGED
+Input: SAM Exclusions with UEI + USAspending All Years
+Output: Excluded entities receiving federal payments
+Key fields: UEI, excluding_agency, total_funding, award_count, exclusion_start_date
+
+Fiscal Patriots | AGA Datathon 2026]]></Text>
+          <Font name="Arial" size="8.25" style="0" />
+          <TextColor name="Black" />
+          <FillColor name="White" />
+          <Shape shape="0" />
+          <Justification Justification="4" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+    </Node>
+    <Node ToolID="24">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="1001" y="365" width="155" height="354" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Data Outputs</Caption>
+          <Style TextColor="#314c4a" FillColor="#ffe4d5" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Data Outputs</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="13">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1027" y="414" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\Users\Khaled\Documents\!--AGA Datathon\Merged\SAM_USAspending_Merged.csv</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Output: SAM USAspending Merged - CSV (27 entities)
+]]></AnnotationText>
+              <DefaultAnnotationText>SAM_USAspending_Merged.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="20">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1026" y="558" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="64" MaxRecords="">C:\Users\Khaled\Documents\!--AGA Datathon\Merged\SAM_USAspending_Merged.hyper</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <OutputOption>Create</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Output: SAM USAspending Merged - Tableau Hyper (27 entities)
+]]></AnnotationText>
+              <DefaultAnnotationText>SAM_USAspending_Merged.hyper</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="23">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="666" y="197" width="287" height="597" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Entity Matching</Caption>
+          <Style TextColor="#314c4a" FillColor="#d5f8e8" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Entity Matching</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="6">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Join.Join">
+            <Position x="691" y="414" />
+          </GuiSettings>
+          <Properties>
+            <Configuration joinByRecordPos="False">
+              <JoinInfo connection="Left">
+                <Field field="recipient_uei" />
+              </JoinInfo>
+              <JoinInfo connection="Right">
+                <Field field="excluded_uei" />
+              </JoinInfo>
+              <SelectConfiguration>
+                <Configuration outputConnection="Join">
+                  <OrderChanged value="False" />
+                  <CommaDecimal value="False" />
+                  <SelectFields>
+                    <SelectField field="Left_award_count" selected="True" input="Left_" />
+                    <SelectField field="Left_primary_program" selected="True" input="Left_" />
+                    <SelectField field="Right_excluded_uei" selected="True" input="Right_" />
+                    <SelectField field="Right_First_excluded_name_clean" selected="True" input="Right_" />
+                    <SelectField field="Right_First_excluded_state" selected="True" input="Right_" />
+                    <SelectField field="Right_First_excluded_city" selected="True" input="Right_" />
+                    <SelectField field="Right_First_Exclusion Program" selected="True" input="Right_" />
+                    <SelectField field="Right_First_Excluding Agency" selected="True" input="Right_" />
+                    <SelectField field="Right_First_Exclusion Type" selected="True" input="Right_" />
+                    <SelectField field="Right_Min_exclusion_start_date_parsed" selected="True" input="Right_" />
+                    <SelectField field="Right_Max_exclusion_end_date_parsed" selected="True" input="Right_" />
+                    <SelectField field="Right_Max_is_currently_excluded" selected="True" input="Right_" />
+                    <SelectField field="Right_Max_exclusion_duration_days" selected="True" input="Right_" />
+                    <SelectField field="Right_Count" selected="True" input="Right_" />
+                    <SelectField field="Left_auditee_uei" selected="True" input="Left_" />
+                    <SelectField field="Left_max_audit_year" selected="True" input="Left_" />
+                    <SelectField field="Left_min_audit_year" selected="True" input="Left_" />
+                    <SelectField field="Left_auditee_ein" selected="True" input="Left_" />
+                    <SelectField field="Left_auditee_name" selected="True" input="Left_" />
+                    <SelectField field="Left_auditee_city" selected="True" input="Left_" />
+                    <SelectField field="Left_auditee_state" selected="True" input="Left_" />
+                    <SelectField field="Left_auditee_zip" selected="True" input="Left_" />
+                    <SelectField field="Left_entity_type" selected="True" input="Left_" />
+                    <SelectField field="Left_distinct_audits" selected="True" input="Left_" />
+                    <SelectField field="Left_distinct_audit_years" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_total_expended" selected="True" input="Left_" />
+                    <SelectField field="Left_cognizant_agency" selected="True" input="Left_" />
+                    <SelectField field="Left_oversight_agency" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_going_concern" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_internal_control_def" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_material_weakness_gen" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_noncompliance" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_low_risk" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_is_public" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_prior_findings" selected="True" input="Left_" />
+                    <SelectField field="Left_distinct_agencies" selected="True" input="Left_" />
+                    <SelectField field="Left_distinct_programs" selected="True" input="Left_" />
+                    <SelectField field="Left_distinct_clusters" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_amount_expended" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_loan_balance" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_passthrough_amount" selected="True" input="Left_" />
+                    <SelectField field="Left_max_federal_program_total" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_findings_on_awards" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_major_programs" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_loan_programs" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_direct_awards" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_passthrough_awards" selected="True" input="Left_" />
+                    <SelectField field="Left_findings_count" selected="True" input="Left_" />
+                    <SelectField field="Left_distinct_awards_with_findings" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_material_weakness" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_repeat_finding" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_questioned_costs" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_significant_deficiency" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_modified_opinion" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_other_findings" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_other_matters" selected="True" input="Left_" />
+                    <SelectField field="Left_cap_count" selected="True" input="Left_" />
+                    <SelectField field="Left_distinct_audits_with_cap" selected="True" input="Left_" />
+                    <SelectField field="Left_distinct_cap_years" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_has_cap" selected="True" input="Left_" />
+                    <SelectField field="Left_sum_cap_length" selected="True" input="Left_" />
+                    <SelectField field="Left_avg_cap_length" selected="True" input="Left_" />
+                    <SelectField field="Left_min_cap_year" selected="True" input="Left_" />
+                    <SelectField field="Left_max_cap_year" selected="True" input="Left_" />
+                    <SelectField field="Left_findings_count_num" selected="True" input="Left_" />
+                    <SelectField field="Left_material_weakness_num" selected="True" input="Left_" />
+                    <SelectField field="Left_repeat_finding_num" selected="True" input="Left_" />
+                    <SelectField field="Left_questioned_costs_num" selected="True" input="Left_" />
+                    <SelectField field="Left_significant_deficiency_num" selected="True" input="Left_" />
+                    <SelectField field="Left_modified_opinion_num" selected="True" input="Left_" />
+                    <SelectField field="Left_other_findings_num" selected="True" input="Left_" />
+                    <SelectField field="Left_other_matters_num" selected="True" input="Left_" />
+                    <SelectField field="Left_going_concern_num" selected="True" input="Left_" />
+                    <SelectField field="Left_internal_control_def_num" selected="True" input="Left_" />
+                    <SelectField field="Left_material_weakness_gen_num" selected="True" input="Left_" />
+                    <SelectField field="Left_noncompliance_num" selected="True" input="Left_" />
+                    <SelectField field="Left_prior_findings_num" selected="True" input="Left_" />
+                    <SelectField field="Left_low_risk_num" selected="True" input="Left_" />
+                    <SelectField field="Left_has_cap_num" selected="True" input="Left_" />
+                    <SelectField field="Left_avg_cap_length_num" selected="True" input="Left_" />
+                    <SelectField field="Left_cap_count_num" selected="True" input="Left_" />
+                    <SelectField field="Left_total_expended_num" selected="True" input="Left_" />
+                    <SelectField field="Left_amount_expended_num" selected="True" input="Left_" />
+                    <SelectField field="Left_distinct_audit_years_num" selected="True" input="Left_" />
+                    <SelectField field="Left_risk_points" selected="True" input="Left_" />
+                    <SelectField field="Left_taxpayer_protection_score" selected="True" input="Left_" />
+                    <SelectField field="Left_risk_tier" selected="True" input="Left_" />
+                    <SelectField field="Left_is_problem_entity" selected="True" input="Left_" />
+                    <SelectField field="Left_dollars_at_risk_red" selected="True" input="Left_" />
+                    <SelectField field="Left_dollars_at_risk_elevated" selected="True" input="Left_" />
+                    <SelectField field="Left_risk_per_million" selected="True" input="Left_" />
+                    <SelectField field="Left_total_federal_exposure" selected="True" input="Left_" />
+                    <SelectField field="*Unknown" selected="False" />
+                  </SelectFields>
+                </Configuration>
+              </SelectConfiguration>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Match SAM exclusions to USAspending payments (excluded_uei = recipient_uei)</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxJoin" />
+        </Node>
+        <Node ToolID="8">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="823" y="246" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_27736_cf9080b6e1634d18934fbd7dc1437398_\Engine_27736_c55065e48879a3459451e135a7352ddf~.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: USAspending recipients without SAM exclusions (38K records)</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="9">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="822" y="618" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_27736_cf9080b6e1634d18934fbd7dc1437398_\Engine_27736_50b97ddb63b95b4f9b99344ad1388841~.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: SAM exclusions without USAspending payments (182K records)</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="10">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="823" y="474" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_27736_cf9080b6e1634d18934fbd7dc1437398_\Engine_27736_8222be0970d8124882e4dabdb75e4f32~.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Matched entities - Excluded but receiving payments (27)</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="22">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="353" y="293" width="274" height="285" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Data Preparation</Caption>
+          <Style TextColor="#314c4a" FillColor="#d5e8f8" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Data Preparation</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="14">
+          <GuiSettings>
+            <Position x="499" y="342" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Value name="Check Box (135)">False</Value>
+              <Value name="Check Box (136)">False</Value>
+              <Value name="List Box (11)">"recipient_uei"</Value>
+              <Value name="Check Box (84)">True</Value>
+              <Value name="Check Box (117)">True</Value>
+              <Value name="Check Box (15)">True</Value>
+              <Value name="Check Box (109)">True</Value>
+              <Value name="Check Box (122)">False</Value>
+              <Value name="Check Box (53)">False</Value>
+              <Value name="Check Box (58)">False</Value>
+              <Value name="Check Box (70)">False</Value>
+              <Value name="Check Box (77)">False</Value>
+              <Value name="Drop Down (81)">upper</Value>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Data Cleansing: Trim USAspending UEI
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings Macro="Cleanse.yxmc" />
+        </Node>
+        <Node ToolID="15">
+          <GuiSettings>
+            <Position x="499" y="462" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Value name="Check Box (135)">False</Value>
+              <Value name="Check Box (136)">False</Value>
+              <Value name="List Box (11)">"excluded_uei"</Value>
+              <Value name="Check Box (84)">True</Value>
+              <Value name="Check Box (117)">True</Value>
+              <Value name="Check Box (15)">True</Value>
+              <Value name="Check Box (109)">True</Value>
+              <Value name="Check Box (122)">False</Value>
+              <Value name="Check Box (53)">False</Value>
+              <Value name="Check Box (58)">False</Value>
+              <Value name="Check Box (70)">False</Value>
+              <Value name="Check Box (77)">False</Value>
+              <Value name="Drop Down (81)">upper</Value>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Data Cleansing: Trim SAM UEI
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings Macro="Cleanse.yxmc" />
+        </Node>
+        <Node ToolID="26">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="378" y="342" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="recipient_uei" selected="True" />
+                <SelectField field="recipient_name" selected="True" />
+                <SelectField field="state_code" selected="True" />
+                <SelectField field="state_name" selected="True" />
+                <SelectField field="city" selected="True" />
+                <SelectField field="business_type" selected="True" />
+                <SelectField field="total_funding" selected="True" />
+                <SelectField field="award_count" selected="True" />
+                <SelectField field="agency_count" selected="True" />
+                <SelectField field="primary_agency" selected="True" />
+                <SelectField field="program_count" selected="True" />
+                <SelectField field="primary_program" selected="True" />
+                <SelectField field="first_award_date" selected="True" />
+                <SelectField field="last_award_date" selected="True" />
+                <SelectField field="first_fiscal_year" selected="True" />
+                <SelectField field="last_fiscal_year" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Keep key fields, drop extras</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="27">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="378" y="462" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="excluded_uei" selected="True" />
+                <SelectField field="First_excluded_name_clean" selected="True" />
+                <SelectField field="First_excluded_state" selected="True" />
+                <SelectField field="First_excluded_city" selected="True" />
+                <SelectField field="First_Exclusion Program" selected="True" />
+                <SelectField field="First_Excluding Agency" selected="True" />
+                <SelectField field="First_Exclusion Type" selected="True" />
+                <SelectField field="Min_exclusion_start_date_parsed" selected="True" />
+                <SelectField field="Max_exclusion_end_date_parsed" selected="True" />
+                <SelectField field="Max_is_currently_excluded" selected="True" />
+                <SelectField field="Max_exclusion_duration_days" selected="True" />
+                <SelectField field="Count" selected="True" />
+                <SelectField field="*Unknown" selected="False" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>Keep key fields, drop extras</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+      </ChildNodes>
+    </Node>
+    <Node ToolID="21">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="53" y="209" width="278" height="468" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>Data Loading</Caption>
+          <Style TextColor="#314c4a" FillColor="#e6e6fa" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>Data Loading</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="3">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="199" y="258" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_27736_cf9080b6e1634d18934fbd7dc1437398_\Engine_27736_64bb4bd1b128b842905a0f35b5d90abb~.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[QA: USAspending data loaded (182k entities)
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="4">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="78" y="462" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv</File>
+              <FormatSpecificOptions>
+                <HeaderRow>True</HeaderRow>
+                <IgnoreErrors>False</IgnoreErrors>
+                <AllowShareWrite>False</AllowShareWrite>
+                <ImportLine>1</ImportLine>
+                <FieldLen>254</FieldLen>
+                <SingleThreadRead>False</SingleThreadRead>
+                <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                <Delimeter>,</Delimeter>
+                <QuoteRecordBreak>False</QuoteRecordBreak>
+                <CodePage>28591</CodePage>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>SAM Exclusions with UEI (38K entities)</AnnotationText>
+              <DefaultAnnotationText>SAM_Exclusions_with_UEI.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="excluded_uei" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv" type="V_String" />
+                <Field name="First_excluded_name_clean" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv" type="V_String" />
+                <Field name="First_excluded_state" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv" type="V_String" />
+                <Field name="First_excluded_city" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv" type="V_String" />
+                <Field name="First_Exclusion Program" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv" type="V_String" />
+                <Field name="First_Excluding Agency" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv" type="V_String" />
+                <Field name="First_Exclusion Type" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv" type="V_String" />
+                <Field name="Min_exclusion_start_date_parsed" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv" type="V_String" />
+                <Field name="Max_exclusion_end_date_parsed" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv" type="V_String" />
+                <Field name="Max_is_currently_excluded" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv" type="V_String" />
+                <Field name="Max_exclusion_duration_days" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv" type="V_String" />
+                <Field name="Count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\SAM.gov\SAM_Exclusions_with_UEI.csv" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="5">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="198" y="546" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_27736_cf9080b6e1634d18934fbd7dc1437398_\Engine_27736_675f59653fbd814f856c23c6e4d31bc8~.yxdb</TempFile>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: SAM data loaded (38K entities)</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="25">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="78" y="342" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv</File>
+              <FormatSpecificOptions>
+                <HeaderRow>True</HeaderRow>
+                <IgnoreErrors>False</IgnoreErrors>
+                <AllowShareWrite>False</AllowShareWrite>
+                <ImportLine>1</ImportLine>
+                <FieldLen>254</FieldLen>
+                <SingleThreadRead>False</SingleThreadRead>
+                <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                <Delimeter>,</Delimeter>
+                <QuoteRecordBreak>False</QuoteRecordBreak>
+                <CodePage>28591</CodePage>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[USAspending All Years (6.31T obligations)
+]]></AnnotationText>
+              <DefaultAnnotationText>USAspending_All_Years.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="recipient_uei" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="recipient_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="state_code" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="state_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="city" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="business_type" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="total_funding" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="award_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="agency_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="primary_agency" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="program_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="primary_program" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="first_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="last_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="first_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+                <Field name="last_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="6" Connection="Left" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Join" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Right" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Join" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="6" Connection="Join" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="Output26" />
+      <Destination ToolID="6" Connection="Left" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="15" Connection="Output26" />
+      <Destination ToolID="6" Connection="Right" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="26" Connection="Output" />
+      <Destination ToolID="14" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="27" Connection="Output" />
+      <Destination ToolID="15" Connection="Input2" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="5" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="27" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="25" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="25" Connection="Output" />
+      <Destination ToolID="26" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <RunWithE2 value="True" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <IsTemplate value="False" />
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>SAM_USAspending_Merged</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="37b84ef7-4efa-466b-be8e-68c0c9bb2a11" />
+      <Telemetry>
+        <PreviousWorkflowId value="ef899af2-f9f4-4400-bb2b-f1c9837ef8a3" />
+        <OriginWorkflowId value="fd208822-0a92-44db-a42a-e6c06b5fa186" />
+      </Telemetry>
+      <PlatformWorkflowId value="" />
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>

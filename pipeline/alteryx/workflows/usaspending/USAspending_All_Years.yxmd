@@ -1,0 +1,1031 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2024.1">
+  <Nodes>
+    <Node ToolID="12">
+      <GuiSettings Plugin="AlteryxGuiToolkit.ToolContainer.ToolContainer">
+        <Position x="53" y="53" width="1231" height="768" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Caption>USA Spending Combine All Years</Caption>
+          <Style TextColor="#314c4a" FillColor="#ecf2f2" BorderColor="#314c4a" Transparency="25" Margin="25" />
+          <Disabled value="False" />
+          <Folded value="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <AnnotationText>USA Spending Combine All Years</AnnotationText>
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <ChildNodes>
+        <Node ToolID="8">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+            <Position x="679" y="428" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <ByName_ErrorMode>Warning</ByName_ErrorMode>
+              <ByName_OutputMode>All</ByName_OutputMode>
+              <Mode>ByName</Mode>
+              <SetOutputOrder value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Combine all 6 fiscal years
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+        </Node>
+        <Node ToolID="9">
+          <GuiSettings Plugin="AlteryxSpatialPluginsGui.Summarize.Summarize">
+            <Position x="908" y="428" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SummarizeFields>
+                <SummarizeField field="recipient_uei" action="GroupBy" rename="recipient_uei" />
+                <SummarizeField field="recipient_name" action="First" rename="recipient_name" />
+                <SummarizeField field="state_code" action="First" rename="state_code" />
+                <SummarizeField field="state_name" action="First" rename="state_name" />
+                <SummarizeField field="city" action="First" rename="city" />
+                <SummarizeField field="business_type" action="First" rename="business_type" />
+                <SummarizeField field="obligation_num" action="Sum" rename="total_funding" />
+                <SummarizeField field="awards_num" action="Sum" rename="award_count" />
+                <SummarizeField field="agencies_num" action="Max" rename="agency_count" />
+                <SummarizeField field="primary_agency" action="First" rename="primary_agency" />
+                <SummarizeField field="programs_num" action="Max" rename="program_count" />
+                <SummarizeField field="primary_program" action="First" rename="primary_program" />
+                <SummarizeField field="first_award_date" action="Min" rename="first_award_date" />
+                <SummarizeField field="last_award_date" action="Max" rename="last_award_date" />
+                <SummarizeField field="first_fiscal_year" action="Min" rename="first_fiscal_year" />
+                <SummarizeField field="last_fiscal_year" action="Max" rename="last_fiscal_year" />
+              </SummarizeFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Aggregate by recipient_uei across all years
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxSpatialPluginsEngine.dll" EngineDllEntryPoint="AlteryxSummarize" />
+        </Node>
+        <Node ToolID="11">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="1004" y="320" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_20412_e58d66e196114a6abd211e5085df5f09_\Engine_24380_e1d10d9f325a4ebb987124399a7e743b_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[QA: Verify aggregation (182K entities)
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="13">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1160" y="428" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File MaxRecords="" FileFormat="0">C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.csv</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <LineEndStyle>CRLF</LineEndStyle>
+                <Delimeter>,</Delimeter>
+                <ForceQuotes>False</ForceQuotes>
+                <HeaderRow>True</HeaderRow>
+                <CodePage>28591</CodePage>
+                <WriteBOM>True</WriteBOM>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Output: USAspending All Years - CSV
+]]></AnnotationText>
+              <DefaultAnnotationText>USAspending_All_Years.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+        <Node ToolID="20">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="764" y="320" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_20412_e58d66e196114a6abd211e5085df5f09_\Engine_24380_d2c0ca87a72e471088914857930acc45_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[QA: Verify union (588K rows)
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="21">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+            <Position x="800" y="428" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <FormulaFields>
+                <FormulaField expression="ToNumber([total_funding])" field="obligation_num" size="8" type="Double" enabled="true" />
+                <FormulaField expression="ToNumber([award_count])" field="awards_num" size="8" type="Int64" enabled="true" />
+                <FormulaField expression="ToNumber([agency_count])" field="agencies_num" size="8" type="Int64" enabled="true" />
+                <FormulaField expression="ToNumber([program_count])" field="programs_num" size="8" type="Int64" enabled="true" />
+              </FormulaFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Convert funding fields to numeric
+]]></AnnotationText>
+              <DefaultAnnotationText>obligation_num = ToNumber([total_funding])
+awards_num = ToNumber([award_count])
+...</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+        </Node>
+        <Node ToolID="22">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.Sort.Sort">
+            <Position x="1004" y="428" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <SortInfo locale="1033">
+                <Field field="total_funding" order="Descending" />
+              </SortInfo>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Sort by total funding descending
+]]></AnnotationText>
+              <DefaultAnnotationText>total_funding - Descending</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSort" />
+        </Node>
+        <Node ToolID="29">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="79" y="691" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv</File>
+              <FormatSpecificOptions>
+                <HeaderRow>True</HeaderRow>
+                <IgnoreErrors>False</IgnoreErrors>
+                <AllowShareWrite>False</AllowShareWrite>
+                <ImportLine>1</ImportLine>
+                <FieldLen>254</FieldLen>
+                <SingleThreadRead>False</SingleThreadRead>
+                <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                <Delimeter>,</Delimeter>
+                <QuoteRecordBreak>False</QuoteRecordBreak>
+                <CodePage>28591</CodePage>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[FY2024 entity data (103,240 rows)
+]]></AnnotationText>
+              <DefaultAnnotationText>USAspending_FY2024.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="recipient_uei" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="recipient_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="state_code" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="state_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="city" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="business_type" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="total_funding" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="award_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="agency_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="primary_agency" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="program_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="primary_program" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="first_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="last_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="first_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+                <Field name="last_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2024.csv" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="28">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="79" y="559" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv</File>
+              <FormatSpecificOptions>
+                <HeaderRow>True</HeaderRow>
+                <IgnoreErrors>False</IgnoreErrors>
+                <AllowShareWrite>False</AllowShareWrite>
+                <ImportLine>1</ImportLine>
+                <FieldLen>254</FieldLen>
+                <SingleThreadRead>False</SingleThreadRead>
+                <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                <Delimeter>,</Delimeter>
+                <QuoteRecordBreak>False</QuoteRecordBreak>
+                <CodePage>28591</CodePage>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[FY2023 entity data (101,869 rows)
+]]></AnnotationText>
+              <DefaultAnnotationText>USAspending_FY2023.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="recipient_uei" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="recipient_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="state_code" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="state_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="city" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="business_type" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="total_funding" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="award_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="agency_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="primary_agency" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="program_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="primary_program" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="first_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="last_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="first_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+                <Field name="last_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2023.csv" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="27">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="79" y="439" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv</File>
+              <FormatSpecificOptions>
+                <HeaderRow>True</HeaderRow>
+                <IgnoreErrors>False</IgnoreErrors>
+                <AllowShareWrite>False</AllowShareWrite>
+                <ImportLine>1</ImportLine>
+                <FieldLen>254</FieldLen>
+                <SingleThreadRead>False</SingleThreadRead>
+                <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                <Delimeter>,</Delimeter>
+                <QuoteRecordBreak>False</QuoteRecordBreak>
+                <CodePage>28591</CodePage>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[FY2022 entity data (114,293 rows)
+]]></AnnotationText>
+              <DefaultAnnotationText>USAspending_FY2022.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="recipient_uei" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="recipient_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="state_code" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="state_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="city" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="business_type" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="total_funding" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="award_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="agency_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="primary_agency" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="program_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="primary_program" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="first_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="last_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="first_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+                <Field name="last_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2022.csv" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="26">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="78" y="319" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv</File>
+              <FormatSpecificOptions>
+                <HeaderRow>True</HeaderRow>
+                <IgnoreErrors>False</IgnoreErrors>
+                <AllowShareWrite>False</AllowShareWrite>
+                <ImportLine>1</ImportLine>
+                <FieldLen>254</FieldLen>
+                <SingleThreadRead>False</SingleThreadRead>
+                <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                <Delimeter>,</Delimeter>
+                <QuoteRecordBreak>False</QuoteRecordBreak>
+                <CodePage>28591</CodePage>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[FY2021 entity data (103,301 rows)
+]]></AnnotationText>
+              <DefaultAnnotationText>USAspending_FY2021.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="recipient_uei" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="recipient_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="state_code" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="state_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="city" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="business_type" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="total_funding" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="award_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="agency_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="primary_agency" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="program_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="primary_program" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="first_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="last_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="first_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+                <Field name="last_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2021.csv" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="25">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="79" y="211" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv</File>
+              <FormatSpecificOptions>
+                <HeaderRow>True</HeaderRow>
+                <IgnoreErrors>False</IgnoreErrors>
+                <AllowShareWrite>False</AllowShareWrite>
+                <ImportLine>1</ImportLine>
+                <FieldLen>254</FieldLen>
+                <SingleThreadRead>False</SingleThreadRead>
+                <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                <Delimeter>,</Delimeter>
+                <QuoteRecordBreak>False</QuoteRecordBreak>
+                <CodePage>28591</CodePage>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[FY2020 entity data (91,116 rows)
+]]></AnnotationText>
+              <DefaultAnnotationText>USAspending_FY2020.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="recipient_uei" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="recipient_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="state_code" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="state_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="city" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="business_type" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="total_funding" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="award_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="agency_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="primary_agency" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="program_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="primary_program" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="first_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="last_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="first_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+                <Field name="last_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2020.csv" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="24">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+            <Position x="79" y="102" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Passwords />
+              <File RecordLimit="" SearchSubDirs="False" FileFormat="0" OutputFileName="">C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv</File>
+              <FormatSpecificOptions>
+                <HeaderRow>True</HeaderRow>
+                <IgnoreErrors>False</IgnoreErrors>
+                <AllowShareWrite>False</AllowShareWrite>
+                <ImportLine>1</ImportLine>
+                <FieldLen>254</FieldLen>
+                <SingleThreadRead>False</SingleThreadRead>
+                <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+                <Delimeter>,</Delimeter>
+                <QuoteRecordBreak>False</QuoteRecordBreak>
+                <CodePage>28591</CodePage>
+              </FormatSpecificOptions>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[FY2019 entity data (73,826 rows)
+]]></AnnotationText>
+              <DefaultAnnotationText>USAspending_FY2019.csv</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <MetaInfo connection="Output">
+              <RecordInfo>
+                <Field name="recipient_uei" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="recipient_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="state_code" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="state_name" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="city" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="business_type" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="total_funding" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="award_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="agency_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="primary_agency" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="program_count" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="primary_program" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="first_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="last_award_date" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="first_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+                <Field name="last_fiscal_year" size="254" source="File: C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_FY2019.csv" type="V_String" />
+              </RecordInfo>
+            </MetaInfo>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+        </Node>
+        <Node ToolID="30">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="187" y="102" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Verify schema consistency
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="31">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="188" y="211" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Verify schema consistency
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="32">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="188" y="319" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Verify schema consistency
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="33">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="188" y="440" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Verify schema consistency
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="34">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="188" y="559" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Verify schema consistency
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="35">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.AlteryxSelect.AlteryxSelect">
+            <Position x="187" y="692" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <OrderChanged value="False" />
+              <CommaDecimal value="False" />
+              <SelectFields>
+                <SelectField field="*Unknown" selected="True" />
+              </SelectFields>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Verify schema consistency
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSelect" />
+        </Node>
+        <Node ToolID="36">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="296" y="103" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_20412_e58d66e196114a6abd211e5085df5f09_\Engine_24380_8d5c3450a4974fd88a0c21129c927e40_.yxdb</TempFile>
+              <Layout>
+                <View1>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Verify raw import</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="37">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="295" y="211" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_20412_e58d66e196114a6abd211e5085df5f09_\Engine_24380_39e0ef1583ca48d98183c4f193f04f4d_.yxdb</TempFile>
+              <Layout>
+                <View1>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Verify raw import</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="38">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="296" y="319" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_20412_e58d66e196114a6abd211e5085df5f09_\Engine_24380_5a3c497f7db2405aa40b6fbc82e7c1f1_.yxdb</TempFile>
+              <Layout>
+                <View1>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Verify raw import</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="39">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="296" y="439" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_20412_e58d66e196114a6abd211e5085df5f09_\Engine_24380_b1d267f0484c42d09cb5eb8e4662ac5c_.yxdb</TempFile>
+              <Layout>
+                <View1>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Verify raw import</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="40">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="296" y="560" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_20412_e58d66e196114a6abd211e5085df5f09_\Engine_24380_43e228e2b6a04a0590b1e253e1449e43_.yxdb</TempFile>
+              <Layout>
+                <View1>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Verify raw import</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="41">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="296" y="691" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_20412_e58d66e196114a6abd211e5085df5f09_\Engine_24380_4abb15d799fc4d39a47114ab760fc2bf_.yxdb</TempFile>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText>QA: Verify raw import</AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="42">
+          <GuiSettings Plugin="AlteryxGuiToolkit.TextBox.TextBox">
+            <Position x="464" y="103" width="420" height="107" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <Text><![CDATA[
+USASPENDING COMBINE ALL YEARS
+Input: 6 cleaned entity-level files (FY2019-FY2024)
+Output: One row per recipient across all years
+Key fields: UEI, total funding, award counts, date ranges
+
+Fiscal Patriots | AGA Datathon 2026
+
+
+
+
+]]></Text>
+              <Font name="Arial" size="8.25" style="0" />
+              <TextColor name="Black" />
+              <FillColor name="White" />
+              <Shape shape="0" />
+              <Justification Justification="4" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+        </Node>
+        <Node ToolID="43">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+            <Position x="1124" y="320" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <TempFile>C:\Users\Khaled\AppData\Local\Temp\Alteryx\Engine_20412_e58d66e196114a6abd211e5085df5f09_\Engine_24380_32d14c059c7e4f2d9a82812b0d478ca6_.yxdb</TempFile>
+              <TempFileDataProfiling />
+              <Layout>
+                <ViewMode>Single</ViewMode>
+                <ViewSize value="100" />
+                <View1>
+                  <DefaultTab>Profile</DefaultTab>
+                  <Hints>
+                    <Table />
+                  </Hints>
+                </View1>
+                <View2 />
+              </Layout>
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[QA: Verify final output (182K entities)
+]]></AnnotationText>
+              <DefaultAnnotationText />
+              <Left value="False" />
+            </Annotation>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+        </Node>
+        <Node ToolID="44">
+          <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileOutput.DbFileOutput">
+            <Position x="1158" y="546" />
+          </GuiSettings>
+          <Properties>
+            <Configuration>
+              <File FileFormat="64" MaxRecords="">C:\Users\Khaled\Documents\!--AGA Datathon\USASpending\USAspending_All_Years.hyper</File>
+              <Passwords />
+              <Disable>False</Disable>
+              <FormatSpecificOptions>
+                <OutputOption>Create</OutputOption>
+              </FormatSpecificOptions>
+              <MultiFile value="False" />
+            </Configuration>
+            <Annotation DisplayMode="0">
+              <Name />
+              <AnnotationText><![CDATA[Output: USAspending All Years - Tableau Hyper
+]]></AnnotationText>
+              <DefaultAnnotationText>USAspending_All_Years.hyper</DefaultAnnotationText>
+              <Left value="False" />
+            </Annotation>
+            <Dependencies>
+              <Implicit />
+            </Dependencies>
+          </Properties>
+          <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileOutput" />
+        </Node>
+      </ChildNodes>
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="21" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="9" Connection="Output" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="9" Connection="Output" />
+      <Destination ToolID="22" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="21" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="22" Connection="Output" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="22" Connection="Output" />
+      <Destination ToolID="43" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="22" Connection="Output" />
+      <Destination ToolID="44" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="29" Connection="Output" />
+      <Destination ToolID="35" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="28" Connection="Output" />
+      <Destination ToolID="34" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="27" Connection="Output" />
+      <Destination ToolID="33" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="26" Connection="Output" />
+      <Destination ToolID="32" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="25" Connection="Output" />
+      <Destination ToolID="31" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="24" Connection="Output" />
+      <Destination ToolID="30" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="30" Connection="Output" />
+      <Destination ToolID="36" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="30" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="31" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection name="#3">
+      <Origin ToolID="32" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection name="#4">
+      <Origin ToolID="33" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection name="#5">
+      <Origin ToolID="34" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection name="#6">
+      <Origin ToolID="35" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="31" Connection="Output" />
+      <Destination ToolID="37" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="32" Connection="Output" />
+      <Destination ToolID="38" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="33" Connection="Output" />
+      <Destination ToolID="39" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="34" Connection="Output" />
+      <Destination ToolID="40" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="35" Connection="Output" />
+      <Destination ToolID="41" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <PredictiveToolsCodePage value="1252" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <IsTemplate value="False" />
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>USAspending_All_Years</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+      <WorkflowId value="ced1ba5b-38f0-46b5-832c-0098066ad641" />
+      <Telemetry>
+        <PreviousWorkflowId value="65e75323-4135-4664-b9e3-3006fe8a5c68" />
+        <OriginWorkflowId value="a5108cb0-8ea0-4844-95da-514611bb3c4d" />
+      </Telemetry>
+      <PlatformWorkflowId value="" />
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
