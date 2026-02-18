@@ -7,5 +7,5 @@ This folder holds documentation for the video deliverable.
 - If stored in GitHub, use Git LFS on an archive branch.
 - If stored externally (Drive/OneDrive), link it here.
 
-## Status
-- Video not added to main yet.
+## Video URL
+- https://youtu.be/i0x2yidgPiY
