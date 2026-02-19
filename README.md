@@ -2,8 +2,8 @@
 
 ## Team (Fiscal Patriots)
 
-| Name | Role | Phone | Bio |
-|------|------|------|------|
+| Name | Role | Bio |
+|------|------|------|
 | Khaled Alkurd | Team Lead | GMU Spring '26 Accounting and Business Analytics, Alteryx, Tableau, R
 | Pranavi Doodala | Project Manager | GMU Spring '26 Business Analytics; Data Mining, Predictive Modeling, Project Management
 | Mariam Debas | Visualization Lead | GMU Spring '26 Accounting, Data Analytics, Tableau, R
