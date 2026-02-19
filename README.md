@@ -5,7 +5,7 @@
 | Name | Role | Bio |
 |------|------|------|
 | Khaled Alkurd | Team Lead | GMU Spring '26 Accounting and Business Analytics, Alteryx, Tableau, R
-| Pranavi Doodala | Project Manager | GMU Spring '26 Business Analytics; Data Mining, Predictive Modeling, Project Management
+| Pranavi Doodala | Project Manager, ML Lead | GMU Spring '26 Business Analytics; Data Mining, Predictive Modeling, Project Management
 | Mariam Debas | Visualization Lead | GMU Spring '26 Accounting, Data Analytics, Tableau, R
 | Nikita Chandrasing | Product Manager | GMU Fall '25 Business Analytics and MIS; Data Mining, Data Visualization, Product Design
 | Andy Yaro | Product Developer | GMU Fall '28 Cybersecurity Engineering; python, git, aws
